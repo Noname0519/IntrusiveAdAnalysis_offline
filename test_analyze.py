@@ -5,9 +5,13 @@ import json
 import os
 
 class dynamic_graph():
-    def __init__(self, js_path):
-        self.json_path = js_path.replace("js", "json")
-        self.change_js_to_json(js_path, self.json_path)
+    def __init__(self, js_path=None, json_path=None):
+        if json_path is None:
+            self.json_path = js_path.replace("js", "json")
+        else:
+            self.json_path = json_path
+        if js_path is not None:
+            self.change_js_to_json(js_path, self.json_path)
         self.state = {}
         self.state_edge = []
         self.state_edge_json = []
@@ -43,17 +47,17 @@ class dynamic_graph():
             # self.state[dst].setdefault('dst', {})[src] = {'is_ad_related': is_ad_related, 'events': trigger}
 
             # 在 src 节点里记录 dst 邻居，同时写入广告标记
-            self.state[src].setdefault('src', {})[dst] = {
-                'is_ad_related': src_ad_related, 
-                'events': trigger,
-                'ad_feature': src_ad_feature
-            }
-
-            # 在 dst 节点里记录 src 邻居，同时写入广告标记
-            self.state[dst].setdefault('dst', {})[src] = {
+            self.state[src].setdefault('dst', {})[dst] = {
                 'is_ad_related': dst_ad_related, 
                 'events': trigger,
                 'ad_feature': dst_ad_feature
+            }
+
+            # 在 dst 节点里记录 src 邻居，同时写入广告标记
+            self.state[dst].setdefault('src', {})[src] = {
+                'is_ad_related': src_ad_related, 
+                'events': trigger,
+                'ad_feature': src_ad_feature
             }
 
             self.state_edge.append([src, dst])
@@ -95,60 +99,71 @@ class dynamic_graph():
         log_file=os.path.join(root_dir, "enhanced_log.txt")
 
         if keywords is None:
-            keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title"]
+            keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title", "adView"]
 
         nodes = self.raw_utg.get("nodes", [])
         log_entries = []
 
         for node in nodes:
-            if not node.get("is_ad_related", False):
+            #if not node.get("is_ad_related", False): # 暂时注释，有些ad_feature & ad_format存不下来
                 
-                image_path = node.get("image")
-                
-                if not image_path:
-                    continue
+            image_path = node.get("image")
+            
+            if not image_path:
+                continue
 
-                # 生成对应的 state.json 文件路径
-                # state_json_name = os.path.basename(image_path).replace("screen", "state").replace(".png", ".json")
-                # state_json_path = os.path.join(root_dir, state_json_name)
+            # 生成对应的 state.json 文件路径
+            # state_json_name = os.path.basename(image_path).replace("screen", "state").replace(".png", ".json")
+            # state_json_path = os.path.join(root_dir, state_json_name)
 
-                image_path = image_path.replace("\\", "/")
-                state_json_name = os.path.basename(image_path).replace("screen", "state").replace(".png", ".json")
-                
-                state_json_path = os.path.normpath(os.path.join(root_dir,"states", state_json_name))
+            image_path = image_path.replace("\\", "/")
+            state_json_name = os.path.basename(image_path).replace("screen", "state").replace(".png", ".json")
+            
+            state_json_path = os.path.normpath(os.path.join(root_dir,"states", state_json_name))
 
-                if not os.path.exists(state_json_path):
-                    continue
+            if not os.path.exists(state_json_path):
+                continue
 
-                try:
-                    with open(state_json_path, "r", encoding="utf-8") as sf:
-                        state_data = json.load(sf)
-                except Exception as e:
-                    print(f"读取 {state_json_path} 失败: {e}")
-                    continue
+            try:
+                with open(state_json_path, "r", encoding="utf-8") as sf:
+                    state_data = json.load(sf)
+            except Exception as e:
+                print(f"读取 {state_json_path} 失败: {e}")
+                continue
 
-                views = state_data.get("views", [])
-                ad_features = []
+            views = state_data.get("views", [])
+            ad_features = []
 
-                for view in views:
-                    for field in ["resource_id", "text"]:
-                        
-                        if field in view and view[field]:
-                            for kw in keywords:
-                                
-                                if kw.lower() in str(view[field]).lower():
-                                    #print(str(view[field]))
-                                    ad_features.append({field: view[field]})
-                                    #print(node["state_str"])
+            for view in views:
 
-                if ad_features:
-                    node["is_ad_related"] = True
-                    node["ad_feature"] = ad_features
+                if view.get("ad_feature"):
+                    ad_features.append(view["ad_feature"])
 
-                    # 记录日志
-                    log_line = f"Node {node['id']} ({image_path}) 被标记为广告相关, 特征: {ad_features}"
-                    print("[+] " + log_line)
-                    log_entries.append(log_line)
+                    if view.get("ad_format") is not None:
+                        node["ad_format"] = view["ad_format"]
+                        print(node["ad_format"])
+
+
+                for field in ["resource_id", "text"]:
+                    
+                    if field in view and view[field]:
+                        for kw in keywords:
+                            
+                            if kw.lower() in str(view[field]).lower():
+                                #print(str(view[field]))
+                                ad_features.append({field: view[field]})
+                                #print(node["state_str"])
+
+            if ad_features:
+                node["is_ad_related"] = True
+                node["ad_feature"] = ad_features
+
+                # 记录日志
+                log_line = f"Node {node['id']} ({image_path}) 被标记为广告相关, 特征: {ad_features}"
+                print("[+] " + log_line)
+                log_entries.append(log_line)
+            
+            
 
         # 更新 self.state 里的节点
         for node in nodes:
@@ -242,14 +257,19 @@ def analyze(path):
     utg.enhance_utg(path)
 
     enhance_utg_path = os.path.join(path, "enhanced_utg.json")
+    enhanced_utg = dynamic_graph(enhance_utg_path)
 
     has_ad = False
     has_frida_logs = False
 
+    rets = check_type2(enhanced_utg)
+    for ret in rets:
+        f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
+
     # check if the ad_states.json exist and store the ad state
-    data = analyzeAdStates(path, enhance_utg_path, results)
-    if data:
-        has_ad = True
+    # data = getAdStates(path, enhance_utg_path, results)
+    # if data:
+    #     has_ad = True
         # print("Has ads")
         # get the list of ad states
         # print(data)
@@ -262,7 +282,7 @@ def analyze(path):
     pass
 
 
-def analyzeAdStates(path, enhanced_utg_path, results):
+def getAdStates(path, enhanced_utg_path, results):
     print("[+] start analyzing ad states")
     ad_states_path = None
     if not os.path.isdir(path):
@@ -314,6 +334,107 @@ def analyzeAdStates(path, enhanced_utg_path, results):
             return None
 
     return unique_data
+
+
+def detect_misleading_UI(image_path):
+    pass
+
+def check_type2(graph):
+    print("[+] Checking type2 ...")
+    results = []
+
+    for node_id, node in graph.state.items():
+        
+        if not node.get("is_ad_related", False):
+            continue
+        
+        for src, edge_info in node.get("src", {}).items():
+            src_node = graph.state[src]
+
+            if src_node.get("is_ad_related", False) and src_node.get("ad_format") != "banner":
+                continue
+            
+            for e in edge_info.get("events", []):
+                etype = e.get("event_type", "").lower()
+
+                detail = e.get("event_str").lower()
+                if etype == "key" and "back" in detail:
+                    etype = "key_back"
+
+                if "adcomposite" in etype:
+                    continue
+
+                # 如果不是 touchad_event，则记录
+                dst_activity = node.get("activity", "unknown")
+                src_activity = src_node.get("activity", "unknown")
+                if "touch_ad" not in etype:
+
+                    if src_node.get("ad_format") == "banner":
+                        results.append({
+                            "dst_ad_node": node_id,
+                            "src_node": src,
+                            #"activity": node.get("activity"),
+                            "dst_activity": node.get("activity", "unknown"),
+                            "src_activity": src_node.get("activity", "unknown"),
+                            "event_type": etype,
+                            "edge_info": e,
+                            "pattern": f"{src}(banner ad) --[{etype}]--> {node_id}(ad)"
+                        })
+                        print(f"  Found: {src}(banner ad){src_activity} --[{etype}]--> {node_id}(ad){dst_activity}")
+                    else:
+                        results.append({
+                            "dst_ad_node": node_id,
+                            "src_node": src,
+                            #"activity": node.get("activity"),
+                            "dst_activity": node.get("activity", "unknown"),
+                            "src_activity": src_node.get("activity", "unknown"),
+                            "event_type": etype,
+                            "edge_info": e,
+                            "pattern": f"{src}(non-ad) --[{etype}]--> {node_id}(ad)"
+                        })
+
+                        # 打印简洁的输出格式
+                        print(f"  Found: {src}(non-ad){src_activity} --[{etype}]--> {node_id}(ad){dst_activity}")
+    return results
+
+
+# def check_type3(graph):
+    
+#     results = []
+#     for node_id, node in graph.state.items():
+        
+#         if not node.get("is_ad_related", False):
+#             continue
+        
+#         # 遍历src边
+#         for src, edge_info in node.get("dst", {}).items():
+#             for e in edge_info.get("events", []):
+#                 etype = e.get("event_type", "").lower()
+
+#                 if "back" in etype:
+#                     if node.get("is_ad_related", False):
+#                         self.results[TY]
+
+
+        # src_nodes = node.get("src", {})
+        # #if src_nodes.items():
+        # for src_id, edge_info in src_nodes.items():
+        #     src_node = graph.state.get(src_id, {})
+        #     #for src_node in src_nodes:
+
+        #     if not src_node.get("is_ad_related", False):
+        #         events = edge_info.get("events", [])
+        #         for e in events:
+        #             if e.get("event_type") != "touch_ad":
+        #                 print(f"[Type2] Ad node {node_id} "
+        #                   f"triggered from non-ad node {src_id} "
+        #                   f"via event {e}")
+        #         # print(src_node)
+        #         # continue
+    
+
+def analyzeAdStates(path, enhanced_utg_path):
+    pass
 
 
 
