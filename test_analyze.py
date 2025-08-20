@@ -263,8 +263,11 @@ def analyze(path):
     has_frida_logs = False
 
     rets = check_type2(enhanced_utg)
-    for ret in rets:
-        f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
+    # for ret in rets:
+    #     f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
+    
+    rets3 = check_type3(enhanced_utg)
+
 
     # check if the ad_states.json exist and store the ad state
     # data = getAdStates(path, enhance_utg_path, results)
@@ -340,6 +343,13 @@ def detect_misleading_UI(image_path):
     pass
 
 def check_type2(graph):
+    """
+        遍历所有 ad-related 状态，检查其来源 src：
+        - 如果 src 不是 ad-related / 是ad-related但是banner format
+        - 且 event 不是 touchad_event
+        - 且边的类型不是 adcomposite
+        则认为是可疑的功能性中断
+        """
     print("[+] Checking type2 ...")
     results = []
 
@@ -398,22 +408,49 @@ def check_type2(graph):
     return results
 
 
-# def check_type3(graph):
+def check_type3(graph):
+    """
+        两种情况：
+        1. ad-related 节点 -> 按 back -> 仍然 ad-related (后续可做页面相似度检测)
+        2. ad-related 节点，且 is_external = True -> back -> 仍然 external
+        """
     
-#     results = []
-#     for node_id, node in graph.state.items():
+    print("[+] Checking type3")
+    results = []
+    for node_id, node in graph.state.items():
         
-#         if not node.get("is_ad_related", False):
-#             continue
+        if not node.get("is_ad_related", False):
+            continue
         
-#         # 遍历src边
-#         for src, edge_info in node.get("dst", {}).items():
-#             for e in edge_info.get("events", []):
-#                 etype = e.get("event_type", "").lower()
+        # 遍历src边，即进入这个广告的来源
+        for src, edge_info in node.get("dst", {}).items():
+            for e in edge_info.get("events", []):
+                etype = e.get("event_type", "").lower()
 
-#                 if "back" in etype:
-#                     if node.get("is_ad_related", False):
-#                         self.results[TY]
+                if "back" in etype: # no banner
+                    if node.get("is_ad_related", False):
+                        results.append({
+                            "node": node_id,
+                            "activity": node.get("activity"),
+                            "case": "back_still_ad",
+                            "event": etype,
+                            "edge_info": e,
+                            "pattern": f"{src}(ad-related) --[{etype}]--> {node_id}(ad-related)"
+                        })
+                    print(f"  Found: {src}(ad) --[{etype}]--> {node_id}(ad)")
+                    
+                # 情况2: external 节点 back 仍然 external
+                if "back" in etype and node.get("is_external", False):
+                    results.append({
+                        "node": node_id,
+                        "activity": node.get("activity"),
+                        "case": "back_still_external",
+                        "event": etype,
+                        "edge_info": e,
+                            "pattern": f"{src}(banner ad) --[{etype}]--> {node_id}(ad)"
+                    })
+                    print(f"  Found: {src}(is_external) --[{etype}]--> {node_id}(is_external)")
+
 
 
         # src_nodes = node.get("src", {})
