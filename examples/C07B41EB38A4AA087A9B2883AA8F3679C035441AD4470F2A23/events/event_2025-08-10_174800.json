@@ -1,0 +1,55 @@
+{
+  "tag": "2025-08-10_174800",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.lomolsoft.language.learnamharic",
+      "visible": true,
+      "checkable": false,
+      "child_count": 3,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        7,
+        8,
+        25
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          32,
+          1008
+        ],
+        [
+          868,
+          1470
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.FrameLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 5,
+      "temp_id": 6,
+      "size": "836*462",
+      "signature": "[class]android.widget.FrameLayout[resource_id]None[text]None[enabled,,]",
+      "view_str": "74670ab7b82ead48eb4b97ac3a606050",
+      "content_free_signature": "[class]android.widget.FrameLayout[resource_id]None"
+    }
+  },
+  "start_state": "72832348da8e84a26b234ef8a63fc5a7",
+  "stop_state": "50b318375205e8450a077c6b68cfb85e",
+  "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=74670ab7b82ead48eb4b97ac3a606050(MainActivity/FrameLayout-))",
+  "is_ad_trigger": false
+}

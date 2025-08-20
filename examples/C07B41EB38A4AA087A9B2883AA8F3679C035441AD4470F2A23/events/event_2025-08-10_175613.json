@@ -1,0 +1,13 @@
+{
+  "tag": "2025-08-10_175613",
+  "event": {
+    "event_type": "wait",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "duration": 2
+  },
+  "start_state": "9722330855e5141a874abb9208f0eb1f",
+  "stop_state": "9722330855e5141a874abb9208f0eb1f",
+  "event_str": "WaitEvent(state=9722330855e5141a874abb9208f0eb1f, duration=2.0s)",
+  "is_ad_trigger": false
+}

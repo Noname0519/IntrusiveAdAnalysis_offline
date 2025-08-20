@@ -1,0 +1,54 @@
+{
+  "tag": "2025-08-10_174459",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.android.launcher3",
+      "visible": true,
+      "checkable": false,
+      "child_count": 2,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        7,
+        8
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          32,
+          206
+        ],
+        [
+          868,
+          1306
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.view.ViewGroup",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 5,
+      "temp_id": 6,
+      "size": "836*1100",
+      "signature": "[class]android.view.ViewGroup[resource_id]None[text]None[enabled,,]",
+      "view_str": "5f7a1c4e3ef60ad2da91d9705d682f52",
+      "content_free_signature": "[class]android.view.ViewGroup[resource_id]None"
+    }
+  },
+  "start_state": "3deb29be7bb67aa6e54b9ffe7c8ebdbb",
+  "stop_state": "90209748fae7b9417c5cc673f8a8af4e",
+  "event_str": "TouchEvent(state=3deb29be7bb67aa6e54b9ffe7c8ebdbb, view=5f7a1c4e3ef60ad2da91d9705d682f52(WelActivity/ViewGroup-))",
+  "is_ad_trigger": false
+}

@@ -1,0 +1,59 @@
+{
+  "tag": "2025-08-10_175443",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.lomolsoft.language.learnamharic",
+      "visible": true,
+      "checkable": false,
+      "child_count": 1,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": "Ad Choices Icon",
+      "children": [
+        28
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          770,
+          1008
+        ],
+        [
+          868,
+          1038
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.RelativeLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 26,
+      "temp_id": 27,
+      "size": "98*30",
+      "signature": "[class]android.widget.RelativeLayout[resource_id]None[text]None[enabled,,]",
+      "view_str": "0f81bd92deea9aa71776f3361384a6fe",
+      "content_free_signature": "[class]android.widget.RelativeLayout[resource_id]None",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "3",
+      "desc": "<button text='Ad Choices Icon' bound_box=770,1008,868,1038></button>"
+    }
+  },
+  "start_state": "72832348da8e84a26b234ef8a63fc5a7",
+  "stop_state": "fc7f39b4b514d0d76df2a5dcc8d6a061",
+  "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=0f81bd92deea9aa71776f3361384a6fe(MainActivity/RelativeLayout-))",
+  "is_ad_trigger": false
+}

@@ -1,0 +1,13 @@
+{
+  "tag": "2025-08-10_175659",
+  "event": {
+    "event_type": "key",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "name": "BACK"
+  },
+  "start_state": "a41b5d347d325ad60d70df2b5e5177d0",
+  "stop_state": "a41b5d347d325ad60d70df2b5e5177d0",
+  "event_str": "KeyEvent(state=a41b5d347d325ad60d70df2b5e5177d0, name=BACK)",
+  "is_ad_trigger": false
+}

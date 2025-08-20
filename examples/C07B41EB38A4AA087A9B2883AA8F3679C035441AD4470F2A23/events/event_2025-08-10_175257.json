@@ -1,0 +1,14 @@
+{
+  "tag": "2025-08-10_175257",
+  "event": {
+    "event_type": "intent",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "is_start_event": true,
+    "intent": "am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity"
+  },
+  "start_state": "02e4c7b485b5b63aa7f11067c9de8dd5",
+  "stop_state": "bc543ee0611ea1dea15ebbe4755e3dd9",
+  "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
+  "is_ad_trigger": false
+}

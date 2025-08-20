@@ -1,0 +1,57 @@
+{
+  "tag": "2025-08-10_175233",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.lomolsoft.language.learnamharic",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          144,
+          1414
+        ],
+        [
+          232,
+          1444
+        ]
+      ],
+      "resource_id": "com.lomolsoft.language.learnamharic:id/ad_describe_textview",
+      "checked": false,
+      "text": "\u5bfc\u822a\u8d44\u6e90",
+      "class": "android.widget.TextView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 18,
+      "temp_id": 21,
+      "size": "88*30",
+      "signature": "[class]android.widget.TextView[resource_id]com.lomolsoft.language.learnamharic:id/ad_describe_textview[text]\u5bfc\u822a\u8d44\u6e90[enabled,,]",
+      "view_str": "1292cd10096d52200f30b8f797d3f22a",
+      "content_free_signature": "[class]android.widget.TextView[resource_id]com.lomolsoft.language.learnamharic:id/ad_describe_textview",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "1",
+      "desc": "<button bound_box=144,1414,232,1444>\u5bfc\u822a\u8d44\u6e90</button>"
+    }
+  },
+  "start_state": "72832348da8e84a26b234ef8a63fc5a7",
+  "stop_state": "02e4c7b485b5b63aa7f11067c9de8dd5",
+  "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=1292cd10096d52200f30b8f797d3f22a(MainActivity/TextView-\u5bfc\u822a\u8d44\u6e90))",
+  "is_ad_trigger": false
+}

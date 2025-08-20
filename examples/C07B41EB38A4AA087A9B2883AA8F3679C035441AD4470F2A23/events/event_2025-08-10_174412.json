@@ -1,0 +1,13 @@
+{
+  "tag": "2025-08-10_174412",
+  "event": {
+    "event_type": "kill_app",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "stop_intent": "am force-stop com.lomolsoft.language.learnamharic"
+  },
+  "start_state": "97ce83a47685ad901b619a20d19f1ae0",
+  "stop_state": "97ce83a47685ad901b619a20d19f1ae0",
+  "event_str": "KillAppEvent()",
+  "is_ad_trigger": false
+}

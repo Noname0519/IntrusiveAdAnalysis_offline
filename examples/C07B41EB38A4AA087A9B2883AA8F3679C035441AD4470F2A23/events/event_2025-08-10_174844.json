@@ -1,0 +1,53 @@
+{
+  "tag": "2025-08-10_174844",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.lomolsoft.language.learnamharic",
+      "visible": true,
+      "checkable": false,
+      "child_count": 1,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        12
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          32,
+          1008
+        ],
+        [
+          868,
+          1358
+        ]
+      ],
+      "resource_id": "com.lomolsoft.language.learnamharic:id/ad_cover_mediaview",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.FrameLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 10,
+      "temp_id": 11,
+      "size": "836*350",
+      "signature": "[class]android.widget.FrameLayout[resource_id]com.lomolsoft.language.learnamharic:id/ad_cover_mediaview[text]None[enabled,,]",
+      "view_str": "aed85d094fea0a761ac4bc6717a582e5",
+      "content_free_signature": "[class]android.widget.FrameLayout[resource_id]com.lomolsoft.language.learnamharic:id/ad_cover_mediaview"
+    }
+  },
+  "start_state": "72832348da8e84a26b234ef8a63fc5a7",
+  "stop_state": "50b318375205e8450a077c6b68cfb85e",
+  "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=aed85d094fea0a761ac4bc6717a582e5(MainActivity/FrameLayout-))",
+  "is_ad_trigger": false
+}

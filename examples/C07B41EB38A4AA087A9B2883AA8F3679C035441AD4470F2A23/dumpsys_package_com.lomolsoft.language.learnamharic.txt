@@ -1,0 +1,269 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        aa9fa71 com.lomolsoft.language.learnamharic/.activity.WelActivity filter cdaccfc
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      android.intent.action.BATTERY_OKAY:
+        9144056 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 3935793
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      android.intent.action.ACTION_POWER_DISCONNECTED:
+        1bdc8d7 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter a382482
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+      android.intent.action.DEVICE_STORAGE_LOW:
+        e4a35c4 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 91d43d0
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.net.conn.CONNECTIVITY_CHANGE:
+        b92ccad com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy filter eff6fc9
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+      android.intent.action.DEVICE_STORAGE_OK:
+        e4a35c4 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 91d43d0
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.intent.action.BATTERY_LOW:
+        9144056 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 3935793
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      android.intent.action.TIMEZONE_CHANGED:
+        2ac0be2 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 54806ce
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      android.intent.action.TIME_SET:
+        2ac0be2 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 54806ce
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      android.intent.action.BOOT_COMPLETED:
+        2ac0be2 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 54806ce
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      android.intent.action.ACTION_POWER_CONNECTED:
+        1bdc8d7 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter a382482
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+      androidx.work.impl.background.systemalarm.UpdateProxies:
+        1ac1b73 com.lomolsoft.language.learnamharic/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver filter 311d9ef
+          Action: "androidx.work.impl.background.systemalarm.UpdateProxies"
+
+Registered ContentProviders:
+  com.lomolsoft.language.learnamharic/androidx.lifecycle.ProcessLifecycleOwnerInitializer:
+    Provider{496ea30 com.lomolsoft.language.learnamharic/androidx.lifecycle.ProcessLifecycleOwnerInitializer}
+  com.lomolsoft.language.learnamharic/com.google.android.gms.ads.MobileAdsInitProvider:
+    Provider{bc86a9 com.lomolsoft.language.learnamharic/com.google.android.gms.ads.MobileAdsInitProvider}
+  com.lomolsoft.language.learnamharic/androidx.work.impl.WorkManagerInitializer:
+    Provider{103042e com.lomolsoft.language.learnamharic/androidx.work.impl.WorkManagerInitializer}
+
+ContentProvider Authorities:
+  [com.lomolsoft.language.learnamharic.mobileadsinitprovider]:
+    Provider{bc86a9 com.lomolsoft.language.learnamharic/com.google.android.gms.ads.MobileAdsInitProvider}
+      applicationInfo=ApplicationInfo{322fbcf com.lomolsoft.language.learnamharic}
+  [com.lomolsoft.language.learnamharic.lifecycle-process]:
+    Provider{496ea30 com.lomolsoft.language.learnamharic/androidx.lifecycle.ProcessLifecycleOwnerInitializer}
+      applicationInfo=ApplicationInfo{322fbcf com.lomolsoft.language.learnamharic}
+  [com.lomolsoft.language.learnamharic.workmanager-init]:
+    Provider{103042e com.lomolsoft.language.learnamharic/androidx.work.impl.WorkManagerInitializer}
+      applicationInfo=ApplicationInfo{322fbcf com.lomolsoft.language.learnamharic}
+
+Key Set Manager:
+  [com.lomolsoft.language.learnamharic]
+      Signing KeySets: 973
+
+Packages:
+  Package [com.lomolsoft.language.learnamharic] (fb8795c):
+    userId=10553
+    pkg=Package{fade465 com.lomolsoft.language.learnamharic}
+    codePath=/data/app/com.lomolsoft.language.learnamharic-4wiHOqleh7I7mu2Enqr_pg==
+    resourcePath=/data/app/com.lomolsoft.language.learnamharic-4wiHOqleh7I7mu2Enqr_pg==
+    legacyNativeLibraryDir=/data/app/com.lomolsoft.language.learnamharic-4wiHOqleh7I7mu2Enqr_pg==/lib
+    primaryCpuAbi=x86
+    secondaryCpuAbi=null
+    versionCode=13 minSdk=16 targetSdk=30
+    versionName=1.0.13
+    splits=[base]
+    apkSigningVersion=3
+    applicationInfo=ApplicationInfo{322fbcf com.lomolsoft.language.learnamharic}
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ]
+    dataDir=/data/user/0/com.lomolsoft.language.learnamharic
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2025-08-10 17:44:06
+    firstInstallTime=2025-08-10 17:44:06
+    lastUpdateTime=2025-08-10 17:44:06
+    signatures=PackageSignatures{3bf353a version:3, signatures:[774d824c], past signatures:[]}
+    installPermissionsFixed=true
+    pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    requested permissions:
+      android.permission.RECORD_AUDIO
+      android.permission.INTERNET
+      android.permission.WRITE_EXTERNAL_STORAGE
+      android.permission.READ_EXTERNAL_STORAGE
+      com.android.vending.BILLING
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.WAKE_LOCK
+      android.permission.RECEIVE_BOOT_COMPLETED
+    install permissions:
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.WAKE_LOCK: granted=true
+    User 0: ceDataInode=1180577 installed=true hidden=false suspended=false stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      gids=[3003]
+      runtime permissions:
+        android.permission.READ_EXTERNAL_STORAGE: granted=true
+        android.permission.WRITE_EXTERNAL_STORAGE: granted=true
+        android.permission.RECORD_AUDIO: granted=true
+
+Package Changes:
+  Sequence number=543
+  User 0:
+    seq=123, package=info.red.virtual
+    seq=124, package=com.ibox.calculators
+    seq=128, package=cn.jthj.turbobunny
+    seq=130, package=com.mvtrail.mi.soundmeter
+    seq=132, package=com.hejia.squirrelaccountbook
+    seq=138, package=com.geek.jk.weather.fission
+    seq=140, package=com.android.weather.calendar
+    seq=142, package=com.clean.sxmanager
+    seq=146, package=com.hxleyou.desktopdog
+    seq=152, package=com.sh.feichang.remote.control
+    seq=156, package=com.together.qssb
+    seq=160, package=com.nutcharge.android
+    seq=163, package=com.yc.qmlcg
+    seq=165, package=csg.pinecone
+    seq=167, package=com.vson.smarthome
+    seq=171, package=com.tjyyjkjzy.bbappyjjc
+    seq=173, package=com.xiachufang
+    seq=176, package=com.lefan.signal
+    seq=177, package=com.yanrong.popStar.vivo
+    seq=179, package=com.koudai.weather
+    seq=181, package=com.dingda.app
+    seq=183, package=com.tc.cm
+    seq=185, package=com.xmb.anjila
+    seq=186, package=com.doudoubird.compass
+    seq=187, package=com.jylx.ylysbfq
+    seq=191, package=com.jz.youyu
+    seq=196, package=com.qsmy.walkmonkey
+    seq=198, package=com.chenglie.mrdj
+    seq=200, package=com.itcode.reader
+    seq=202, package=com.lechuan.mdwz
+    seq=206, package=com.dzhong.fhjc
+    seq=209, package=com.mt.mtxx.mtxx
+    seq=210, package=com.splingsheng.ringtone
+    seq=214, package=com.wifi.reader.free
+    seq=217, package=com.tiqiaa.icontrol
+    seq=219, package=com.wfall.znbtool
+    seq=221, package=com.alan.xjbl
+    seq=242, package=com.zx.map
+    seq=243, package=com.cssq.sbrowser
+    seq=253, package=diamantes.gratisff
+    seq=256, package=com.aia.policesuitladybindu
+    seq=257, package=com.mt.potovdomkerashs.lvnyssa
+    seq=261, package=com.TipsMelonPlaygroundMOD.MelonPlaygroundMobileTips
+    seq=263, package=com.meeboxmarketing.imagenesvirgenmaria
+    seq=266, package=com.hdwallpapers.wallpapers.livewallpapers.backgrounds
+    seq=269, package=ru.androidtools.countries_of_the_world
+    seq=270, package=alan.walkersongs
+    seq=272, package=com.katagame.kata.twicon
+    seq=274, package=com.touchmechanics.strike
+    seq=277, package=com.ronald.inverted.white.and.cyan.iconpack
+    seq=280, package=com.lomolsoft.language.learnfinnish
+    seq=283, package=com.ginnungagap808.autumntwinklelights
+    seq=286, package=com.muspelheim809.wintermix2018livewallpaper
+    seq=289, package=com.robinvanrodeman.bald_eagle
+    seq=292, package=com.lomolsoft.dict.kedict
+    seq=296, package=com.fake.video.chat
+    seq=298, package=com.cheatmastertim.timapps
+    seq=300, package=com.lomolsoft.dict.gedict
+    seq=303, package=com.bigsoft.videoeditor.musicvideomaker
+    seq=305, package=com.neama_reda.muraqidahlalbayt
+    seq=309, package=com.plus901.hexapuzzle
+    seq=312, package=com.robinvanrodeman.cow
+    seq=315, package=com.lomolsoft.language.learngeorgian
+    seq=316, package=com.lomolsoft.language.learntelugu
+    seq=318, package=com.vs.appmarket.bahrain
+    seq=320, package=com.naynad.nab.resepsambal
+    seq=324, package=com.MelonPlaygroundStrickGuide.MelonStickPlaygroundMObileGuide
+    seq=326, package=com.circledev.yasin_dan_tahlil
+    seq=329, package=com.wafasoft.madani_urdu_islamic_calendar
+    seq=331, package=audios.superior
+    seq=340, package=com.mediaye.oras_satar_lyrics
+    seq=341, package=com.lomolsoft.net.entrtranslation
+    seq=342, package=khem.veasnaquote
+    seq=343, package=com.mobincube.android.sc_3D6E43
+    seq=346, package=com.Sadafmods.DuckSkinMinecraft
+    seq=348, package=com.lomolsoft.language.learncatalan
+    seq=351, package=com.allnews.nepali
+    seq=352, package=com.vids_planet_team.satellitedirector
+    seq=356, package=com.PlaytimePoppyChapter3Clue.CluesPoppyandPlaytimePart3
+    seq=359, package=com.lomolsoft.language.learnrussian
+    seq=361, package=com.lomolsoft.net.enpltranslation
+    seq=363, package=stickers.mania
+    seq=366, package=com.visu.video.maker.creator
+    seq=369, package=duplicatefilefixer.duplicatefilesremover
+    seq=370, package=com.lomolsoft.language.learnfrench
+    seq=371, package=studio.love.sweet.motivational.quotes
+    seq=373, package=el.n5tv
+    seq=376, package=com.PoppyMommyLongLegsAdvice.MommyLongLegsPoppyAdvices
+    seq=378, package=com.softs.alexx.mynotepad
+    seq=402, package=com.bugs.repair.fixproblems
+    seq=407, package=com.erl.droidballs
+    seq=410, package=com.techzit.glaciersnowsnowflakewinterwallpapers
+    seq=412, package=com.afghan.af.ajmal.zahin
+    seq=415, package=com.allnews.marathi
+    seq=417, package=com.sas.djmixer.dj3d.djmusic.edjingdjturntable.discdj.crossdjfree.djstudio.playermp3.djmashup.musicmixplayer.djnamemixer
+    seq=420, package=com.SpellCheck.TypeandSpeak.WordPronunciationChecker
+    seq=424, package=com.homedesign.ideas
+    seq=451, package=com.atpc
+    seq=453, package=com.AgihanMataWangDigital_7551101
+    seq=455, package=com.rr.lordshivawallpapers
+    seq=458, package=com.mtapps.quiz.football_clubs_quiz
+    seq=461, package=com.appstarstudios.media.music.musicplayer.audioplayer
+    seq=463, package=takatakvideodownloader.videodownloaderfortakatak
+    seq=471, package=t.cash.loans.tcash
+    seq=475, package=com.sporx
+    seq=478, package=com.gamesrushti.urducalendar
+    seq=481, package=com.lomolsoft.language.learnkorean
+    seq=486, package=com.filemanager.files.explorer.boost.clean
+    seq=489, package=com.dancing.smash.hop.game.tiles.beat.piano.surfer
+    seq=491, package=com.afghan.af.amir.ahmadi
+    seq=494, package=com.ArunD.VijayDeverakondaStickers
+    seq=497, package=com.ohealthapps.fatburningworkout
+    seq=499, package=com.lomolsoft.dict.cedict
+    seq=502, package=com.dicionario_bibico_free.dicionario_bibico_free
+    seq=504, package=com.wsa_7694937
+    seq=507, package=com.nehalemx.martingalecalculator2
+    seq=509, package=com.mesutgungor.universiteyehazirlaniyorum
+    seq=512, package=com.predictapps.Mobiletricks
+    seq=514, package=com.lomolsoft.language.learnromanian
+    seq=517, package=islamicbooks.ibnmajah
+    seq=519, package=com.ninawaustudio.happybirthdaymom
+    seq=521, package=com.wolflive.hdwallpaper
+    seq=524, package=awesome.wallpapers.for.android
+    seq=526, package=rj.exam2
+    seq=528, package=conversor.conversaotaxasbasico.cnyshp
+    seq=530, package=com.wPavanInternet_7433126
+    seq=533, package=com.allnews.hindi
+    seq=535, package=stereo.ayapa
+    seq=538, package=com.foqii.phone.security.virus.cleaner.antivirus
+    seq=539, package=com.lomolsoft.dict.fedict
+    seq=541, package=com.lomolsoft.dict.sedict
+    seq=542, package=com.lomolsoft.language.learnamharic
+
+
+Dexopt state:
+  [com.lomolsoft.language.learnamharic]
+    path: /data/app/com.lomolsoft.language.learnamharic-4wiHOqleh7I7mu2Enqr_pg==/base.apk
+      x86: [status=speed-profile] [reason=install]
+
+
+Compiler stats:
+  [com.lomolsoft.language.learnamharic]
+     base.apk - 963

@@ -1,0 +1,56 @@
+{
+  "tag": "2025-08-10_174710",
+  "event": {
+    "event_type": "touch_ad",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.ProgressBar",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          32,
+          1396
+        ],
+        [
+          868,
+          1400
+        ]
+      ],
+      "resource_id": "com.lomolsoft.language.learnamharic:id/loading_pro",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.ProgressBar",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 7,
+      "temp_id": 8,
+      "size": "836*4",
+      "ad_feature": "resource_id",
+      "ad_format": "banner",
+      "matched_trace": null,
+      "url": null,
+      "signature": "[class]android.widget.ProgressBar[resource_id]com.lomolsoft.language.learnamharic:id/loading_pro[text]None[enabled,,]",
+      "view_str": "cb212c17423b821b4fb52f837583047b",
+      "content_free_signature": "[class]android.widget.ProgressBar[resource_id]com.lomolsoft.language.learnamharic:id/loading_pro"
+    },
+    "ad_feature": "resource_id"
+  },
+  "start_state": "cd2bdebcfacf84ca65b85335dd96d131",
+  "stop_state": "cd2bdebcfacf84ca65b85335dd96d131",
+  "event_str": "TouchAdEvent(state=cd2bdebcfacf84ca65b85335dd96d131, view=cb212c17423b821b4fb52f837583047b(MainActivity/ProgressBar-))",
+  "is_ad_trigger": false
+}

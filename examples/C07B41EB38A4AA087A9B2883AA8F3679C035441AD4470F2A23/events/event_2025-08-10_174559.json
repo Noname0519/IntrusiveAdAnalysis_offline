@@ -1,0 +1,57 @@
+{
+  "tag": "2025-08-10_174559",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          54,
+          780
+        ],
+        [
+          845,
+          876
+        ]
+      ],
+      "resource_id": "android:id/aerr_close",
+      "checked": false,
+      "text": "\u5173\u95ed\u5e94\u7528",
+      "class": "android.widget.Button",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 9,
+      "temp_id": 10,
+      "size": "791*96",
+      "signature": "[class]android.widget.Button[resource_id]android:id/aerr_close[text]\u5173\u95ed\u5e94\u7528[enabled,,]",
+      "view_str": "a8ce02bec8df974267a0bcd4a2628060",
+      "content_free_signature": "[class]android.widget.Button[resource_id]android:id/aerr_close",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "1",
+      "desc": "<button bound_box=54,780,845,876>\u5173\u95ed\u5e94\u7528</button>"
+    }
+  },
+  "start_state": "fdcc118d4f8f40a0824c021710b6c55c",
+  "stop_state": "97ce83a47685ad901b619a20d19f1ae0",
+  "event_str": "TouchEvent(state=fdcc118d4f8f40a0824c021710b6c55c, view=a8ce02bec8df974267a0bcd4a2628060(WelActivity/Button-\u5173\u95ed\u5e94\u7528))",
+  "is_ad_trigger": false
+}

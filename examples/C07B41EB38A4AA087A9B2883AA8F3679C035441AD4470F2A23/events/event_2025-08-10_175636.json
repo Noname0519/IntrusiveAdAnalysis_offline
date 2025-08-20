@@ -1,0 +1,56 @@
+{
+  "tag": "2025-08-10_175636",
+  "event": {
+    "event_type": "touch_ad",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.LinearLayout",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          1568
+        ],
+        [
+          900,
+          1600
+        ]
+      ],
+      "resource_id": "com.lomolsoft.language.learnamharic:id/ads_wrapper",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.LinearLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 13,
+      "temp_id": 43,
+      "size": "900*32",
+      "ad_feature": "resource_id",
+      "ad_format": "banner",
+      "matched_trace": null,
+      "url": null,
+      "signature": "[class]android.widget.LinearLayout[resource_id]com.lomolsoft.language.learnamharic:id/ads_wrapper[text]None[enabled,,]",
+      "view_str": "fc85036c4581424deed446d2884f3ffa",
+      "content_free_signature": "[class]android.widget.LinearLayout[resource_id]com.lomolsoft.language.learnamharic:id/ads_wrapper"
+    },
+    "ad_feature": "resource_id"
+  },
+  "start_state": "a41b5d347d325ad60d70df2b5e5177d0",
+  "stop_state": "a41b5d347d325ad60d70df2b5e5177d0",
+  "event_str": "TouchAdEvent(state=a41b5d347d325ad60d70df2b5e5177d0, view=fc85036c4581424deed446d2884f3ffa(Launcher/LinearLayout-))",
+  "is_ad_trigger": false
+}
