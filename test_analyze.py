@@ -31,9 +31,31 @@ class dynamic_graph():
         for js_transition in j.setdefault('edges', []):
             src = js_transition['from']
             dst = js_transition['to']
-            trigger = js_transition['events']   
-            self.state[src].setdefault('src', {})[dst] = {'events': trigger}
-            self.state[dst].setdefault('dst', {})[src] = {'events': trigger}
+            trigger = js_transition['events']
+
+            src_ad_related = self.state[src].get("is_ad_related", False)
+            src_ad_feature = self.state[src].get("ad_feature", {})
+
+            dst_ad_related = self.state[dst].get("is_ad_related", False)
+            dst_ad_feature = self.state[dst].get("ad_feature", {})
+ 
+            # self.state[src].setdefault('src', {})[dst] = {'is_ad_related': is_ad_related, 'events': trigger}
+            # self.state[dst].setdefault('dst', {})[src] = {'is_ad_related': is_ad_related, 'events': trigger}
+
+            # 在 src 节点里记录 dst 邻居，同时写入广告标记
+            self.state[src].setdefault('src', {})[dst] = {
+                'is_ad_related': src_ad_related, 
+                'events': trigger,
+                'ad_feature': src_ad_feature
+            }
+
+            # 在 dst 节点里记录 src 邻居，同时写入广告标记
+            self.state[dst].setdefault('dst', {})[src] = {
+                'is_ad_related': dst_ad_related, 
+                'events': trigger,
+                'ad_feature': dst_ad_feature
+            }
+
             self.state_edge.append([src, dst])
             self.state_edge_json.append(js_transition)
             src_act = self.state[src]['activity']
@@ -115,9 +137,9 @@ class dynamic_graph():
                             for kw in keywords:
                                 
                                 if kw.lower() in str(view[field]).lower():
-                                    print(str(view[field]))
+                                    #print(str(view[field]))
                                     ad_features.append({field: view[field]})
-                                    print(node["state_str"])
+                                    #print(node["state_str"])
 
                 if ad_features:
                     node["is_ad_related"] = True
@@ -209,22 +231,29 @@ def analyze(path):
 
     }
 
+    result = {
+        "package_name": None,
+        "sha": None,
+        "has_ad": False
+    }
+
     utg_path = os.path.join(path, "utg.js")
     utg = dynamic_graph(utg_path)
     utg.enhance_utg(path)
 
-    has_ad_states = False
+    enhance_utg_path = os.path.join(path, "enhanced_utg.json")
+
+    has_ad = False
     has_frida_logs = False
 
     # check if the ad_states.json exist and store the ad state
-    # data = analyzeAdStates(path, results)
-    # if data:
-    #     has_ad_states = True
+    data = analyzeAdStates(path, enhance_utg_path, results)
+    if data:
+        has_ad = True
         # print("Has ads")
         # get the list of ad states
         # print(data)
 
-        # analyze the layout based
 
     # check if the frida_log.json exist.
 
@@ -233,7 +262,8 @@ def analyze(path):
     pass
 
 
-def analyzeAdStates(path, results):
+def analyzeAdStates(path, enhanced_utg_path, results):
+    print("[+] start analyzing ad states")
     ad_states_path = None
     if not os.path.isdir(path):
         print(f"Error! The dir path is not exist -- {path}.")
@@ -259,7 +289,6 @@ def analyzeAdStates(path, results):
             
         if ad_states_path and os.path.isfile(ad_states_path):
             with open(ad_states_path, "r", encoding="utf-8") as f:
-                
                 try:
                     data = json.load(f)
                     for item in data:
