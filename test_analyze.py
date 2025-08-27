@@ -253,20 +253,21 @@ def analyze(path):
     }
 
     utg_path = os.path.join(path, "utg.js")
-    utg = dynamic_graph(utg_path)
+    utg = dynamic_graph(js_path=utg_path)
     utg.enhance_utg(path)
 
     enhance_utg_path = os.path.join(path, "enhanced_utg.json")
-    enhanced_utg = dynamic_graph(enhance_utg_path)
+    enhanced_utg = dynamic_graph(json_path=enhance_utg_path)
 
     has_ad = False
     has_frida_logs = False
 
-    rets = check_type2(enhanced_utg)
+    #rets = check_type2(enhanced_utg)
     # for ret in rets:
     #     f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
     
-    rets3 = check_type3(enhanced_utg)
+    #rets3 = check_type3(enhanced_utg)
+    ret = check_type5(enhanced_utg)
 
 
     # check if the ad_states.json exist and store the ad state
@@ -338,7 +339,6 @@ def getAdStates(path, enhanced_utg_path, results):
 
     return unique_data
 
-
 def detect_misleading_UI(image_path):
     pass
 
@@ -407,7 +407,6 @@ def check_type2(graph):
                         print(f"  Found: {src}(non-ad){src_activity} --[{etype}]--> {node_id}(ad){dst_activity}")
     return results
 
-
 def check_type3(graph):
     """
         两种情况：
@@ -469,6 +468,77 @@ def check_type3(graph):
         #         # print(src_node)
         #         # continue
     
+def check_type4(graph):
+
+    """
+    4. aggressive redirection: state A (is_ad_related) -> wait -> state B (is_external)
+    """
+
+    pass
+
+
+def check_type5(graph):
+    """
+    5. Outside-App Ads: - UI activities do not belong to the app
+    """
+    print("[+] checking type5 outside-app ads ...")
+    results = []
+    for node_id, node in graph.state.items():
+        print(node_id)
+        print(node.get("is_ad_related", False))
+        # not to resolve the non-ad-related nodes
+        if not node.get("is_ad_related", False):
+            continue
+        
+        if "Browser" in node.get("activity", ""):
+            continue
+        
+        #if "launcher" in node.get("package") or node.get("package").startswith("com.android"):
+        if "launcher" in node.get("package", "") or node.get("package", "").startswith("com.android"):    
+            results.append({
+                "node": node_id,
+                "activity": node.get("activity"),
+                "case": "outside-app ads",
+                "pattern": f"{node_id}(ad) -- out of app"
+            })
+            print("[+] {node_id}(ad) -- out of app", node_id)
+
+#     return results
+        
+# def check_type5(graph):
+#     """
+#     5. Outside-App Ads: - UI activities do not belong to the app
+#     """
+#     print("[+] checking type5 outside-app ads ...")
+#     results = []
+    
+#     # 首先收集所有作为广告节点目标的非广告节点
+#     ad_targets = set()
+#     for edge in graph.edge:  # 遍历边列表
+#         # 直接访问边的属性，而不是使用 get 方法
+#         src_node_id = edge.src if hasattr(edge, 'src') else None
+#         dst_node_id = edge.dst if hasattr(edge, 'dst') else None
+        
+#         if src_node_id and dst_node_id:
+#             src_node = graph.state.get(src_node_id)
+#             if src_node and src_node.get("is_ad_related", False):
+#                 ad_targets.add(dst_node_id)
+    
+#     for node_id, node in graph.state.items():
+#         # 检查节点是否来自外部应用
+#         package_name = node.get("package", "")
+#         if ("launcher" in package_name or package_name.startswith("com.android")):
+#             # 检查节点是否是广告相关，或者是广告节点的目标
+#             if node.get("is_ad_related", False) or node_id in ad_targets:
+#                 results.append({
+#                     "node": node_id,
+#                     "activity": node.get("activity"),
+#                     "case": "outside-app ads",
+#                     "pattern": f"{node_id}(ad) -- out of app"
+#                 })
+#                 print(f"[+] {node_id}(ad) -- out of app")
+
+#     return results
 
 def analyzeAdStates(path, enhanced_utg_path):
     pass
