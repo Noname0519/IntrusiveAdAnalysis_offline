@@ -449,8 +449,7 @@ def check_type3(graph):
                     #     print(etype)
                     # cd2bdebcfacf84ca65b85335dd96d131-->72832348da8e84a26b234ef8a63fc5a7
                     if edge_info.get("is_ad_related", False):
-                        if src == "cd2bdebcfacf84ca65b85335dd96d131":
-                            print(edge_info.get("is_ad_related", False))
+                        
                         ret = {
                             "node": node_id,
                             "activity": node.get("activity"),
@@ -463,17 +462,18 @@ def check_type3(graph):
                             results.append(ret)
                         print(f"  Found: {src}(ad) --[{etype}]--> {node_id}(ad)")
                     
-                # 情况2: external 节点 back 仍然 external
-                if "back" in etype and node.get("is_external", False):
-                    results.append({
-                        "node": node_id,
-                        "activity": node.get("activity"),
-                        "case": "back_still_external",
-                        "event": etype,
-                        "edge_info": e,
-                            "pattern": f"{src}(is_external) --[{etype}]--> {node_id}(ad)"
-                    })
-                    print(f"  Found: {src}(is_external) --[{etype}]--> {node_id}(is_external)")
+                    # 情况2: external 节点 back 仍然 external
+                    if node.get("is_external", False) and edge_info.get("is_external", False):
+                        print("both external")
+                        results.append({
+                            "node": node_id,
+                            "activity": node.get("activity"),
+                            "case": "back_still_external",
+                            "event": etype,
+                            "edge_info": e,
+                                "pattern": f"{src}(is_external) --[{etype}]--> {node_id}(ad)"
+                        })
+                        print(f"  Found: {src}(is_external) --[{etype}]--> {node_id}(is_external)")
 
 
 
