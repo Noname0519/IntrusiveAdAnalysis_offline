@@ -17,6 +17,7 @@
       "dst": {
         "3deb29be7bb67aa6e54b9ffe7c8ebdbb": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -37,6 +38,7 @@
         },
         "3281e38f7b68b6887d700a8b0b64f9b5": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -59,6 +61,7 @@
       "src": {
         "fdcc118d4f8f40a0824c021710b6c55c": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=fdcc118d4f8f40a0824c021710b6c55c, view=a8ce02bec8df974267a0bcd4a2628060(WelActivity/Button-关闭应用))",
@@ -120,6 +123,7 @@
       "src": {
         "97ce83a47685ad901b619a20d19f1ae0": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -142,6 +146,7 @@
       "dst": {
         "90209748fae7b9417c5cc673f8a8af4e": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=3deb29be7bb67aa6e54b9ffe7c8ebdbb, view=5f7a1c4e3ef60ad2da91d9705d682f52(WelActivity/ViewGroup-))",
@@ -203,6 +208,7 @@
       "src": {
         "3deb29be7bb67aa6e54b9ffe7c8ebdbb": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=3deb29be7bb67aa6e54b9ffe7c8ebdbb, view=5f7a1c4e3ef60ad2da91d9705d682f52(WelActivity/ViewGroup-))",
@@ -250,6 +256,7 @@
       "dst": {
         "fdcc118d4f8f40a0824c021710b6c55c": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "KeyEvent(state=90209748fae7b9417c5cc673f8a8af4e, name=BACK)",
@@ -286,6 +293,7 @@
       "src": {
         "90209748fae7b9417c5cc673f8a8af4e": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "KeyEvent(state=90209748fae7b9417c5cc673f8a8af4e, name=BACK)",
@@ -308,6 +316,7 @@
       "dst": {
         "97ce83a47685ad901b619a20d19f1ae0": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=fdcc118d4f8f40a0824c021710b6c55c, view=a8ce02bec8df974267a0bcd4a2628060(WelActivity/Button-关闭应用))",
@@ -369,6 +378,7 @@
       "src": {
         "97ce83a47685ad901b619a20d19f1ae0": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -391,6 +401,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "AdCompositeEvent(\nState=3281e38f7b68b6887d700a8b0b64f9b5,\nChains=\nWaitEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, duration=2.0s) -> TouchAdEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, view=cb212c17423b821b4fb52f837583047b(MainActivity/ProgressBar-)) -> KeyEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, name=BACK))",
@@ -456,6 +467,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "KeyEvent(state=cd2bdebcfacf84ca65b85335dd96d131, name=BACK)",
@@ -478,9 +490,6 @@
       "ad_format": "banner",
       "ad_feature": [
         "com.google.android.gms.ads",
-        {
-          "resource_id": "com.lomolsoft.language.learnamharic:id/adView"
-        },
         "resource_id"
       ]
     },
@@ -500,6 +509,7 @@
       "src": {
         "3281e38f7b68b6887d700a8b0b64f9b5": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "AdCompositeEvent(\nState=3281e38f7b68b6887d700a8b0b64f9b5,\nChains=\nWaitEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, duration=2.0s) -> TouchAdEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, view=cb212c17423b821b4fb52f837583047b(MainActivity/ProgressBar-)) -> KeyEvent(state=3281e38f7b68b6887d700a8b0b64f9b5, name=BACK))",
@@ -545,6 +555,7 @@
         },
         "cd2bdebcfacf84ca65b85335dd96d131": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "KeyEvent(state=cd2bdebcfacf84ca65b85335dd96d131, name=BACK)",
@@ -565,6 +576,7 @@
         },
         "50b318375205e8450a077c6b68cfb85e": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -669,6 +681,7 @@
         },
         "bc543ee0611ea1dea15ebbe4755e3dd9": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -870,6 +883,7 @@
         },
         "d768c4549bed94efa75227dff8422568": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=d768c4549bed94efa75227dff8422568, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -915,6 +929,7 @@
         },
         "02e4c7b485b5b63aa7f11067c9de8dd5": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -935,6 +950,7 @@
         },
         "42293ec4401209419d03c9b0d23a4e67": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=42293ec4401209419d03c9b0d23a4e67, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -980,6 +996,7 @@
         },
         "fc7f39b4b514d0d76df2a5dcc8d6a061": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -1002,6 +1019,7 @@
       "dst": {
         "50b318375205e8450a077c6b68cfb85e": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=74670ab7b82ead48eb4b97ac3a606050(MainActivity/FrameLayout-))",
@@ -1554,6 +1572,7 @@
         },
         "02e4c7b485b5b63aa7f11067c9de8dd5": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=f7ea670169613ff6e9a92d9976916841(MainActivity/ImageView-))",
@@ -1716,6 +1735,7 @@
         },
         "fc7f39b4b514d0d76df2a5dcc8d6a061": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=0f81bd92deea9aa71776f3361384a6fe(MainActivity/RelativeLayout-))",
@@ -1830,6 +1850,7 @@
       "src": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=74670ab7b82ead48eb4b97ac3a606050(MainActivity/FrameLayout-))",
@@ -2384,6 +2405,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -2488,6 +2510,7 @@
         },
         "bc543ee0611ea1dea15ebbe4755e3dd9": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -2613,6 +2636,7 @@
       "src": {
         "50b318375205e8450a077c6b68cfb85e": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -2717,6 +2741,7 @@
         },
         "02e4c7b485b5b63aa7f11067c9de8dd5": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -2739,6 +2764,7 @@
       "dst": {
         "023c5db3db4dd50f07d9ab63b746689f": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "TouchAdEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=a151b47c0d76d9849003348b35123e89(AdActivity/FrameLayout-))",
@@ -2784,6 +2810,7 @@
         },
         "d768c4549bed94efa75227dff8422568": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "AdCompositeEvent(\nState=bc543ee0611ea1dea15ebbe4755e3dd9,\nChains=\nWaitEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, duration=2.0s) -> TouchAdEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=a151b47c0d76d9849003348b35123e89(AdActivity/FrameLayout-)) -> KeyEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, name=BACK))",
@@ -2829,6 +2856,7 @@
         },
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -3044,9 +3072,6 @@
         },
         "com.google.android.gms.ads",
         {
-          "resource_id": "advertisement-card-wrapper"
-        },
-        {
           "text": "广告"
         }
       ]
@@ -3067,6 +3092,7 @@
       "src": {
         "bc543ee0611ea1dea15ebbe4755e3dd9": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchAdEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=a151b47c0d76d9849003348b35123e89(AdActivity/FrameLayout-))",
@@ -3114,6 +3140,7 @@
       "dst": {
         "d768c4549bed94efa75227dff8422568": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "KeyEvent(state=023c5db3db4dd50f07d9ab63b746689f, name=BACK)",
@@ -3150,6 +3177,7 @@
       "src": {
         "bc543ee0611ea1dea15ebbe4755e3dd9": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "AdCompositeEvent(\nState=bc543ee0611ea1dea15ebbe4755e3dd9,\nChains=\nWaitEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, duration=2.0s) -> TouchAdEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, view=a151b47c0d76d9849003348b35123e89(AdActivity/FrameLayout-)) -> KeyEvent(state=bc543ee0611ea1dea15ebbe4755e3dd9, name=BACK))",
@@ -3195,6 +3223,7 @@
         },
         "023c5db3db4dd50f07d9ab63b746689f": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "KeyEvent(state=023c5db3db4dd50f07d9ab63b746689f, name=BACK)",
@@ -3217,6 +3246,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=d768c4549bed94efa75227dff8422568, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -3276,9 +3306,6 @@
         },
         "com.google.android.gms.ads",
         {
-          "resource_id": "advertisement-card-wrapper"
-        },
-        {
           "text": "广告"
         }
       ]
@@ -3299,6 +3326,7 @@
       "src": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=f7ea670169613ff6e9a92d9976916841(MainActivity/ImageView-))",
@@ -3463,6 +3491,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3483,6 +3512,7 @@
         },
         "bc543ee0611ea1dea15ebbe4755e3dd9": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3503,6 +3533,7 @@
         },
         "42293ec4401209419d03c9b0d23a4e67": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3544,6 +3575,7 @@
       "src": {
         "02e4c7b485b5b63aa7f11067c9de8dd5": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3566,6 +3598,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=42293ec4401209419d03c9b0d23a4e67, view=5df39f6c6bfd1f9308d7307c665ef3a5(AdActivity/View-))",
@@ -3625,9 +3658,6 @@
         },
         "com.google.android.gms.ads",
         {
-          "resource_id": "advertisement-card-wrapper"
-        },
-        {
           "text": "广告"
         }
       ]
@@ -3648,6 +3678,7 @@
       "src": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchEvent(state=72832348da8e84a26b234ef8a63fc5a7, view=0f81bd92deea9aa71776f3361384a6fe(MainActivity/RelativeLayout-))",
@@ -3734,6 +3765,7 @@
       "dst": {
         "72832348da8e84a26b234ef8a63fc5a7": {
           "is_ad_related": false,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3754,6 +3786,7 @@
         },
         "9722330855e5141a874abb9208f0eb1f": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3790,6 +3823,7 @@
       "src": {
         "fc7f39b4b514d0d76df2a5dcc8d6a061": {
           "is_ad_related": false,
+          "is_external_site": true,
           "events": [
             {
               "event_str": "IntentEvent(intent='am start com.lomolsoft.language.learnamharic/com.lomolsoft.language.learnamharic.activity.WelActivity')",
@@ -3812,6 +3846,7 @@
       "dst": {
         "a41b5d347d325ad60d70df2b5e5177d0": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchAdEvent(state=9722330855e5141a874abb9208f0eb1f, view=fc85036c4581424deed446d2884f3ffa(MainActivity/LinearLayout-))",
@@ -3878,6 +3913,7 @@
       "src": {
         "9722330855e5141a874abb9208f0eb1f": {
           "is_ad_related": true,
+          "is_external_site": false,
           "events": [
             {
               "event_str": "TouchAdEvent(state=9722330855e5141a874abb9208f0eb1f, view=fc85036c4581424deed446d2884f3ffa(MainActivity/LinearLayout-))",

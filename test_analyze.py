@@ -39,9 +39,11 @@ class dynamic_graph():
 
             src_ad_related = self.state[src].get("is_ad_related", False)
             src_ad_feature = self.state[src].get("ad_feature", {})
+            src_is_external = self.state[src].get("is_external_site", False)
 
             dst_ad_related = self.state[dst].get("is_ad_related", False)
             dst_ad_feature = self.state[dst].get("ad_feature", {})
+            dst_is_external = self.state[dst].get("is_external_site", False)
  
             # self.state[src].setdefault('src', {})[dst] = {'is_ad_related': is_ad_related, 'events': trigger}
             # self.state[dst].setdefault('dst', {})[src] = {'is_ad_related': is_ad_related, 'events': trigger}
@@ -49,6 +51,7 @@ class dynamic_graph():
             # 在 src 节点里记录 dst 邻居，同时写入广告标记
             self.state[src].setdefault('dst', {})[dst] = {
                 'is_ad_related': dst_ad_related, 
+                'is_external_site': dst_is_external,
                 'events': trigger,
                 'ad_feature': dst_ad_feature
             }
@@ -56,6 +59,7 @@ class dynamic_graph():
             # 在 dst 节点里记录 src 邻居，同时写入广告标记
             self.state[dst].setdefault('src', {})[src] = {
                 'is_ad_related': src_ad_related, 
+                'is_external_site': src_is_external,
                 'events': trigger,
                 'ad_feature': src_ad_feature
             }
@@ -135,13 +139,13 @@ class dynamic_graph():
             ad_features = []
 
             for view in views:
-
                 if view.get("ad_feature"):
                     ad_features.append(view["ad_feature"])
 
                     if view.get("ad_format") is not None:
                         node["ad_format"] = view["ad_format"]
                         print(node["ad_format"])
+                        continue
 
 
                 for field in ["resource_id", "text"]:
@@ -266,8 +270,8 @@ def analyze(path):
     # for ret in rets:
     #     f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
     
-    #rets3 = check_type3(enhanced_utg)
-    ret = check_type5(enhanced_utg)
+    rets3 = check_type3(enhanced_utg)
+    # ret = check_type5(enhanced_utg)
 
 
     # check if the ad_states.json exist and store the ad state
@@ -422,21 +426,42 @@ def check_type3(graph):
             continue
         
         # 遍历src边，即进入这个广告的来源
-        for src, edge_info in node.get("dst", {}).items():
+        for src, edge_info in node.get("src", {}).items():
+            # if src == "50b318375205e8450a077c6b68cfb85e":
+            #     print("11111+", node_id)
+            #     print(edge_info.get("is_ad_related", False))
+            #     print(node.get("is_ad_related", False))
+            #     print(edge_info)
             for e in edge_info.get("events", []):
+                
                 etype = e.get("event_type", "").lower()
+                detail = e.get("event_str").lower()
+                if etype == "key" and "back" in detail:
+                    etype = "key_back"
+                # if src == "cd2bdebcfacf84ca65b85335dd96d131":
+                #     print(etype)
 
-                if "back" in etype: # no banner
-                    if node.get("is_ad_related", False):
-                        results.append({
+                if etype == "key_back": # no banner
+                    # ignore case that external_site (ad-content) back to aad
+                    if edge_info.get("is_external_site", False):
+                        continue
+                    # if src == "cd2bdebcfacf84ca65b85335dd96d131":
+                    #     print(etype)
+                    # cd2bdebcfacf84ca65b85335dd96d131-->72832348da8e84a26b234ef8a63fc5a7
+                    if edge_info.get("is_ad_related", False):
+                        if src == "cd2bdebcfacf84ca65b85335dd96d131":
+                            print(edge_info.get("is_ad_related", False))
+                        ret = {
                             "node": node_id,
                             "activity": node.get("activity"),
                             "case": "back_still_ad",
                             "event": etype,
                             "edge_info": e,
                             "pattern": f"{src}(ad-related) --[{etype}]--> {node_id}(ad-related)"
-                        })
-                    print(f"  Found: {src}(ad) --[{etype}]--> {node_id}(ad)")
+                        }
+                        if ret not in results:
+                            results.append(ret)
+                        print(f"  Found: {src}(ad) --[{etype}]--> {node_id}(ad)")
                     
                 # 情况2: external 节点 back 仍然 external
                 if "back" in etype and node.get("is_external", False):
@@ -446,7 +471,7 @@ def check_type3(graph):
                         "case": "back_still_external",
                         "event": etype,
                         "edge_info": e,
-                            "pattern": f"{src}(banner ad) --[{etype}]--> {node_id}(ad)"
+                            "pattern": f"{src}(is_external) --[{etype}]--> {node_id}(ad)"
                     })
                     print(f"  Found: {src}(is_external) --[{etype}]--> {node_id}(is_external)")
 
@@ -473,8 +498,14 @@ def check_type4(graph):
     """
     4. aggressive redirection: state A (is_ad_related) -> wait -> state B (is_external)
     """
-
-    pass
+    for node_id, node in graph.state.items():
+        
+        if not node.get("is_ad_related", False):
+            continue
+        
+        # 遍历src边，即进入这个广告的来源
+        for src, edge_info in node.get("src", {}).items():
+            pass
 
 
 def check_type5(graph):
@@ -484,9 +515,8 @@ def check_type5(graph):
     print("[+] checking type5 outside-app ads ...")
     results = []
     for node_id, node in graph.state.items():
-        print(node_id)
-        print(node.get("is_ad_related", False))
         # not to resolve the non-ad-related nodes
+        # if there is no "is_ad_related", return the False
         if not node.get("is_ad_related", False):
             continue
         
