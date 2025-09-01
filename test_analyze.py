@@ -11,7 +11,8 @@ class dynamic_graph():
         else:
             self.json_path = json_path
         if js_path is not None:
-            self.change_js_to_json(js_path, self.json_path)
+            ret = self.change_js_to_json(js_path, self.json_path)
+            
         self.state = {}
         self.state_edge = []
         self.state_edge_json = []
@@ -81,8 +82,10 @@ class dynamic_graph():
                     self.activity[dst_act]['dst'][src_act]['trigger'] += trigger
 
     def change_js_to_json(self, js_path, json_path, encoding="utf-8"):
+        
         with open(js_path, encoding=encoding) as f:
             js_content = f.read().strip()
+        
 
         # 去掉前缀 "var utg ="
         if js_content.startswith("var utg"):
@@ -91,6 +94,9 @@ class dynamic_graph():
         # 去掉结尾的分号
         if js_content.endswith(";"):
             js_content = js_content[:-1]
+
+        # 确保目标目录存在
+        os.makedirs(os.path.dirname(json_path), exist_ok=True)
 
         with open(json_path, "w", encoding=encoding) as f:
             f.write(js_content)
@@ -238,9 +244,120 @@ class dynamic_graph():
     #         print("[+] 增强UTG已保存到 enhanced_utg.json")
 
 
-
-
 def analyze(path):
+    print("[+] test ... " + path)
+    utg_fail_count = 0
+    ad_count = 0
+    summary = 0
+    type2 = {}
+    type3 = {}
+    type4 = {}
+    type5 = {}
+
+    type2_list = []
+    type3_list = []
+    type4_list = []
+    type5_list = []
+
+    results = {
+        'total_apk': 0,
+        'apks_with_ad_states': 0,
+        'apks_with_frida_logs': 0,
+        'ad_state_counts': 0,
+
+    }
+
+    result = {
+        "package_name": None,
+        "sha": None,
+        "has_ad": False
+    }
+
+    folders = os.listdir(path)
+    for app_dir in folders:
+        
+        apk_path = os.path.join(path, app_dir)
+        if not os.path.isdir(apk_path):
+            continue
+        
+        utg_path = os.path.join(apk_path, "utg.js")
+        print("utg_path: " + utg_path)
+        if not os.path.exists(utg_path):
+            print(f"[!] utg.js 不存在: {utg_path}")
+            utg_fail_count = utg_fail_count + 1
+            continue
+        
+        # utg_json_path = os.path.join(apk_path, "utg.json")
+        # if not os.path.exists(utg_json_path):
+        #     print(f"[!] utg.json 不存在: {utg_json_path}")
+        #     continue
+
+        utg = dynamic_graph(js_path=utg_path)
+        utg.enhance_utg(apk_path)
+        enhance_utg_path = os.path.join(apk_path, "enhanced_utg.json")
+        enhanced_utg = dynamic_graph(json_path=enhance_utg_path)
+        summary = summary + 1
+
+        unique_data = getAdStatus(apk_path)
+        if unique_data:
+            ad_count += 1
+
+            type2 = check_type2(enhanced_utg)
+            type3 = check_type3(enhanced_utg)
+            type4 = check_type4(enhanced_utg)
+            type5 = check_type5(enhanced_utg)
+
+            if type2 != []:
+                type2_list.append(type2)
+            
+            if type3 != []:
+                type3_list.append(type3)
+
+            if type4 != []:
+                type4_list.append(type4)
+
+            if type5 != []:
+                type5_list.append(type5)
+
+
+    print("type2: ", str(len(type2_list)))
+    print("type3: ", str(len(type3_list)))
+    print("type4: ", str(len(type4_list)))
+    print("type5: ", str(len(type5_list)))
+    print("summary: ", str(summary))
+    print("failed count: ", str(utg_fail_count))
+
+
+    has_ad = False
+    has_frida_logs = False
+
+    #rets = check_type2(enhanced_utg)
+    # for ret in rets:
+    #     f"{ret['src_node']} -> {ret['event_type']} -> {ret['dst_ad_node']}"
+    
+    # ret3 = check_type3(enhanced_utg)
+    # ret = check_type5(enhanced_utg)
+
+
+    # check if the ad_states.json exist and store the ad state
+    # data = getAdStates(path, enhance_utg_path, results)
+    # if data:
+    #     has_ad = True
+        # print("Has ads")
+        # get the list of ad states
+        # print(data)
+
+
+    # check if the frida_log.json exist.
+
+    # stats for app with ads
+
+    pass
+
+
+
+# single test
+def analyze_test(path):
 
     results = {
         'total_apk': 0,
@@ -289,8 +406,24 @@ def analyze(path):
 
     pass
 
+def getAdStatus(app_path):
+    unique_data = None
+    print(f"[+] Start analyze ad states " + app_path)
 
-def getAdStates(path, enhanced_utg_path, results):
+    ad_state = False
+    if not os.path.isdir(path):
+        print(f"Error! The dir path is not exist -- {path}.")
+        return None
+
+    for file_name in os.listdir(app_path):
+        if file_name.endswith("ad_states.json"):
+            ad_state_path = os.path.join(app_path, file_name)
+            unique_data = get_unique_ad_states(ad_state_path)
+            break
+    
+    return unique_data
+
+def getAdStatics(path, enhanced_utg_path, results):
     print("[+] start analyzing ad states")
     ad_states_path = None
     if not os.path.isdir(path):
@@ -342,6 +475,44 @@ def getAdStates(path, enhanced_utg_path, results):
             return None
 
     return unique_data
+
+def get_unique_ad_states(path):
+    print("[+] get unique ad status: " + path)
+    unique_data = []
+    seen_items = set() 
+            
+    if path and os.path.isfile(path):
+        with open(path, "r", encoding="utf-8") as f:
+            try:
+                data = json.load(f)
+                if data is None:
+                    return None
+                
+                for item in data:
+                    
+                    state_id = item.get("state_str")
+                    screenshot_path = item.get("screenshot_path")
+                    if state_id not in seen_items:
+                        seen_items.add(state_id)
+                        unique_data.append(item)
+            except json.JSONDecodeError:
+                print("JSON format error: ", path)
+        print("unique_data: ", unique_data)
+        # 存回去（覆盖原文件）
+        # with open(ad_states_path, "w", encoding="utf-8") as f:
+        #     json.dump(unique_data, f, indent=2, ensure_ascii=False)
+        # 保存为副本
+        dedup_path = path.replace(".json", "_dedup.json")
+        with open(dedup_path, "w", encoding="utf-8") as f:
+            json.dump(unique_data, f, indent=2, ensure_ascii=False)
+
+        print(f"去重后保存成功，共 {len(unique_data)} 条记录。")
+    else:
+        print("未找到 ad_states.json 文件")
+        return None
+
+    return unique_data
+
 
 def detect_misleading_UI(image_path):
     pass
@@ -474,7 +645,7 @@ def check_type3(graph):
                                 "pattern": f"{src}(is_external) --[{etype}]--> {node_id}(ad)"
                         })
                         print(f"  Found: {src}(is_external) --[{etype}]--> {node_id}(is_external)")
-
+        return results
 
 
         # src_nodes = node.get("src", {})
@@ -498,6 +669,9 @@ def check_type4(graph):
     """
     4. aggressive redirection: state A (is_ad_related) -> wait -> state B (is_external)
     """
+
+    results = []
+
     for node_id, node in graph.state.items():
         
         if not node.get("is_ad_related", False):
@@ -505,8 +679,25 @@ def check_type4(graph):
         
         # 遍历src边，即进入这个广告的来源
         for src, edge_info in node.get("src", {}).items():
-            pass
-
+            
+            for e in edge_info.get("events", []):
+                etype = e.get("event_type", "").lower()
+                detail = e.get("event_str").lower()
+                if etype == "wait":
+                    # ignore the non is_external node
+                    if edge_info.get("is_external_site", False):
+                        continue
+                    
+                    results.append({
+                            "node": node_id,
+                            "activity": node.get("activity"),
+                            "case": "type4",
+                            "event": etype,
+                            "edge_info": e,
+                            "pattern": f"{src}(ad) --[{etype}]--> {node_id}(external)"
+                        })
+                    print(f"  Found: {src}(ad) --[{etype}]--> {node_id}(external)")
+        return results
 
 def check_type5(graph):
     """
@@ -533,7 +724,7 @@ def check_type5(graph):
             })
             print("[+] {node_id}(ad) -- out of app", node_id)
 
-#     return results
+    return results
         
 # def check_type5(graph):
 #     """
@@ -570,12 +761,10 @@ def check_type5(graph):
 
 #     return results
 
-def analyzeAdStates(path, enhanced_utg_path):
-    pass
-
 
 
 if __name__=='__main__':
-    path = os.path.join('examples/C07B41EB38A4AA087A9B2883AA8F3679C035441AD4470F2A23')
+    # path = os.path.join('examples/C07B41EB38A4AA087A9B2883AA8F3679C035441AD4470F2A23')
+    path = "D:\\NKU\\Work\\Work2\\appchina_output"
     analyze(path)
 
