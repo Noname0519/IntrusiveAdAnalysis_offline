@@ -1,0 +1,52 @@
+{
+  "tag": "2025-09-11_225527",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.FrameLayout",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          0
+        ],
+        [
+          900,
+          1600
+        ]
+      ],
+      "resource_id": "com.dz.law:id/background",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.FrameLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 5,
+      "temp_id": 6,
+      "size": "900*1600",
+      "ad_feature": null,
+      "signature": "[class]android.widget.FrameLayout[resource_id]com.dz.law:id/background[text]None[enabled,,]",
+      "view_str": "c993c5388bf389b1e4d47470edf0ad1c",
+      "content_free_signature": "[class]android.widget.FrameLayout[resource_id]com.dz.law:id/background"
+    }
+  },
+  "start_state": "0cfe11a6dedcc1597a88dc5581e36e69",
+  "stop_state": "0cfe11a6dedcc1597a88dc5581e36e69",
+  "event_str": "TouchEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=c993c5388bf389b1e4d47470edf0ad1c(IntroActivity/FrameLayout-))",
+  "is_ad_trigger": false
+}

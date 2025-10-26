@@ -1,0 +1,57 @@
+{
+  "tag": "2025-09-05_131431",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.dz.law",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": "\u062a\u0635\u063a\u064a\u0631",
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          788,
+          48
+        ],
+        [
+          900,
+          160
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.ImageButton",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 17,
+      "temp_id": 18,
+      "size": "112*112",
+      "signature": "[class]android.widget.ImageButton[resource_id]None[text]None[enabled,,]",
+      "view_str": "63844af1b22f3d80d3b04bff6ca0b648",
+      "content_free_signature": "[class]android.widget.ImageButton[resource_id]None",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "1",
+      "desc": "<button text='\u062a\u0635\u063a\u064a\u0631' bound_box=788,48,900,160></button>"
+    }
+  },
+  "start_state": "1cccff5174b64255334fd8edc4d7350b",
+  "stop_state": "7fdc486aee141aff8bc191a969b982d7",
+  "event_str": "TouchEvent(state=1cccff5174b64255334fd8edc4d7350b, view=63844af1b22f3d80d3b04bff6ca0b648(MainActivity/ImageButton-))",
+  "is_ad_trigger": false
+}

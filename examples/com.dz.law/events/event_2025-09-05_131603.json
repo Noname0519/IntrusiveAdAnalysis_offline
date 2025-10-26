@@ -1,0 +1,58 @@
+{
+  "tag": "2025-09-05_131603",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.FrameLayout",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          48
+        ],
+        [
+          900,
+          1600
+        ]
+      ],
+      "resource_id": "com.dz.law:id/empty",
+      "checked": false,
+      "text": "\u0644\u0627 \u064a\u0648\u062c\u062f \u0639\u0646\u0627\u0635\u0631 \u062d\u0627\u0644\u064a\u0627\u064b...",
+      "class": "android.widget.TextView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 12,
+      "temp_id": 13,
+      "size": "900*1552",
+      "ad_feature": null,
+      "signature": "[class]android.widget.TextView[resource_id]com.dz.law:id/empty[text]\u0644\u0627 \u064a\u0648\u062c\u062f \u0639\u0646\u0627\u0635\u0631 \u062d\u0627\u0644\u064a\u0627\u064b...[enabled,,]",
+      "view_str": "036e93741a3096c94a7de62f6ff1161f",
+      "content_free_signature": "[class]android.widget.TextView[resource_id]com.dz.law:id/empty",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "0",
+      "desc": "<button bound_box=0,48,900,1600>\u0644\u0627 \u064a\u0648\u062c\u062f \u0639\u0646\u0627\u0635\u0631 \u062d\u0627\u0644\u064a\u0627\u064b...</button>"
+    }
+  },
+  "start_state": "7fdc486aee141aff8bc191a969b982d7",
+  "stop_state": "7fdc486aee141aff8bc191a969b982d7",
+  "event_str": "TouchEvent(state=7fdc486aee141aff8bc191a969b982d7, view=036e93741a3096c94a7de62f6ff1161f(MainActivity/TextView-\u0644\u0627 \u064a\u0648\u062c\u062f \u0639\u0646))",
+  "is_ad_trigger": false
+}

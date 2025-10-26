@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-05_130649",
+  "event": {
+    "event_type": "kill_app",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "stop_intent": "am force-stop com.dz.law"
+  },
+  "start_state": "6956add1b2668c4c6d51e59abe0b32a1",
+  "stop_state": "6956add1b2668c4c6d51e59abe0b32a1",
+  "event_str": "KillAppEvent()",
+  "is_ad_trigger": false
+}

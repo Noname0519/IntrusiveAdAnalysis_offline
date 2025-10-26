@@ -1,0 +1,14 @@
+{
+  "tag": "2025-09-11_225145",
+  "event": {
+    "event_type": "intent",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "is_start_event": true,
+    "intent": "am start com.dz.law/com.appyet.activity.MainActivity"
+  },
+  "start_state": "4079cfb78a20b82340c044c34d1aa724",
+  "stop_state": "0cfe11a6dedcc1597a88dc5581e36e69",
+  "event_str": "IntentEvent(intent='am start com.dz.law/com.appyet.activity.MainActivity')",
+  "is_ad_trigger": false
+}

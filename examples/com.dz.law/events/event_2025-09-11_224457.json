@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-11_224457",
+  "event": {
+    "event_type": "wait",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "duration": 2
+  },
+  "start_state": "ccd74b088c0a2b6c8b4ec52f7be0bf5e",
+  "stop_state": "f396c518202e27a546f483df67d853e0",
+  "event_str": "WaitEvent(state=ccd74b088c0a2b6c8b4ec52f7be0bf5e, duration=2.0s)",
+  "is_ad_trigger": false
+}

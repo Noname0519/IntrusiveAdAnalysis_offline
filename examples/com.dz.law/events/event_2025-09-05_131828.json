@@ -1,0 +1,57 @@
+{
+  "tag": "2025-09-05_131828",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.dz.law",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": "\u0627\u0644\u062a\u0646\u0642\u0644 \u0625\u0644\u0649 \u0623\u0639\u0644\u0649",
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          788,
+          48
+        ],
+        [
+          900,
+          160
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.ImageButton",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 2964,
+      "temp_id": 2965,
+      "size": "112*112",
+      "signature": "[class]android.widget.ImageButton[resource_id]None[text]None[enabled,,]",
+      "view_str": "63844af1b22f3d80d3b04bff6ca0b648",
+      "content_free_signature": "[class]android.widget.ImageButton[resource_id]None",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "34",
+      "desc": "<button text='\u0627\u0644\u062a\u0646\u0642\u0644 \u0625\u0644\u0649 \u0623\u0639\u0644\u0649' bound_box=788,48,900,160></button>"
+    }
+  },
+  "start_state": "fe236d0277640273d42b40b813def0cf",
+  "stop_state": "4f4e2d895b9a9b53fae4303dfa969982",
+  "event_str": "TouchEvent(state=fe236d0277640273d42b40b813def0cf, view=63844af1b22f3d80d3b04bff6ca0b648(MainActivity/ImageButton-))",
+  "is_ad_trigger": false
+}

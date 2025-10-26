@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-11_225752",
+  "event": {
+    "event_type": "wait",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "duration": 2
+  },
+  "start_state": "1fc047dfac3b4fa2d7d033c05ee764c4",
+  "stop_state": "1fc047dfac3b4fa2d7d033c05ee764c4",
+  "event_str": "WaitEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, duration=2.0s)",
+  "is_ad_trigger": false
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "path": [
+      "4079cfb78a20b82340c044c34d1aa724",
+      "0cfe11a6dedcc1597a88dc5581e36e69",
+      "98f616c36edb8027fa5708c849e7b4ca"
+    ],
+    "events": [
+      {
+        "event_str": "IntentEvent(intent='am start com.dz.law/com.appyet.activity.MainActivity')",
+        "event_id": 1,
+        "event_type": "intent",
+        "event_subtype": null,
+        "view_content_descriptions": [],
+        "view_texts": [],
+        "view_descriptions": [],
+        "view_images": [],
+        "view_bounds": [],
+        "view_res_id": [],
+        "view_ad_feature": [],
+        "view_ad_format": []
+      },
+      {
+        "event_str": "KeyEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, name=BACK)",
+        "event_id": 6,
+        "event_type": "key",
+        "event_subtype": "key",
+        "view_content_descriptions": [],
+        "view_texts": [],
+        "view_descriptions": [],
+        "view_images": [],
+        "view_bounds": [],
+        "view_res_id": [],
+        "view_ad_feature": [],
+        "view_ad_format": []
+      }
+    ]
+  }
+]

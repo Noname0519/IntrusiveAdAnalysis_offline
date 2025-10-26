@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-11_224539",
+  "event": {
+    "event_type": "key",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "name": "BACK"
+  },
+  "start_state": "f396c518202e27a546f483df67d853e0",
+  "stop_state": "e76d255daf3d635965294846e5296350",
+  "event_str": "KeyEvent(state=f396c518202e27a546f483df67d853e0, name=BACK)",
+  "is_ad_trigger": false
+}

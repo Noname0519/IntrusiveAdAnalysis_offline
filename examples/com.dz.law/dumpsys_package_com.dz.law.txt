@@ -1,0 +1,348 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        bd35ff8 com.dz.law/com.appyet.activity.MainActivity filter ad03e02
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+        20d9cd1 com.dz.law/com.appyet.activity.CastExpandedControlsActivity filter 51b3313
+          Action: "android.intent.action.MAIN"
+      android.appwidget.action.APPWIDGET_CONFIGURE:
+        39a336 com.dz.law/com.appyet.activity.WidgetConfigureActivity filter 9d6b950
+          Action: "android.appwidget.action.APPWIDGET_CONFIGURE"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      android.intent.action.BATTERY_OKAY:
+        a092237 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 1e864c
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      android.intent.action.ACTION_POWER_DISCONNECTED:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+        4fe350d com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter 2b6667f
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+      android.net.wifi.WIFI_STATE_CHANGED:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+      android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED:
+        974bcc2 com.dz.law/com.appyet.receiver.DownloadReceiver filter 42018dd
+          Action: "android.intent.action.DOWNLOAD_COMPLETE"
+          Action: "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"
+          Action: "android.intent.action.ACTION_VIEW_DOWNLOADS"
+      android.intent.action.ACTION_VIEW_DOWNLOADS:
+        974bcc2 com.dz.law/com.appyet.receiver.DownloadReceiver filter 42018dd
+          Action: "android.intent.action.DOWNLOAD_COMPLETE"
+          Action: "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"
+          Action: "android.intent.action.ACTION_VIEW_DOWNLOADS"
+      android.intent.action.HEADSET_PLUG:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+      android.bluetooth.adapter.action.STATE_CHANGED:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        843aad3 com.dz.law/androidx.profileinstaller.ProfileInstallReceiver filter ba552e4
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      android.intent.action.DEVICE_STORAGE_LOW:
+        50e3610 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 4b28695
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.net.conn.CONNECTIVITY_CHANGE:
+        be61509 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy filter 142e3aa
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+      android.intent.action.DEVICE_STORAGE_OK:
+        50e3610 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 4b28695
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.net.wifi.STATE_CHANGE:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        843aad3 com.dz.law/androidx.profileinstaller.ProfileInstallReceiver filter cc39076
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      com.google.android.c2dm.intent.RECEIVE:
+        955e30e com.dz.law/com.google.firebase.iid.FirebaseInstanceIdReceiver filter 24bab9e
+          Action: "com.google.android.c2dm.intent.RECEIVE"
+      android.intent.action.BATTERY_LOW:
+        a092237 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 1e864c
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      android.intent.action.TIMEZONE_CHANGED:
+        f94212f com.dz.law/androidx.work.impl.background.systemalarm.RescheduleReceiver filter a54eb9b
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      android.intent.action.TIME_SET:
+        f94212f com.dz.law/androidx.work.impl.background.systemalarm.RescheduleReceiver filter a54eb9b
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      androidx.profileinstaller.action.SKIP_FILE:
+        843aad3 com.dz.law/androidx.profileinstaller.ProfileInstallReceiver filter 68ca677
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        843aad3 com.dz.law/androidx.profileinstaller.ProfileInstallReceiver filter 4fdf34d
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+      android.intent.action.BOOT_COMPLETED:
+        d88a33c com.dz.law/com.appyet.receiver.BootCompletedReceiver filter 9d53b23
+          Action: "android.intent.action.BOOT_COMPLETED"
+        f94212f com.dz.law/androidx.work.impl.background.systemalarm.RescheduleReceiver filter a54eb9b
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+      android.intent.action.ACTION_POWER_CONNECTED:
+        4fe350d com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter 2b6667f
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+      android.intent.action.DOWNLOAD_COMPLETE:
+        974bcc2 com.dz.law/com.appyet.receiver.DownloadReceiver filter 42018dd
+          Action: "android.intent.action.DOWNLOAD_COMPLETE"
+          Action: "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"
+          Action: "android.intent.action.ACTION_VIEW_DOWNLOADS"
+      android.appwidget.action.APPWIDGET_UPDATE:
+        151f8c5 com.dz.law/com.appyet.provider.WidgetProvider filter 7e10820
+          Action: "android.appwidget.action.APPWIDGET_UPDATE"
+        711221a com.dz.law/com.appyet.provider.WidgetProvider_4_1 filter 40a65d9
+          Action: "android.appwidget.action.APPWIDGET_UPDATE"
+      androidx.work.diagnostics.REQUEST_DIAGNOSTICS:
+        4cba14b com.dz.law/androidx.work.impl.diagnostics.DiagnosticsReceiver filter 481f711
+          Action: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+      androidx.work.impl.background.systemalarm.UpdateProxies:
+        dab728 com.dz.law/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver filter ad3bb38
+          Action: "androidx.work.impl.background.systemalarm.UpdateProxies"
+      android.net.ConnectivityManager.CONNECTIVITY_ACTION:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+      android.intent.action.MEDIA_BUTTON:
+        bda83a4 com.dz.law/com.appyet.receiver.CommonReceiver filter 12c1c52
+          Action: "android.intent.action.MEDIA_BUTTON"
+          Action: "android.intent.action.HEADSET_PLUG"
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.net.ConnectivityManager.CONNECTIVITY_ACTION"
+          Action: "android.bluetooth.adapter.action.STATE_CHANGED"
+          Action: "android.net.wifi.WIFI_STATE_CHANGED"
+          Action: "android.net.wifi.STATE_CHANGE"
+
+Service Resolver Table:
+  Non-Data Actions:
+      com.google.android.exoplayer.downloadService.action.RESTART:
+        1de5c41 com.dz.law/com.appyet.exoplayer.ExoDownloadService filter ef729c6 permission android.permission.BIND_JOB_SERVICE
+          Action: "com.google.android.exoplayer.downloadService.action.RESTART"
+          Category: "android.intent.category.DEFAULT"
+      com.google.firebase.MESSAGING_EVENT:
+        70f45e6 com.dz.law/com.appyet.service.FCMService filter 31b4d87
+          Action: "com.google.firebase.MESSAGING_EVENT"
+        eb10727 com.dz.law/com.google.firebase.messaging.FirebaseMessagingService filter 1a954b4
+          Action: "com.google.firebase.MESSAGING_EVENT"
+          mPriority=-500, mOrder=0, mHasPartialTypes=false
+
+Permissions:
+  Permission [com.dz.law.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (b81dd4):
+    sourcePackage=com.dz.law
+    uid=12136 gids=null type=0 prot=signature
+    perm=Permission{d737b7d com.dz.law.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    packageSetting=PackageSetting{979da72 com.dz.law/12136}
+
+Registered ContentProviders:
+  com.dz.law/com.google.firebase.provider.FirebaseInitProvider:
+    Provider{f9ceec3 com.dz.law/com.google.firebase.provider.FirebaseInitProvider}
+  com.dz.law/com.facebook.ads.AudienceNetworkContentProvider:
+    Provider{4634340 com.dz.law/com.facebook.ads.AudienceNetworkContentProvider}
+  com.dz.law/androidx.startup.InitializationProvider:
+    Provider{415279 com.dz.law/androidx.startup.InitializationProvider}
+  com.dz.law/com.flurry.android.agent.FlurryContentProvider:
+    Provider{5872bbe com.dz.law/com.flurry.android.agent.FlurryContentProvider}
+  com.dz.law/com.google.android.gms.ads.MobileAdsInitProvider:
+    Provider{cd5b41f com.dz.law/com.google.android.gms.ads.MobileAdsInitProvider}
+  com.dz.law/androidx.core.content.FileProvider:
+    Provider{2d9536c com.dz.law/androidx.core.content.FileProvider}
+  com.dz.law/com.just.agentweb.AgentWebFileProvider:
+    Provider{f7b9d35 com.dz.law/com.just.agentweb.AgentWebFileProvider}
+  com.dz.law/com.appyet.provider.SuggestionProvider:
+    Provider{d8645ca com.dz.law/com.appyet.provider.SuggestionProvider}
+
+ContentProvider Authorities:
+  [com.dz.law.firebaseinitprovider]:
+    Provider{f9ceec3 com.dz.law/com.google.firebase.provider.FirebaseInitProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.provider]:
+    Provider{2d9536c com.dz.law/androidx.core.content.FileProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.AgentWebFileProvider]:
+    Provider{f7b9d35 com.dz.law/com.just.agentweb.AgentWebFileProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.mobileadsinitprovider]:
+    Provider{cd5b41f com.dz.law/com.google.android.gms.ads.MobileAdsInitProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.androidx-startup]:
+    Provider{415279 com.dz.law/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.AudienceNetworkContentProvider]:
+    Provider{4634340 com.dz.law/com.facebook.ads.AudienceNetworkContentProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.suggestion.provider]:
+    Provider{d8645ca com.dz.law/com.appyet.provider.SuggestionProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+  [com.dz.law.FlurryContentProvider]:
+    Provider{5872bbe com.dz.law/com.flurry.android.agent.FlurryContentProvider}
+      applicationInfo=ApplicationInfo{fab733b com.dz.law}
+
+Key Set Manager:
+  [com.dz.law]
+      Signing KeySets: 2856
+
+Packages:
+  Package [com.dz.law] (979da72):
+    userId=12136
+    pkg=Package{3be3a58 com.dz.law}
+    codePath=/data/app/com.dz.law-_1QX8Vr6ihlZLOySLT173Q==
+    resourcePath=/data/app/com.dz.law-_1QX8Vr6ihlZLOySLT173Q==
+    legacyNativeLibraryDir=/data/app/com.dz.law-_1QX8Vr6ihlZLOySLT173Q==/lib
+    primaryCpuAbi=x86
+    secondaryCpuAbi=null
+    versionCode=185 minSdk=21 targetSdk=34
+    versionName=4.10.09
+    splits=[base]
+    apkSigningVersion=3
+    applicationInfo=ApplicationInfo{fab733b com.dz.law}
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP LARGE_HEAP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PARTIALLY_DIRECT_BOOT_AWARE ]
+    dataDir=/data/user/0/com.dz.law
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    usesOptionalLibraries:
+      android.ext.adservices
+      androidx.window.extensions
+      androidx.window.sidecar
+    timeStamp=2025-09-11 22:51:22
+    firstInstallTime=2025-09-11 22:51:22
+    lastUpdateTime=2025-09-11 22:51:22
+    signatures=PackageSignatures{5d5d7b1 version:3, signatures:[fb9443bf], past signatures:[]}
+    installPermissionsFixed=true
+    pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP LARGE_HEAP ]
+    declared permissions:
+      com.dz.law.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature, INSTALLED
+    requested permissions:
+      android.permission.INTERNET
+      android.permission.ACCESS_WIFI_STATE
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.WAKE_LOCK
+      android.permission.VIBRATE
+      android.permission.FLASHLIGHT
+      com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY
+      android.permission.FOREGROUND_SERVICE
+      com.google.android.gms.permission.AD_ID
+      android.permission.ACCESS_ADSERVICES_AD_ID
+      android.permission.ACCESS_ADSERVICES_ATTRIBUTION
+      android.permission.ACCESS_ADSERVICES_TOPICS
+      android.permission.POST_NOTIFICATIONS
+      com.google.android.c2dm.permission.RECEIVE
+      com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+      com.dz.law.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+    install permissions:
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.INTERNET: granted=true
+      com.dz.law.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.FLASHLIGHT: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.VIBRATE: granted=true
+      android.permission.ACCESS_WIFI_STATE: granted=true
+      android.permission.WAKE_LOCK: granted=true
+    User 0: ceDataInode=1048584 installed=true hidden=false suspended=false stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      gids=[3003]
+      runtime permissions:
+
+Package Changes:
+  Sequence number=220
+  User 0:
+    seq=0, package=com.cranberrygame.licenseinfo
+    seq=1, package=jp.co.jibunbank.jibunfx3
+    seq=2, package=com.ld.phonestore
+    seq=3, package=it.ffz.roomtemp
+    seq=4, package=au.com.capricornian.android
+    seq=5, package=com.padersync.appbase
+    seq=6, package=com.ballpoll732
+    seq=7, package=com.BedCoverDesign.someiatiAPP
+    seq=9, package=andr.members
+    seq=11, package=com.vision.mobile
+    seq=35, package=com.baidu.video
+    seq=41, package=ca.mobile.explorer
+    seq=43, package=com.cranberrygame.birdrescue
+    seq=47, package=com.perkpayroll
+    seq=63, package=org.whiteglow.quickeycalculator
+    seq=67, package=com.ezsparewheel.fitmentguide
+    seq=73, package=com.wemoneymobile
+    seq=95, package=com.cMs.a7ivjTVB5
+    seq=97, package=com.pegasusbank.treasurymanagement
+    seq=99, package=com.orthobullets.Bullets
+    seq=107, package=com.aiqu5535.gamebox
+    seq=113, package=com.teaminformatico.VCX
+    seq=119, package=com.douyu.rxjhgl.ld
+    seq=124, package=co.zip
+    seq=126, package=com.ytepaint.client
+    seq=132, package=com.jjwxc.reader
+    seq=136, package=br.org.enotariado.app
+    seq=140, package=com.cranberrygame.flashlight
+    seq=144, package=ch.viollier.android.myviollier
+    seq=148, package=nl.sdworx.cobra.app
+    seq=154, package=il.ac.cet.ntn
+    seq=164, package=com.aliateck.TaxCalcEG
+    seq=169, package=com.mzeus.treehole
+    seq=173, package=coza.globalchoices.zenithassist
+    seq=183, package=com.haolan.comics
+    seq=189, package=com.konylabs.ItauMobileBank
+    seq=197, package=com.fengjr.mobile
+    seq=201, package=nl.beverautomatisering.verkoopapp
+    seq=205, package=com.findernet.ToolboxNFC
+    seq=211, package=com.tudo.sobre.pets
+    seq=215, package=il.co.hilanet.HilanTime
+    seq=219, package=com.dz.law
+
+
+Dexopt state:
+  [com.dz.law]
+    path: /data/app/com.dz.law-_1QX8Vr6ihlZLOySLT173Q==/base.apk
+      x86: [status=speed-profile] [reason=install]
+
+
+Compiler stats:
+  [com.dz.law]
+     base.apk - 1146

@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-05_131622",
+  "event": {
+    "event_type": "key",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "name": "BACK"
+  },
+  "start_state": "7fdc486aee141aff8bc191a969b982d7",
+  "stop_state": "dea81a3312cab198e2c0c5c357ec96ee",
+  "event_str": "KeyEvent(state=7fdc486aee141aff8bc191a969b982d7, name=BACK)",
+  "is_ad_trigger": false
+}

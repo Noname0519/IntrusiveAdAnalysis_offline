@@ -1,0 +1,56 @@
+{
+  "tag": "2025-09-11_225813",
+  "event": {
+    "event_type": "touch_ad",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.FrameLayout",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          48
+        ],
+        [
+          900,
+          1600
+        ]
+      ],
+      "resource_id": "com.dz.law:id/main_shade",
+      "checked": false,
+      "text": null,
+      "class": "android.view.View",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 7,
+      "temp_id": 8,
+      "size": "900*1552",
+      "ad_feature": "resource_id",
+      "ad_format": "interstitial",
+      "matched_trace": null,
+      "url": null,
+      "signature": "[class]android.view.View[resource_id]com.dz.law:id/main_shade[text]None[enabled,,]",
+      "view_str": "6242cb8960eba57fa5de5e49cccab1bc",
+      "content_free_signature": "[class]android.view.View[resource_id]com.dz.law:id/main_shade"
+    },
+    "ad_feature": "resource_id"
+  },
+  "start_state": "1fc047dfac3b4fa2d7d033c05ee764c4",
+  "stop_state": "1fc047dfac3b4fa2d7d033c05ee764c4",
+  "event_str": "TouchAdEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, view=6242cb8960eba57fa5de5e49cccab1bc(MainActivity/View-))",
+  "is_ad_trigger": false
+}

@@ -1,0 +1,684 @@
+{
+  "nodes": [
+    {
+      "id": "4079cfb78a20b82340c044c34d1aa724",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225141.png",
+      "label": "Launcher\n<FIRST>",
+      "package": "com.android.launcher3",
+      "activity": ".Launcher",
+      "state_str": "4079cfb78a20b82340c044c34d1aa724",
+      "structure_str": "f81d997800a7d0ce343b5dc5472cd031",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.android.launcher3</td></tr>\n<tr><th>activity</th><td>.Launcher</td></tr>\n<tr><th>state_str</th><td>4079cfb78a20b82340c044c34d1aa724</td></tr>\n<tr><th>structure_str</th><td>f81d997800a7d0ce343b5dc5472cd031</td></tr>\n<tr><th>is_ad_related</th><td>False</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.android.launcher3\n.Launcher\n4079cfb78a20b82340c044c34d1aa724\ncom.android.launcher3:id/toast_close_img,com.android.launcher3:id/workspace,com.android.launcher3:id/page_indicator,com.android.launcher3:id/textView3,com.android.launcher3:id/gameIcon5,com.android.launcher3:id/textView4,com.android.launcher3:id/content_layout,com.android.launcher3:id/info_target_text,com.android.launcher3:id/folder_icon_name,com.android.launcher3:id/gameIcon2,com.android.launcher3:id/iv_triangle,com.android.launcher3:id/delete_target_text,com.android.launcher3:id/export_target_text,com.android.launcher3:id/active,com.android.launcher3:id/toast_textView,com.android.launcher3:id/search_drop_target_bar,com.android.launcher3:id/hotseat,com.android.launcher3:id/item_layout1,com.android.launcher3:id/gameIcon1,com.android.launcher3:id/textView5,com.android.launcher3:id/item_layout4,com.android.launcher3:id/launcher,com.android.launcher3:id/drag_target_bar,com.android.launcher3:id/gameIcon4,com.android.launcher3:id/drag_layer,com.android.launcher3:id/preview_background,com.android.launcher3:id/textView1,com.android.launcher3:id/searchImageView,com.android.launcher3:id/inactive,com.android.launcher3:id/gameImageView,com.android.launcher3:id/item_layout3,com.android.launcher3:id/gameIcon3,com.android.launcher3:id/textView2,android:id/content,com.android.launcher3:id/layout,com.android.launcher3:id/search_text_view,com.android.launcher3:id/game_layout,com.android.launcher3:id/line_view,com.android.launcher3:id/focus_indicator,com.android.launcher3:id/item_layout2,com.android.launcher3:id/toast_layout,com.android.launcher3:id/top_search_layout,com.android.launcher3:id/item_layout5\n\u5168\u514d\u5c0f\u8bf4,\u666f\u6df1,\u6bcf\u65e5\u77ed\u5267,\u96f7\u7535\u5708,AT Player,\u684c\u9762\u6c6a,\u0417\u0410\u041a\u0410\u0417\u0410\u0422\u042c \u0417\u0410\u041f\u0427\u0410\u0421\u0422\u0418 \u041e\u041d\u041b\u0410\u0419\u041d,\u6f6e\u6c50\u5b88\u671b\u8005,\u5f00\u53d1\u52a9\u624b,\u6f2b\u6f2b\u6f2b\u753b,Augsburg,\u795e\u5175\u5947\u8ff9,DroidBot,\u5168\u80fd\u6307\u5357\u9488,\u0642\u0648\u0627\u0646\u064a\u0646 \u062c\u0632\u0627\u0626\u0631\u064a\u0629,Magisk Delta,\u5bfc\u51fa,\u50cf\u7d20\u592a\u7a7a\u6740,Jupiter Magazine,Bergamo Notizie,Block Puzzle,Tattoo Name On My Photo Editor Maker,Purple Butterfly PlusOne Theme,Colorful Widget,HVB Banking,\u96f7\u7535\u6e38\u620f\u4e2d\u5fc3,\u5355\u673a\u6d88\u706d\u661f\u661f\u7ecf\u5178\u7248,General Hospital,Love Calculator,\u4fe1\u606f,Adedonha,MT\u7ba1\u7406\u5668,\u4e07\u80fd\u7a7a\u8c03\u9065\u63a7\u5668,\u7b97\u6cd5\u52a9\u624b,\u7cfb\u7edf\u5e94\u7528,\u738b\u5ea7\u4e89\u9738,wuaipojie,SS\u6d4f\u89c8\u5668,\u70ed\u8840\u6c5f\u6e56\uff1a\u5f52\u6765,\u5378\u8f7d,\u5043\u6b66,\u96f7\u7535\u6a21\u62df\u5668\u79fb\u52a8\u7248,SHOFAR MUNDIAL,\u866b\u866b\u52a9\u624b,\u7231\u770b\u7535\u89c6TV,LSPosed,Color Gradient Wallpapers,\u6b65\u591a\u591a",
+      "is_ad_related": false,
+      "is_external_site": false,
+      "font": "14px Arial red"
+    },
+    {
+      "id": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225201.png",
+      "label": "IntroActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.IntroActivity",
+      "state_str": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "structure_str": "caffd26d8c27a11b9a4415d767e7aa15",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.IntroActivity</td></tr>\n<tr><th>state_str</th><td>0cfe11a6dedcc1597a88dc5581e36e69</td></tr>\n<tr><th>structure_str</th><td>caffd26d8c27a11b9a4415d767e7aa15</td></tr>\n<tr><th>is_ad_related</th><td>False</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.IntroActivity\n0cfe11a6dedcc1597a88dc5581e36e69\ncom.dz.law:id/image,com.dz.law:id/indicator_container,com.dz.law:id/main,com.dz.law:id/description,com.dz.law:id/next,com.dz.law:id/background,android:id/content,com.dz.law:id/view_pager,com.dz.law:id/action_bar_root,com.dz.law:id/bottom,com.dz.law:id/title\n\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a\u0646 \u064a\u062f\u064a\u0643,\u0627\u0630\u0627 \u0643\u0646\u062a \u0645\u062e\u062a\u0635\u0627 \u0641\u064a \u0627\u0644\u0645\u062c\u0627\u0644 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a \u062d\u0645\u0644 (\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u062a\u0631\u0641)\u060c \u0648\u0627\u0633\u062a\u0641\u062f \u0645\u0646 \u062c\u0645\u064a\u0639 \u0627\u0644\u0645\u0645\u064a\u0632\u0627\u062a,\u0627\u0630\u0627 \u0627\u0631\u062f\u062a \u0627\u0644\u0627\u0637\u0644\u0627\u0639 \u0639\u0644\u0649 \u0642\u0648\u0627\u0646\u064a\u0646 \u0627\u0644\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u0629 \u0627\u0644\u062f\u064a\u0645\u0642\u0631\u0627\u0637\u064a\u0629 \u0627\u0644\u0634\u0639\u0628\u064a\u0629\u060c \u0641\u0623\u0646\u062a \u0641\u064a \u0627\u0644\u0645\u0643\u0627\u0646 \u0627\u0644\u0635\u062d\u064a\u062d\u060c \u0648\u0647\u0630\u0627 \u0647\u0648 \u062a\u0637\u0628\u064a\u0642\u0643 \u0627\u0644\u0627\u0645\u062b\u0644,\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u062a\u0631\u0641",
+      "is_ad_related": false,
+      "is_external_site": false
+    },
+    {
+      "id": "0ec010e792307e358d184ea304f379dc",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225304.png",
+      "label": "IntroActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.IntroActivity",
+      "state_str": "0ec010e792307e358d184ea304f379dc",
+      "structure_str": "aa5ea66a338f59e0bcd4dde01144f6d1",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.IntroActivity</td></tr>\n<tr><th>state_str</th><td>0ec010e792307e358d184ea304f379dc</td></tr>\n<tr><th>structure_str</th><td>aa5ea66a338f59e0bcd4dde01144f6d1</td></tr>\n<tr><th>is_ad_related</th><td>False</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.IntroActivity\n0ec010e792307e358d184ea304f379dc\ncom.dz.law:id/image,com.dz.law:id/done,com.dz.law:id/indicator_container,com.dz.law:id/main,com.dz.law:id/description,com.dz.law:id/background,android:id/content,com.dz.law:id/view_pager,com.dz.law:id/action_bar_root,com.dz.law:id/bottom,com.dz.law:id/title\n\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a\u0646 \u064a\u062f\u064a\u0643,\u0627\u0630\u0627 \u0643\u0646\u062a \u0645\u062e\u062a\u0635\u0627 \u0641\u064a \u0627\u0644\u0645\u062c\u0627\u0644 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a \u062d\u0645\u0644 (\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u062a\u0631\u0641)\u060c \u0648\u0627\u0633\u062a\u0641\u062f \u0645\u0646 \u062c\u0645\u064a\u0639 \u0627\u0644\u0645\u0645\u064a\u0632\u0627\u062a,\u0627\u0630\u0627 \u0627\u0631\u062f\u062a \u0627\u0644\u0627\u0637\u0644\u0627\u0639 \u0639\u0644\u0649 \u0642\u0648\u0627\u0646\u064a\u0646 \u0627\u0644\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u0629 \u0627\u0644\u062f\u064a\u0645\u0642\u0631\u0627\u0637\u064a\u0629 \u0627\u0644\u0634\u0639\u0628\u064a\u0629\u060c \u0641\u0623\u0646\u062a \u0641\u064a \u0627\u0644\u0645\u0643\u0627\u0646 \u0627\u0644\u0635\u062d\u064a\u062d\u060c \u0648\u0647\u0630\u0627 \u0647\u0648 \u062a\u0637\u0628\u064a\u0642\u0643 \u0627\u0644\u0627\u0645\u062b\u0644,\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u062a\u0631\u0641",
+      "is_ad_related": false,
+      "is_external_site": false
+    },
+    {
+      "id": "98f616c36edb8027fa5708c849e7b4ca",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225713.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "98f616c36edb8027fa5708c849e7b4ca",
+      "structure_str": "8bd6929a19e6bfb2b392769c6439448b",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>98f616c36edb8027fa5708c849e7b4ca</td></tr>\n<tr><th>structure_str</th><td>8bd6929a19e6bfb2b392769c6439448b</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\n98f616c36edb8027fa5708c849e7b4ca\ncom.dz.law:id/feeditem_recycler,com.dz.law:id/ad_root,com.dz.law:id/admob_feeditem,com.dz.law:id/content_layout,mys-wrapper,com.dz.law:id/feeditem_item_content,com.dz.law:id/feeditem_item_thumb_layout,com.dz.law:id/ad_view_layout,com.dz.law:id/root_view,com.dz.law:id/feeditem_item_subtitle,gmsg-video-player,com.dz.law:id/feeditem_item_thumb1,com.dz.law:id/home_tab_frame,com.dz.law:id/exo_expandable_scroll,com.dz.law:id/feeditem_item_snippet,com.dz.law:id/home_tab_pager,all-video-container,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,mys-overlay,com.dz.law:id/home_item_root,com.dz.law:id/feeditem_item_frame,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/main_coordinator_layout,com.dz.law:id/home_item_title,abgcp,com.dz.law:id/feeditem_item_subtitle_layout,com.dz.law:id/main_shade,com.dz.law:id/home_recycler,com.dz.law:id/home_item_thumb,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/main_layout,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/ad_label,com.dz.law:id/feeditem_item_thumb,cbb,com.dz.law:id/home_tab_pager_tab,abgc,abgb,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/home_list_layout,com.dz.law:id/feeditem_item_title,com.dz.law:id/feeditem_list_item_divider,mys-content,com.dz.law:id/exo_play_content_layout,android:id/content,com.dz.law:id/action_bar_root,com.dz.law:id/drawer_layout,com.dz.law:id/swipe_container,bannerSmall,com.dz.law:id/app_bar,com.dz.law:id/media_player_root,com.dz.law:id/admob_banner,com.dz.law:id/tablayout_add,com.dz.law:id/home_item_thumb_wrap,android:id/statusBarBackground,com.dz.law:id/feeditem_item_thumb2,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_item_subtitle_icon,com.dz.law:id/ad_view_bottom\n\u0627\u062d\u0643\u0627\u0645 \u0645\u062e\u062a\u0644\u0641\u0629 \u0641\u064a \u0642\u0648\u0627\u0646\u064a\u0646 \u0627\u0644\u0645\u0627\u0644\u064a\u0629,\u0642\u0648\u0627\u0626\u0645 \u0627\u0644\u062c\u0631\u0627\u0626\u0645 (\u062a\u062c\u0631\u064a\u0628\u064a),\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0648\u0642\u0627\u064a\u0629 \u0645\u0646 \u0627\u0644\u0645\u062e\u062f\u0631\u0627\u062a \u0648\u0642\u0648\u0627\u0626\u0645 \u0627\u0644\u0645\u062e\u062f\u0631\u0627\u062a \u0648\u0627\u0644\u0645\u0624\u062b\u0631\u0627\u062a \u0627\u0644\u0639\u0642\u0644\u064a\u0629,\u0642\u0628\u0644 \u0661\u0660 \u062f\u0642\u0627\u0626\u0642,\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0645\u062f\u0646\u064a,\u8bbf\u95ee\u7f51\u7ad9,\u062a\u0631\u0642\u064a\u0629 \u0627\u0644\u0635\u0627\u062f\u0631\u0627\u062a \u0648\u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0645\u0648\u0627\u0646\u0626.. \u0627\u0644\u0648\u0632\u064a\u0631 \u0627\u0644\u0623\u0648\u0644 \u0628\u0627\u0644\u0646\u064a\u0627\u0628\u0629 \u064a\u062a\u0631\u0623\u0633 \u0625\u062c\u062a\u0645\u0627\u0639\u0627 \u0648\u0632\u0627\u0631\u064a\u0627 \u0645\u0634\u062a\u0631\u0643\u0627,\u0627\u0644\u0628\u062d\u062b \u0639\u0646 \u0642\u0627\u0646\u0648\u0646,\u90a3\u4e48. \u4ec0\u4e48\n\u662f\u7231\u5462?,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0627\u062c\u0631\u0627\u0621\u0627\u062a \u0627\u0644\u062c\u0632\u0627\u0626\u064a\u0629,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0627\u0645\u0644\u0627\u0643 \u0627\u0644\u0648\u0637\u0646\u064a\u0629 (\u0642\u0627\u0646\u0648\u0646 90-30),\u5343\u7591\u5343\u5bfb,\u0643\u0634\u0641\u062a \u0645\u0635\u0627\u062f\u0631 \u0645\u0642\u0631\u0628\u0629 \u0645\u0646 \u0646\u0627\u062f\u064a \u0634\u0628\u0627\u0628 \u0628\u0644\u0648\u0632\u062f\u0627\u062f \u0639\u0646 \u062a\u0648\u0635\u0644 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0641\u0631\u064a\u0642 \u0625\u0644\u0649 \u0627\u062a\u0641\u0627\u0642 \u0646\u0647\u0627\u0626\u064a \u0645\u0639 \u0627\u0644\u0645\u062f\u0627\u0641\u0639 \u0641\u0627\u0631\u0648\u0642 \u0634\u0627\u0641\u0639\u064a\u060c \u0644\u0644\u0627\u0646\u0636\u0645\u0627\u0645 \u0625\u0644\u0649 \u0635\u0641\u0648\u0641 \u0627\u0644\u0646\u0627\u062f\u064a \u0641\u064a \u0642\u0627\u062f\u0645 \u0627\u0644\u0645\u0648\u0627\u0639\u064a\u062f\u060c \u0641\u064a \u0627\u0646\u062a\u0638\u0627\u0631 \u0627\u0644\u0625\u0639\u0644\u0627\u0646 \u0627\u0644\u0631\u0633\u0645\u064a \u0639\u0646 \u0627\u0644\u0635\u0641\u0642\u0629 \u062e\u0644\u0627\u0644 \u0627\u0644\u0633\u0627\u0639\u0627\u062a \u0627\u0644\u0642\u0644\u064a\u0644\u0629 \u0627\u0644\u0645\u0642\u0628\u0644\u0629. \u0648\u0623\u0643\u062f\u062a \u0646\u0641\u0633 \u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u0623\u0646 \u0634\u0627\u0641\u0639\u064a \u0627\u062e\u062a\u0627\u0631 \u0627\u0644\u0639\u0648\u062f\u0629 \u0625\u0644\u0649 \u0627\u0644\u0628\u0637\u0648\u0644\u0629 \u0627\u0644\u0648\u0637\u0646\u064a\u0629 \u0628\u0639\u062f \u062a\u0639\u062b\u0631 \u0645\u0641\u0627\u0648\u0636\u0627\u062a\u0647 \u0645\u0639 \u0646\u0627\u062f\u064a \u0627\u0644\u0648\u062d,\u0627\u0633\u062a\u0642\u0628\u0644 \u0627\u0644\u0645\u062f\u064a\u0631 \u0627\u0644\u0639\u0627\u0645 \u0644\u0644\u062d\u0645\u0627\u064a\u0629 \u0627\u0644\u0645\u062f\u0646\u064a\u0629 \u0627\u0644\u0639\u0642\u064a\u062f \u0628\u0648\u0639\u0644\u0627\u0645 \u0628\u0648\u063a\u0644\u0627\u0641\u060c \u0631\u0641\u0642\u0629 \u0625\u0637\u0627\u0631\u0627\u062a \u0627\u0644\u0645\u062f\u064a\u0631\u064a\u0629 \u0627\u0644\u0639\u0627\u0645\u0629\u060c \u0627\u0644\u064a\u0648\u0645 \u0627\u0644\u0648\u0641\u062f \u0627\u0644\u0635\u064a\u0646\u064a \u0628\u0631\u0626\u0627\u0633\u0629 \u0627\u0644\u0633\u064a\u062f \u0647\u0648 \u0645\u064a\u0646\u063a \u0644\u0627\u0646\u063a\u060c \u0646\u0627\u0626\u0628 \u0648\u0632\u064a\u0631 \u0628\u0648\u0632\u0627\u0631\u0629 \u062a\u0633\u064a\u064a\u0631 \u0627\u0644\u0637\u0648\u0627\u0631\u0626 \u0644\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u0635\u064a\u0646 \u0627\u0644\u0634\u0639\u0628\u064a\u0629 \u0639\u0644\u0649 \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0645\u062f\u064a\u0631\u064a\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0648\u0642\u062f \u0634\u0645\u0644\u062a \u0647\u0630\u0647 \u0627\u0644\u0632\u064a\u0627\u0631\u0629 \u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u0648\u0637\u0646\u064a \u0644\u0644\u062a\u0646\u0633\u064a\u0642\u060c \u062d\u064a\u062b \u062a\u0645 \u062a\u0642\u062f\u064a\u0645 \u0634\u0631\u0648\u062d\u0627\u062a \u062d\u0648\u0644 \u0622\u0644\u064a\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u0628\u0639\u0629 \u0648,\u0642\u0627\u0646\u0648\u0646 \u062a\u0646\u0638\u064a\u0645 \u0627\u0644\u0633\u062c\u0648\u0646 \u0648\u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0625\u062f\u0645\u0627\u062c \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a \u0644\u0644\u0645\u062d\u0628\u0648\u0633\u064a\u0646 (\u0627\u0644\u0642\u0627\u0646\u0648\u0646 05-04),\u0639\u0644\u0649 \u0645\u0634\u0627\u0631\u0641 \u0627\u0644\u0627\u0639\u0644\u0627\u0646 \u0627\u0644\u0631\u0633\u0645\u064a.. \u0641\u0627\u0631\u0648\u0642 \u0634\u0627\u0641\u0639\u064a \u064a\u062a\u0641\u0642 \u0645\u0639 \u0634\u0628\u0627\u0628 \u0628\u0644\u0648\u0632\u062f\u0627\u062f,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0639\u0642\u0648\u0628\u0627\u062a,\u0642\u0627\u0646\u0648\u0646 \u062d\u0645\u0627\u064a\u0629 \u0627\u0644\u0648\u062b\u0627\u0626\u0642 \u0648\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0627\u062f\u0627\u0631\u064a\u0629 (\u0627\u0644\u0627\u0645\u0631 21-09),\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u062a\u0631\u0641\u060c \u0644\u0645\u0627\u0630\u0627\u061f,\u0641\u0643\u0643 \u0634\u0628\u0643\u0629 \u0625\u062c\u0631\u0627\u0645\u064a\u0629 \u0645\u0646\u0638\u0645\u0629 \u062f\u0648\u0644\u064a\u0629 \u062a\u0646\u0634\u0637 \u0641\u064a \u0627\u0644\u062a\u0647\u0631\u064a\u0628 \u0648\u0627\u0644\u0625\u062a\u062c\u0627\u0631 \u063a\u064a\u0631 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0628\u0627\u0644\u0645\u0624\u062b\u0631\u0627\u062a \u0627\u0644\u0639\u0642\u0644\u064a\u0629,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0627\u0633\u0631\u0629 84-11,\u0627\u0644\u062f\u0633\u062a\u0648\u0631 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a 2020,+,\u0627\u0644\u0623\u062e\u0628\u0627\u0631,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0648\u0642\u0627\u064a\u0629 \u0645\u0646 \u0627\u0644\u062a\u0645\u064a\u064a\u0632 \u0648\u062e\u0637\u0627\u0628 \u0627\u0644\u0643\u0631\u0627\u0647\u064a\u0629 \u0648\u0645\u0643\u0627\u0641\u062d\u062a\u0647\u0645\u0627 (\u0627\u0644\u0642\u0627\u0646\u0648\u0646 20-05),\u0642\u0628\u0644 \u0662\u0661 \u062f\u0642\u064a\u0642\u0629,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0648\u0642\u0627\u064a\u0629 \u0645\u0646 \u0639\u0635\u0627\u0628\u0627\u062a \u0627\u0644\u0627\u062d\u064a\u0627\u0621 \u0648\u0645\u0643\u0627\u0641\u062d\u062a\u0647\u0627 (\u0627\u0644\u0627\u0645\u0631 20-03),\u0627\u0644\u0646\u0647\u0627\u0631 \u0623\u0648\u0646\u0644\u0627\u064a\u0646,\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u062a\u0648\u062c\u064a\u0647 \u0627\u0644\u0641\u0644\u0627\u062d\u064a (08-16),\u062a\u0645\u0643\u0646\u062a\u00a0 \u0645\u0635\u0644\u062d\u0629 \u0645\u0643\u0627\u0641\u062d\u0629 \u0627\u0644\u0645\u062e\u062f\u0631\u0627\u062a \u0644\u0644\u062f\u0631\u0643 \u0627\u0644\u0648\u0637\u0646\u064a \u0645\u0646\u00a0 \u062a\u0641\u0643\u064a\u0643 \u0634\u0628\u0643\u0629 \u0625\u062c\u0631\u0627\u0645\u064a\u0629 \u0645\u0646\u0638\u0645\u0629 \u0630\u0627\u062a \u0625\u0645\u062a\u062f\u0627\u062f \u062f\u0648\u0644\u064a \u062a\u0646\u0634\u0637 \u0641\u064a \u0627\u0644\u062a\u0647\u0631\u064a\u0628 \u0648\u0627\u0644\u0625\u062a\u062c\u0627\u0631 \u063a\u064a\u0631 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0628\u0627\u0644\u0645\u0624\u062b\u0631\u0627\u062a \u0627\u0644\u0639\u0642\u0644\u064a\u0629. \u0627\u0644\u0634\u0628\u0643\u0629 \u0627\u0644\u0625\u062c\u0631\u0627\u0645\u064a\u0629 \u0643\u0627\u0646\u062a \u062a\u0646\u0634\u0637 \u0625\u0646\u0637\u0644\u0627\u0642\u0627 \u0645\u0646 \u0627\u0644\u062d\u062f\u0648\u062f \u0627\u0644\u0644\u064a\u0628\u064a\u0629 \u0625\u0644\u0649 \u063a\u0627\u064a\u0629 \u0627\u0644\u0648\u0644\u0627\u064a\u0627\u062a \u0627\u0644\u0634\u0631\u0642\u064a\u0629 \u0644\u0644\u0648\u0637\u0646 \u0648\u0642\u062f \u0645\u0643\u0646\u062a \u0627\u0644\u0639\u0645\u0644\u064a\u0629\u00a0 \u0627\u0644\u0639\u0645\u0644\u064a\u0629 \u0645\u0646 \u062d\u062c\u0632 129.500 \u0643\u0628\u0633\u0648\u0644\u0629 \u0645\u0646 \u0627\u0644\u0645\u0624\u062b\u0631\u0627\u062a \u0627\u0644\u0639\u0642\u0644\u064a\u0629,\u0642\u0628\u0644 \u0633\u0627\u0639\u0629 \u0648\u0627\u062d\u062f\u0629,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,\u0642\u0645\u0639 \u0627\u0644\u0633\u0643\u0631 \u0627\u0644\u0639\u0645\u0648\u0645\u064a \u0648\u062d\u0645\u0627\u064a\u0629 \u0627\u0644\u0642\u0635\u0631 \u0645\u0646 \u0627\u0644\u0643\u062d\u0648\u0644 (\u0627\u0645\u0631 75-26),\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0648\u0642\u0627\u064a\u0629 \u0645\u0646 \u062c\u0631\u0627\u0626\u0645 \u0627\u062e\u062a\u0637\u0627\u0641 \u0627\u0644\u0623\u0634\u062e\u0627\u0635 \u0648\u0645\u0643\u0627\u0641\u062d\u062a\u0647\u0627 (\u0642\u0627\u0646\u0648\u0646 20-15),\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0627\u062c\u0631\u0627\u0621\u0627\u062a \u0627\u0644\u0645\u062f\u0646\u064a\u0629 \u0648\u0627\u0644\u0627\u062f\u0627\u0631\u064a\u0629,\u062a\u0639\u0632\u064a\u0632 \u0627\u0644\u062a\u0639\u0627\u0648\u0646 \u0627\u0644\u062b\u0646\u0627\u0626\u064a \u0628\u064a\u0646 \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0648\u0627\u0644\u0635\u064a\u0646..\u0627\u0644\u0639\u0642\u064a\u062f \u0628\u0648\u0639\u0644\u0627\u0645 \u0628\u0648\u063a\u0644\u0627\u0641 \u064a\u0633\u062a\u0642\u0628\u0644 \u0648\u0641\u062f\u0627 \u0635\u064a\u0646\u064a\u0627",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "64c11a8c98303e26be61ffe16db62c54",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225731.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "64c11a8c98303e26be61ffe16db62c54",
+      "structure_str": "fd2af2cafa12eee8bea20afdd4141c3d",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>64c11a8c98303e26be61ffe16db62c54</td></tr>\n<tr><th>structure_str</th><td>fd2af2cafa12eee8bea20afdd4141c3d</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\n64c11a8c98303e26be61ffe16db62c54\ncom.dz.law:id/feeditem_recycler,com.dz.law:id/ad_root,com.dz.law:id/admob_feeditem,com.dz.law:id/content_layout,mys-wrapper,com.dz.law:id/feeditem_item_content,com.dz.law:id/ad_view_layout,com.dz.law:id/root_view,com.dz.law:id/exo_expandable_scroll,bannerSmallTextCtaGT50WithoutBody,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,mys-overlay,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/main_coordinator_layout,abgcp,com.dz.law:id/main_shade,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/feeditem_item_media_info_icon,cbb,abgc,abgb,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,mys-content,com.dz.law:id/feeditem_item_title,com.dz.law:id/exo_play_content_layout,android:id/content,com.dz.law:id/action_bar_root,com.dz.law:id/drawer_layout,com.dz.law:id/swipe_container,com.dz.law:id/app_bar,com.dz.law:id/media_player_root,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/admob_banner,android:id/statusBarBackground,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/ad_view_bottom\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,\u5343\u7591\u5343\u5bfb,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,\u0647\u0630\u0647 \u0627\u0644\u0635\u0648\u0631\u0629 \u063a\u064a\u0631 \u0645\u0635\u0646\u0651\u064e\u0641\u0629. \u0627\u0641\u062a\u062d \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0625\u0636\u0627\u0641\u064a\u0629 \u0641\u064a \u0623\u0639\u0644\u0649 \u064a\u0633\u0627\u0631 \u0627\u0644\u0635\u0641\u062d\u0629 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0648\u0635\u0627\u0641 \u0627\u0644\u0635\u0648\u0631.,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,\u8bbf\u95ee\u7f51\u7ad9,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621,\u5bfb\u6c42\u8c05\u89e3",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "1fc047dfac3b4fa2d7d033c05ee764c4",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225750.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "1fc047dfac3b4fa2d7d033c05ee764c4",
+      "structure_str": "db88f05277fa1c2477a43062c3799fe1",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>1fc047dfac3b4fa2d7d033c05ee764c4</td></tr>\n<tr><th>structure_str</th><td>db88f05277fa1c2477a43062c3799fe1</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\n1fc047dfac3b4fa2d7d033c05ee764c4\ncom.dz.law:id/feeditem_recycler,com.dz.law:id/ad_root,com.dz.law:id/admob_feeditem,com.dz.law:id/content_layout,com.dz.law:id/exo_media_player_share,com.dz.law:id/exo_media_player_like,com.dz.law:id/feeditem_item_content,com.dz.law:id/ad_view_layout,com.dz.law:id/exo_media_player_download,com.dz.law:id/exo_media_player_pip,com.dz.law:id/exo_media_player_playing,com.dz.law:id/exo_play_title,com.dz.law:id/exo_shutter,com.dz.law:id/root_view,com.dz.law:id/exo_expandable_scroll,com.dz.law:id/exo_play_frame,com.dz.law:id/exo_play_subtitle,com.dz.law:id/exo_expandable_layout,com.dz.law:id/exo_media_player_download_wrap,com.dz.law:id/exo_expandable_channel_layout,com.dz.law:id/exo_player_watermark,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,com.dz.law:id/exo_expandable_pubdate,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/main_coordinator_layout,com.dz.law:id/exo_media_player_speed,com.dz.law:id/exo_progress_main,com.dz.law:id/main_shade,com.dz.law:id/exo_cover,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/exo_subtitles,com.dz.law:id/exo_expandable_content,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/feeditem_item_media_info_icon,com.dz.law:id/exo_expandable_channel_layout_border,com.dz.law:id/exo_header_layout,com.dz.law:id/exo_content_frame,com.dz.law:id/exo_play_context_id,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/feeditem_item_title,com.dz.law:id/exo_play_content_layout,com.dz.law:id/exo_controller_barrage,android:id/content,com.dz.law:id/action_bar_root,com.dz.law:id/exo_media_player_link,com.dz.law:id/exo_header_title,com.dz.law:id/exo_media_other_control,com.dz.law:id/drawer_layout,com.dz.law:id/exo_overlay,com.dz.law:id/swipe_container,com.dz.law:id/exo_play_mini_layout,com.dz.law:id/exo_play_play_pause,com.dz.law:id/exo_expandable_channel,com.dz.law:id/exo_media_player_timer,com.dz.law:id/app_bar,com.dz.law:id/media_player_root,com.dz.law:id/exo_expandable_channel_icon,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/admob_banner,com.dz.law:id/exo_media_player_like_wrap,android:id/statusBarBackground,com.dz.law:id/selectableItem,com.dz.law:id/exo_play_close,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/exo_expandable_frame,com.dz.law:id/ad_view_bottom\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0627\u0644\u0642\u0627\u0631\u0626 \u0639\u0628\u062f\u0627\u0644\u0628\u0627\u0633\u0637 \u0639\u0628\u062f\u0627\u0644\u0635\u0645\u062f - \u0631\u0648\u0627\u064a\u0629 \u062d\u0641\u0635 \u0639\u0646 \u0639\u0627\u0635\u0645 -  Abdulbasit Abdulsamad - Rewayat Hafs A'n Assem | ,Al-Baqarah,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,1.0x,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "dd13fdc9897d72956d9d6f30ae3ac23f",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225853.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "dd13fdc9897d72956d9d6f30ae3ac23f",
+      "structure_str": "d9928234dbf3d95081d7762013e8f5d2",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>dd13fdc9897d72956d9d6f30ae3ac23f</td></tr>\n<tr><th>structure_str</th><td>d9928234dbf3d95081d7762013e8f5d2</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\ndd13fdc9897d72956d9d6f30ae3ac23f\ncom.dz.law:id/exo_media_player_pip,com.dz.law:id/exo_play_frame,com.dz.law:id/app_bar_search,com.dz.law:id/exo_expandable_channel_layout,com.dz.law:id/appBarLayout,com.dz.law:id/main_coordinator_layout,com.dz.law:id/main_shade,com.dz.law:id/exo_expandable_content,cbb,abgc,mys-content,com.dz.law:id/exo_play_content_layout,com.dz.law:id/exo_media_player_link,com.dz.law:id/exo_overlay,com.dz.law:id/exo_expandable_channel,com.dz.law:id/exo_play_play_pause,com.dz.law:id/exo_media_player_timer,com.dz.law:id/admob_banner,com.dz.law:id/exo_media_player_like_wrap,android:id/statusBarBackground,com.dz.law:id/exo_play_close,com.dz.law:id/ad_root,com.dz.law:id/exo_media_player_share,com.dz.law:id/ad_view_layout,com.dz.law:id/exo_media_player_download,com.dz.law:id/root_view,com.dz.law:id/exo_play_subtitle,com.dz.law:id/exo_media_player_download_wrap,mys-overlay,com.dz.law:id/exo_media_player_speed,com.dz.law:id/exo_cover,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/exo_play_context_id,com.dz.law:id/exo_controller_barrage,android:id/content,com.dz.law:id/swipe_container,com.dz.law:id/exo_play_mini_layout,com.dz.law:id/media_player_root,mys-wrapper,com.dz.law:id/exo_expandable_frame,com.dz.law:id/ad_view_bottom,com.dz.law:id/admob_feeditem,com.dz.law:id/exo_media_player_like,com.dz.law:id/feeditem_item_content,com.dz.law:id/exo_media_player_playing,com.dz.law:id/exo_expandable_scroll,bannerSmallTextCtaGT50WithoutBody,abgcp,com.dz.law:id/feeditem_item_media_info_icon,com.dz.law:id/exo_expandable_channel_layout_border,square-rda-logo-vanilla,com.dz.law:id/exo_media_other_control,com.dz.law:id/exo_expandable_channel_icon,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_recycler,com.dz.law:id/content_layout,com.dz.law:id/exo_play_title,com.dz.law:id/exo_shutter,com.dz.law:id/exo_expandable_layout,com.dz.law:id/feeditem_item_media_info_text,com.dz.law:id/exo_player_watermark,com.dz.law:id/exo_expandable_pubdate,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/exo_progress_main,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/exo_subtitles,com.dz.law:id/exo_header_layout,abgb,com.dz.law:id/exo_content_frame,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/feeditem_item_title,com.dz.law:id/action_bar_root,com.dz.law:id/exo_header_title,com.dz.law:id/drawer_layout,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/app_bar\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,\u0627\u0644\u0642\u0627\u0631\u0626 \u0639\u0628\u062f\u0627\u0644\u0628\u0627\u0633\u0637 \u0639\u0628\u062f\u0627\u0644\u0635\u0645\u062f - \u0631\u0648\u0627\u064a\u0629 \u062d\u0641\u0635 \u0639\u0646 \u0639\u0627\u0635\u0645 -  Abdulbasit Abdulsamad - Rewayat Hafs A'n Assem | ,Al-Baqarah,\u5343\u7591\u5343\u5bfb,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,2:41:31,\u7231\u5462?,\u90a3\u4e48. \u4ec0\u4e48\u662f,\u0647\u0630\u0647 \u0627\u0644\u0635\u0648\u0631\u0629 \u063a\u064a\u0631 \u0645\u0635\u0646\u0651\u064e\u0641\u0629. \u0627\u0641\u062a\u062d \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0625\u0636\u0627\u0641\u064a\u0629 \u0641\u064a \u0623\u0639\u0644\u0649 \u064a\u0633\u0627\u0631 \u0627\u0644\u0635\u0641\u062d\u0629 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0648\u0635\u0627\u0641 \u0627\u0644\u0635\u0648\u0631.,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,\u8bbf\u95ee\u7f51\u7ad9,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621,1.0x,\n,\u6211\u5982\u4f55\u624d\u80fd\u627e\u5230\u957f\u4e45\u7684\u7231?,\u5bfb\u6c42\u8c05\u89e3",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "b746c3ee4485bbf5bd468bed939e0f8b",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_225914.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "b746c3ee4485bbf5bd468bed939e0f8b",
+      "structure_str": "c208324b9f43a40af5414dd570a2a3a6",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>b746c3ee4485bbf5bd468bed939e0f8b</td></tr>\n<tr><th>structure_str</th><td>c208324b9f43a40af5414dd570a2a3a6</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\nb746c3ee4485bbf5bd468bed939e0f8b\ncom.dz.law:id/exo_media_player_pip,com.dz.law:id/exo_play_frame,com.dz.law:id/exo_expandable_channel_layout,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,com.dz.law:id/main_coordinator_layout,com.dz.law:id/main_shade,com.dz.law:id/exo_expandable_content,cbb,abgc,mys-content,com.dz.law:id/exo_play_content_layout,com.dz.law:id/exo_media_player_link,com.dz.law:id/exo_overlay,com.dz.law:id/exo_expandable_channel,com.dz.law:id/exo_play_play_pause,com.dz.law:id/exo_media_player_timer,com.dz.law:id/admob_banner,com.dz.law:id/exo_media_player_like_wrap,android:id/statusBarBackground,com.dz.law:id/exo_play_close,com.dz.law:id/ad_root,com.dz.law:id/exo_media_player_share,com.dz.law:id/ad_view_layout,com.dz.law:id/exo_media_player_download,com.dz.law:id/root_view,com.dz.law:id/exo_play_subtitle,com.dz.law:id/exo_media_player_download_wrap,com.dz.law:id/exo_media_player_speed,com.dz.law:id/exo_cover,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/exo_play_context_id,com.dz.law:id/exo_controller_barrage,android:id/content,com.dz.law:id/swipe_container,com.dz.law:id/exo_play_mini_layout,com.dz.law:id/media_player_root,mys-wrapper,com.dz.law:id/exo_expandable_frame,com.dz.law:id/ad_view_bottom,com.dz.law:id/admob_feeditem,com.dz.law:id/exo_media_player_like,com.dz.law:id/feeditem_item_content,com.dz.law:id/exo_media_player_playing,com.dz.law:id/exo_expandable_scroll,abgcp,com.dz.law:id/feeditem_item_media_info_icon,com.dz.law:id/exo_expandable_channel_layout_border,square-rda-logo-vanilla,com.dz.law:id/exo_media_other_control,com.dz.law:id/exo_expandable_channel_icon,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_recycler,com.dz.law:id/content_layout,com.dz.law:id/exo_play_title,com.dz.law:id/exo_shutter,com.dz.law:id/exo_expandable_layout,com.dz.law:id/feeditem_item_media_info_text,com.dz.law:id/exo_player_watermark,com.dz.law:id/exo_expandable_pubdate,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/exo_progress_main,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/exo_subtitles,com.dz.law:id/exo_header_layout,abgb,com.dz.law:id/exo_content_frame,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/feeditem_item_title,com.dz.law:id/action_bar_root,com.dz.law:id/exo_header_title,com.dz.law:id/drawer_layout,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/app_bar\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0627\u0644\u0642\u0627\u0631\u0626 \u0639\u0628\u062f\u0627\u0644\u0628\u0627\u0633\u0637 \u0639\u0628\u062f\u0627\u0644\u0635\u0645\u062f - \u0631\u0648\u0627\u064a\u0629 \u062d\u0641\u0635 \u0639\u0646 \u0639\u0627\u0635\u0645 -  Abdulbasit Abdulsamad - Rewayat Hafs A'n Assem | ,Al-Baqarah,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,\u5343\u7591\u5343\u5bfb,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,2:41:31,\u7231\u5462?,\u90a3\u4e48. \u4ec0\u4e48\u662f,\u0647\u0630\u0647 \u0627\u0644\u0635\u0648\u0631\u0629 \u063a\u064a\u0631 \u0645\u0635\u0646\u0651\u064e\u0641\u0629. \u0627\u0641\u062a\u062d \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0625\u0636\u0627\u0641\u064a\u0629 \u0641\u064a \u0623\u0639\u0644\u0649 \u064a\u0633\u0627\u0631 \u0627\u0644\u0635\u0641\u062d\u0629 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0648\u0635\u0627\u0641 \u0627\u0644\u0635\u0648\u0631.,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,\u8bbf\u95ee\u7f51\u7ad9,1.0x,\n,\u6211\u5982\u4f55\u624d\u80fd\u627e\u5230\u957f\u4e45\u7684\u7231?,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "dde56d840e3f6f769a7f223d8b45e045",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_230028.png",
+      "label": "MainActivity",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "dde56d840e3f6f769a7f223d8b45e045",
+      "structure_str": "fedb65d09af90d2e2f774fb3a2109c66",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>dde56d840e3f6f769a7f223d8b45e045</td></tr>\n<tr><th>structure_str</th><td>fedb65d09af90d2e2f774fb3a2109c66</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\ndde56d840e3f6f769a7f223d8b45e045\ncom.dz.law:id/exo_media_player_pip,com.dz.law:id/exo_play_frame,com.dz.law:id/exo_expandable_channel_layout,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,com.dz.law:id/main_coordinator_layout,com.dz.law:id/main_shade,com.dz.law:id/exo_expandable_content,cbb,abgc,mys-content,com.dz.law:id/exo_play_content_layout,com.dz.law:id/exo_media_player_link,com.dz.law:id/exo_overlay,com.dz.law:id/exo_expandable_channel,com.dz.law:id/exo_play_play_pause,com.dz.law:id/exo_media_player_timer,com.dz.law:id/admob_banner,com.dz.law:id/exo_media_player_like_wrap,android:id/statusBarBackground,com.dz.law:id/exo_play_close,com.dz.law:id/ad_root,com.dz.law:id/exo_media_player_share,com.dz.law:id/ad_view_layout,com.dz.law:id/exo_media_player_download,com.dz.law:id/root_view,com.dz.law:id/exo_play_subtitle,com.dz.law:id/exo_media_player_download_wrap,square-rda-vanilla,com.dz.law:id/exo_media_player_speed,com.dz.law:id/exo_cover,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/exo_play_context_id,com.dz.law:id/exo_controller_barrage,android:id/content,com.dz.law:id/swipe_container,com.dz.law:id/exo_play_mini_layout,com.dz.law:id/media_player_root,mys-wrapper,com.dz.law:id/exo_expandable_frame,com.dz.law:id/ad_view_bottom,com.dz.law:id/admob_feeditem,com.dz.law:id/exo_media_player_like,com.dz.law:id/feeditem_item_content,com.dz.law:id/exo_media_player_playing,com.dz.law:id/exo_expandable_scroll,abgcp,com.dz.law:id/feeditem_item_media_info_icon,com.dz.law:id/exo_expandable_channel_layout_border,com.dz.law:id/exo_media_other_control,com.dz.law:id/exo_expandable_channel_icon,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_recycler,com.dz.law:id/content_layout,com.dz.law:id/exo_play_title,com.dz.law:id/exo_shutter,com.dz.law:id/exo_expandable_layout,com.dz.law:id/feeditem_item_media_info_text,com.dz.law:id/exo_player_watermark,com.dz.law:id/exo_expandable_pubdate,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/exo_progress_main,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/exo_subtitles,com.dz.law:id/exo_header_layout,abgb,com.dz.law:id/exo_content_frame,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/feeditem_item_title,com.dz.law:id/action_bar_root,com.dz.law:id/exo_header_title,com.dz.law:id/drawer_layout,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/app_bar\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0627\u0644\u0642\u0627\u0631\u0626 \u0639\u0628\u062f\u0627\u0644\u0628\u0627\u0633\u0637 \u0639\u0628\u062f\u0627\u0644\u0635\u0645\u062f - \u0631\u0648\u0627\u064a\u0629 \u062d\u0641\u0635 \u0639\u0646 \u0639\u0627\u0635\u0645 -  Abdulbasit Abdulsamad - Rewayat Hafs A'n Assem | ,Al-Baqarah,\u4f60\u8ba4\u4e3a\u7231\u662f\u4ec0\u4e48\uff1f,\u5343\u7591\u5343\u5bfb,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,2:41:31,\u0647\u0630\u0647 \u0627\u0644\u0635\u0648\u0631\u0629 \u063a\u064a\u0631 \u0645\u0635\u0646\u0651\u064e\u0641\u0629. \u0627\u0641\u062a\u062d \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0625\u0636\u0627\u0641\u064a\u0629 \u0641\u064a \u0623\u0639\u0644\u0649 \u064a\u0633\u0627\u0631 \u0627\u0644\u0635\u0641\u062d\u0629 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0648\u0635\u0627\u0641 \u0627\u0644\u0635\u0648\u0631.,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,\u8bbf\u95ee\u7f51\u7ad9,1.0x,\u6c38\u6052\u7684\u7231\u662f\u5b58\u5728\u7684\u54e6,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621",
+      "is_ad_related": true,
+      "is_external_site": false
+    },
+    {
+      "id": "184254b36860276a540c6805de7135c0",
+      "shape": "image",
+      "image": "states\\screen_2025-09-11_230141.png",
+      "label": "MainActivity\n<LAST>",
+      "package": "com.dz.law",
+      "activity": "com.appyet.activity.MainActivity",
+      "state_str": "184254b36860276a540c6805de7135c0",
+      "structure_str": "c208324b9f43a40af5414dd570a2a3a6",
+      "title": "<table class=\"table\">\n<tr><th>package</th><td>com.dz.law</td></tr>\n<tr><th>activity</th><td>com.appyet.activity.MainActivity</td></tr>\n<tr><th>state_str</th><td>184254b36860276a540c6805de7135c0</td></tr>\n<tr><th>structure_str</th><td>c208324b9f43a40af5414dd570a2a3a6</td></tr>\n<tr><th>is_ad_related</th><td>True</td></tr>\n<tr><th>is_external_site</th><td>False</td></tr>\n<tr><th>is_market_page</th><td>False</td></tr>\n</table>",
+      "content": "com.dz.law\ncom.appyet.activity.MainActivity\n184254b36860276a540c6805de7135c0\ncom.dz.law:id/exo_media_player_pip,com.dz.law:id/exo_play_frame,com.dz.law:id/exo_expandable_channel_layout,com.dz.law:id/app_bar_search,com.dz.law:id/appBarLayout,com.dz.law:id/main_coordinator_layout,com.dz.law:id/main_shade,com.dz.law:id/exo_expandable_content,cbb,abgc,mys-content,com.dz.law:id/exo_play_content_layout,com.dz.law:id/exo_media_player_link,com.dz.law:id/exo_overlay,com.dz.law:id/exo_expandable_channel,com.dz.law:id/exo_play_play_pause,com.dz.law:id/exo_media_player_timer,com.dz.law:id/admob_banner,com.dz.law:id/exo_media_player_like_wrap,android:id/statusBarBackground,com.dz.law:id/exo_play_close,com.dz.law:id/ad_root,com.dz.law:id/exo_media_player_share,com.dz.law:id/ad_view_layout,com.dz.law:id/exo_media_player_download,com.dz.law:id/root_view,com.dz.law:id/exo_play_subtitle,com.dz.law:id/exo_media_player_download_wrap,com.dz.law:id/exo_media_player_speed,com.dz.law:id/exo_cover,com.dz.law:id/feeditem_item_cardview,com.dz.law:id/feeditem_item_thumb,com.dz.law:id/exo_play_context_id,com.dz.law:id/exo_controller_barrage,android:id/content,com.dz.law:id/swipe_container,com.dz.law:id/exo_play_mini_layout,com.dz.law:id/media_player_root,mys-wrapper,com.dz.law:id/exo_expandable_frame,com.dz.law:id/ad_view_bottom,com.dz.law:id/admob_feeditem,com.dz.law:id/exo_media_player_like,com.dz.law:id/feeditem_item_content,com.dz.law:id/exo_media_player_playing,com.dz.law:id/exo_expandable_scroll,abgcp,com.dz.law:id/feeditem_item_media_info_icon,com.dz.law:id/exo_expandable_channel_layout_border,square-rda-logo-vanilla,com.dz.law:id/exo_media_other_control,com.dz.law:id/exo_expandable_channel_icon,com.dz.law:id/feeditem_item_progressbar,com.dz.law:id/selectableItem,com.dz.law:id/feeditem_recycler,com.dz.law:id/content_layout,com.dz.law:id/exo_play_title,com.dz.law:id/exo_shutter,com.dz.law:id/exo_expandable_layout,com.dz.law:id/feeditem_item_media_info_text,com.dz.law:id/exo_player_watermark,com.dz.law:id/exo_expandable_pubdate,com.dz.law:id/bottom_sheet_frame,com.dz.law:id/exo_progress_main,com.dz.law:id/feeditem_item_pubdate,com.dz.law:id/main_layout,com.dz.law:id/ad_label,com.dz.law:id/exo_subtitles,com.dz.law:id/exo_header_layout,abgb,com.dz.law:id/exo_content_frame,com.dz.law:id/feeditem_item_status_layout,com.dz.law:id/main_content_frame,com.dz.law:id/feeditem_item_title,com.dz.law:id/action_bar_root,com.dz.law:id/exo_header_title,com.dz.law:id/drawer_layout,com.dz.law:id/feeditem_item_media_info,com.dz.law:id/app_bar\n\u0662\u0667 \u0623\u0643\u062a\u0648\u0628\u0631 \u0662\u0660\u0661\u0660,001 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0641\u0627\u062a\u062d\u0629,\u0627\u0644\u0642\u0627\u0631\u0626 \u0639\u0628\u062f\u0627\u0644\u0628\u0627\u0633\u0637 \u0639\u0628\u062f\u0627\u0644\u0635\u0645\u062f - \u0631\u0648\u0627\u064a\u0629 \u062d\u0641\u0635 \u0639\u0646 \u0639\u0627\u0635\u0645 -  Abdulbasit Abdulsamad - Rewayat Hafs A'n Assem | ,\u539f\u8c05\u4e86,Al-Baqarah,\u5343\u7591\u5343\u5bfb,002 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629,\u0642\u0631\u0622\u0646 \u0643\u0631\u064a\u0645,2:41:31,\u4e5f\u8bb8\u4f60\u505a\u9519\u4e86\u4ec0\u4e48\uff0c\u4f60\u76f8\u4fe1\u4f60\u4f1a\u88ab,\u6211\u89c9\u5f97\u6211\u4e0d\u80fd\u88ab,\u0647\u0630\u0647 \u0627\u0644\u0635\u0648\u0631\u0629 \u063a\u064a\u0631 \u0645\u0635\u0646\u0651\u064e\u0641\u0629. \u0627\u0641\u062a\u062d \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0625\u0636\u0627\u0641\u064a\u0629 \u0641\u064a \u0623\u0639\u0644\u0649 \u064a\u0633\u0627\u0631 \u0627\u0644\u0635\u0641\u062d\u0629 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0648\u0635\u0627\u0641 \u0627\u0644\u0635\u0648\u0631.,003 - \u0633\u0648\u0631\u0629 \u0622\u0644 \u0639\u0645\u0631\u0627\u0646,\u8bbf\u95ee\u7f51\u7ad9,1.0x,\n,004 - \u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0633\u0627\u0621,\u539f\u8c05\u5417\uff1f",
+      "is_ad_related": true,
+      "is_external_site": false,
+      "font": "14px Arial red"
+    }
+  ],
+  "edges": [
+    {
+      "from": "4079cfb78a20b82340c044c34d1aa724",
+      "to": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "id": "4079cfb78a20b82340c044c34d1aa724-->0cfe11a6dedcc1597a88dc5581e36e69",
+      "title": "<table class=\"table\">\n<tr><th>1</th><td>IntentEvent(intent='am start com.dz.law/com.appyet.activity.MainActivity')</td></tr>\n</table>",
+      "label": "1",
+      "events": [
+        {
+          "event_str": "IntentEvent(intent='am start com.dz.law/com.appyet.activity.MainActivity')",
+          "event_id": 1,
+          "event_type": "intent",
+          "event_subtype": null,
+          "view_content_descriptions": [],
+          "view_texts": [],
+          "view_descriptions": [],
+          "view_images": [],
+          "view_bounds": [],
+          "view_res_id": [],
+          "view_ad_feature": [],
+          "view_ad_format": []
+        }
+      ]
+    },
+    {
+      "from": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "to": "0ec010e792307e358d184ea304f379dc",
+      "id": "0cfe11a6dedcc1597a88dc5581e36e69-->0ec010e792307e358d184ea304f379dc",
+      "title": "<table class=\"table\">\n<tr><th>2</th><td>ScrollEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=LEFT)</td></tr>\n<tr><th>4</th><td>TouchEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=8e0b609512e4850ac88b12dac5bbcd53(IntroActivity/ImageButton-))</td></tr>\n</table>",
+      "label": "2, 4",
+      "events": [
+        {
+          "event_str": "ScrollEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=LEFT)",
+          "event_id": 2,
+          "event_type": "scroll",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            "<scrollbar bound_box=0,0,900,1600></scrollbar>"
+          ],
+          "view_images": [
+            "views/view_2d2b0308bf76c0618b098a2f2ba24152.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/view_pager"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        },
+        {
+          "event_str": "TouchEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=8e0b609512e4850ac88b12dac5bbcd53(IntroActivity/ImageButton-))",
+          "event_id": 4,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            "NEXT"
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            "<button text='NEXT' bound_box=32,1472,208,1568></button>"
+          ],
+          "view_images": [
+            "views/view_8e0b609512e4850ac88b12dac5bbcd53.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                32,
+                1472
+              ],
+              [
+                208,
+                1568
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/next"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "to": "98f616c36edb8027fa5708c849e7b4ca",
+      "id": "0cfe11a6dedcc1597a88dc5581e36e69-->98f616c36edb8027fa5708c849e7b4ca",
+      "title": "<table class=\"table\">\n<tr><th>6</th><td>KeyEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, name=BACK)</td></tr>\n</table>",
+      "label": "6",
+      "events": [
+        {
+          "event_str": "KeyEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, name=BACK)",
+          "event_id": 6,
+          "event_type": "key",
+          "event_subtype": "key",
+          "view_content_descriptions": [],
+          "view_texts": [],
+          "view_descriptions": [],
+          "view_images": [],
+          "view_bounds": [],
+          "view_res_id": [],
+          "view_ad_feature": [],
+          "view_ad_format": []
+        }
+      ]
+    },
+    {
+      "from": "0ec010e792307e358d184ea304f379dc",
+      "to": "0cfe11a6dedcc1597a88dc5581e36e69",
+      "id": "0ec010e792307e358d184ea304f379dc-->0cfe11a6dedcc1597a88dc5581e36e69",
+      "title": "<table class=\"table\">\n<tr><th>4</th><td>ScrollEvent(state=0ec010e792307e358d184ea304f379dc, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=RIGHT)</td></tr>\n<tr><th>5</th><td>ManualScrollEvent(state=0ec010e792307e358d184ea304f379dc, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=['DOWN', 'UP', 'LEFT', 'RIGHT'])</td></tr>\n</table>",
+      "label": "4, 5",
+      "events": [
+        {
+          "event_str": "ScrollEvent(state=0ec010e792307e358d184ea304f379dc, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=RIGHT)",
+          "event_id": 4,
+          "event_type": "scroll",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            "<scrollbar bound_box=0,0,900,1600></scrollbar>"
+          ],
+          "view_images": [
+            "views/view_2d2b0308bf76c0618b098a2f2ba24152.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/view_pager"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        },
+        {
+          "event_str": "ManualScrollEvent(state=0ec010e792307e358d184ea304f379dc, view=2d2b0308bf76c0618b098a2f2ba24152(IntroActivity/ViewPager-), direction=['DOWN', 'UP', 'LEFT', 'RIGHT'])",
+          "event_id": 5,
+          "event_type": "manual_scroll",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            "<scrollbar bound_box=0,0,900,1600></scrollbar>"
+          ],
+          "view_images": [
+            "views/view_2d2b0308bf76c0618b098a2f2ba24152.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/view_pager"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "98f616c36edb8027fa5708c849e7b4ca",
+      "to": "64c11a8c98303e26be61ffe16db62c54",
+      "id": "98f616c36edb8027fa5708c849e7b4ca-->64c11a8c98303e26be61ffe16db62c54",
+      "title": "<table class=\"table\">\n<tr><th>7</th><td>TouchEvent(state=98f616c36edb8027fa5708c849e7b4ca, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))</td></tr>\n</table>",
+      "label": "7",
+      "events": [
+        {
+          "event_str": "TouchEvent(state=98f616c36edb8027fa5708c849e7b4ca, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))",
+          "event_id": 7,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_018746d55fd4d852f5635022168cf9a6.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                48
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/content_layout"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "64c11a8c98303e26be61ffe16db62c54",
+      "to": "1fc047dfac3b4fa2d7d033c05ee764c4",
+      "id": "64c11a8c98303e26be61ffe16db62c54-->1fc047dfac3b4fa2d7d033c05ee764c4",
+      "title": "<table class=\"table\">\n<tr><th>8</th><td>TouchEvent(state=64c11a8c98303e26be61ffe16db62c54, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))</td></tr>\n</table>",
+      "label": "8",
+      "events": [
+        {
+          "event_str": "TouchEvent(state=64c11a8c98303e26be61ffe16db62c54, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))",
+          "event_id": 8,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_018746d55fd4d852f5635022168cf9a6.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                48
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/content_layout"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1fc047dfac3b4fa2d7d033c05ee764c4",
+      "to": "dd13fdc9897d72956d9d6f30ae3ac23f",
+      "id": "1fc047dfac3b4fa2d7d033c05ee764c4-->dd13fdc9897d72956d9d6f30ae3ac23f",
+      "title": "<table class=\"table\">\n<tr><th>9</th><td>KeyEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, name=BACK)</td></tr>\n<tr><th>10</th><td>AdCompositeEvent(\nState=1fc047dfac3b4fa2d7d033c05ee764c4,\nChains=\nWaitEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, duration=2.0s) -> TouchAdEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, view=6242cb8960eba57fa5de5e49cccab1bc(MainActivity/View-)) -> KeyEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, name=BACK))</td></tr>\n</table>",
+      "label": "9, 10",
+      "events": [
+        {
+          "event_str": "KeyEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, name=BACK)",
+          "event_id": 9,
+          "event_type": "key",
+          "event_subtype": "key",
+          "view_content_descriptions": [],
+          "view_texts": [],
+          "view_descriptions": [],
+          "view_images": [],
+          "view_bounds": [],
+          "view_res_id": [],
+          "view_ad_feature": [],
+          "view_ad_format": []
+        },
+        {
+          "event_str": "AdCompositeEvent(\nState=1fc047dfac3b4fa2d7d033c05ee764c4,\nChains=\nWaitEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, duration=2.0s) -> TouchAdEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, view=6242cb8960eba57fa5de5e49cccab1bc(MainActivity/View-)) -> KeyEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, name=BACK))",
+          "event_id": 10,
+          "event_type": "ad_composite",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_6242cb8960eba57fa5de5e49cccab1bc.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                48
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/main_shade"
+          ],
+          "view_ad_feature": [
+            "resource_id"
+          ],
+          "view_ad_format": [
+            "interstitial"
+          ]
+        }
+      ]
+    },
+    {
+      "from": "dd13fdc9897d72956d9d6f30ae3ac23f",
+      "to": "b746c3ee4485bbf5bd468bed939e0f8b",
+      "id": "dd13fdc9897d72956d9d6f30ae3ac23f-->b746c3ee4485bbf5bd468bed939e0f8b",
+      "title": "<table class=\"table\">\n<tr><th>11</th><td>TouchEvent(state=dd13fdc9897d72956d9d6f30ae3ac23f, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))</td></tr>\n</table>",
+      "label": "11",
+      "events": [
+        {
+          "event_str": "TouchEvent(state=dd13fdc9897d72956d9d6f30ae3ac23f, view=018746d55fd4d852f5635022168cf9a6(MainActivity/FrameLayout-))",
+          "event_id": 11,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_018746d55fd4d852f5635022168cf9a6.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                48
+              ],
+              [
+                900,
+                1600
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/content_layout"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "b746c3ee4485bbf5bd468bed939e0f8b",
+      "to": "dde56d840e3f6f769a7f223d8b45e045",
+      "id": "b746c3ee4485bbf5bd468bed939e0f8b-->dde56d840e3f6f769a7f223d8b45e045",
+      "title": "<table class=\"table\">\n<tr><th>12</th><td>TouchEvent(state=b746c3ee4485bbf5bd468bed939e0f8b, view=5807e082a76eb3a29ff1c1dd64fc931f(MainActivity/LinearLayout-))</td></tr>\n</table>",
+      "label": "12",
+      "events": [
+        {
+          "event_str": "TouchEvent(state=b746c3ee4485bbf5bd468bed939e0f8b, view=5807e082a76eb3a29ff1c1dd64fc931f(MainActivity/LinearLayout-))",
+          "event_id": 12,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_5807e082a76eb3a29ff1c1dd64fc931f.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                470
+              ],
+              [
+                900,
+                734
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/ad_root"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "from": "dde56d840e3f6f769a7f223d8b45e045",
+      "to": "184254b36860276a540c6805de7135c0",
+      "id": "dde56d840e3f6f769a7f223d8b45e045-->184254b36860276a540c6805de7135c0",
+      "title": "<table class=\"table\">\n<tr><th>13</th><td>TouchEvent(state=dde56d840e3f6f769a7f223d8b45e045, view=5807e082a76eb3a29ff1c1dd64fc931f(MainActivity/LinearLayout-))</td></tr>\n</table>",
+      "label": "13",
+      "events": [
+        {
+          "event_str": "TouchEvent(state=dde56d840e3f6f769a7f223d8b45e045, view=5807e082a76eb3a29ff1c1dd64fc931f(MainActivity/LinearLayout-))",
+          "event_id": 13,
+          "event_type": "touch",
+          "event_subtype": null,
+          "view_content_descriptions": [
+            ""
+          ],
+          "view_texts": [
+            ""
+          ],
+          "view_descriptions": [
+            ""
+          ],
+          "view_images": [
+            "views/view_5807e082a76eb3a29ff1c1dd64fc931f.png"
+          ],
+          "view_bounds": [
+            [
+              [
+                0,
+                470
+              ],
+              [
+                900,
+                734
+              ]
+            ]
+          ],
+          "view_res_id": [
+            "com.dz.law:id/ad_root"
+          ],
+          "view_ad_feature": [
+            ""
+          ],
+          "view_ad_format": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "num_nodes": 10,
+  "num_edges": 10,
+  "num_effective_events": 13,
+  "num_reached_activities": 2,
+  "test_date": "2025-09-11 22:51:19",
+  "time_spent": 622.89274,
+  "num_transitions": 34,
+  "device_serial": "emulator-5554",
+  "device_model_number": "V1938CT",
+  "device_sdk_version": 28,
+  "app_sha256": "0c2c8f3a748983b53074598b91ab58b2f22a0b7a42bebb8231bdab21f500d725",
+  "app_package": "com.dz.law",
+  "app_main_activity": "com.appyet.activity.MainActivity",
+  "app_num_total_activities": 34
+}

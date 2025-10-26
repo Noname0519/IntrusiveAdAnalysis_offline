@@ -1,0 +1,55 @@
+{
+  "tag": "2025-09-11_230010",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.dz.law",
+      "visible": true,
+      "checkable": false,
+      "child_count": 3,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        28,
+        29,
+        30
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          470
+        ],
+        [
+          900,
+          734
+        ]
+      ],
+      "resource_id": "com.dz.law:id/ad_root",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.LinearLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": true,
+      "parent": 13,
+      "temp_id": 27,
+      "size": "900*264",
+      "signature": "[class]android.widget.LinearLayout[resource_id]com.dz.law:id/ad_root[text]None[enabled,,]",
+      "view_str": "5807e082a76eb3a29ff1c1dd64fc931f",
+      "content_free_signature": "[class]android.widget.LinearLayout[resource_id]com.dz.law:id/ad_root"
+    }
+  },
+  "start_state": "b746c3ee4485bbf5bd468bed939e0f8b",
+  "stop_state": "dde56d840e3f6f769a7f223d8b45e045",
+  "event_str": "TouchEvent(state=b746c3ee4485bbf5bd468bed939e0f8b, view=5807e082a76eb3a29ff1c1dd64fc931f(MainActivity/LinearLayout-))",
+  "is_ad_trigger": false
+}

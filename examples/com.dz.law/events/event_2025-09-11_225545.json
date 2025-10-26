@@ -1,0 +1,57 @@
+{
+  "tag": "2025-09-11_225545",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.dz.law",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          210,
+          0
+        ],
+        [
+          689,
+          401
+        ]
+      ],
+      "resource_id": "com.dz.law:id/title",
+      "checked": false,
+      "text": "\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a\u0646 \u064a\u062f\u064a\u0643",
+      "class": "android.widget.TextView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 8,
+      "temp_id": 9,
+      "size": "479*401",
+      "signature": "[class]android.widget.TextView[resource_id]com.dz.law:id/title[text]\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a\u0646 \u064a\u062f\u064a\u0643[enabled,,]",
+      "view_str": "50a09836e8139913bd66bbcdfe72fd1e",
+      "content_free_signature": "[class]android.widget.TextView[resource_id]com.dz.law:id/title",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "1",
+      "desc": "<p bound_box=210,0,689,401>\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a\u0646 \u064a\u062f\u064a\u0643</p>"
+    }
+  },
+  "start_state": "0cfe11a6dedcc1597a88dc5581e36e69",
+  "stop_state": "0cfe11a6dedcc1597a88dc5581e36e69",
+  "event_str": "TouchEvent(state=0cfe11a6dedcc1597a88dc5581e36e69, view=50a09836e8139913bd66bbcdfe72fd1e(IntroActivity/TextView-\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0628\u064a))",
+  "is_ad_trigger": false
+}

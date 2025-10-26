@@ -1,0 +1,56 @@
+{
+  "tag": "2025-09-11_225018",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "android.widget.FrameLayout",
+      "visible": true,
+      "checkable": false,
+      "child_count": 3,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        74,
+        94,
+        95
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          48
+        ],
+        [
+          900,
+          1600
+        ]
+      ],
+      "resource_id": "com.dz.law:id/exo_play_content_layout",
+      "checked": false,
+      "text": null,
+      "class": "android.widget.RelativeLayout",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 72,
+      "temp_id": 73,
+      "size": "900*1552",
+      "ad_feature": null,
+      "signature": "[class]android.widget.RelativeLayout[resource_id]com.dz.law:id/exo_play_content_layout[text]None[enabled,,]",
+      "view_str": "9786cefe9173bb327d0fae97b74d9b0a",
+      "content_free_signature": "[class]android.widget.RelativeLayout[resource_id]com.dz.law:id/exo_play_content_layout"
+    }
+  },
+  "start_state": "2b7d9b896dcdb5076de9ddde17c15e02",
+  "stop_state": "2b7d9b896dcdb5076de9ddde17c15e02",
+  "event_str": "TouchEvent(state=2b7d9b896dcdb5076de9ddde17c15e02, view=9786cefe9173bb327d0fae97b74d9b0a(MainActivity/RelativeLayout-))",
+  "is_ad_trigger": false
+}

@@ -1,0 +1,58 @@
+{
+  "tag": "2025-09-05_131449",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.dz.law",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": "\u0627\u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a",
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          0,
+          56
+        ],
+        [
+          80,
+          152
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.ImageView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": true,
+      "parent": 22,
+      "temp_id": 23,
+      "size": "80*96",
+      "signature": "[class]android.widget.ImageView[resource_id]None[text]None[enabled,,]",
+      "view_str": "1ef7ae428a30deff6f8eb2d1a65dea1c",
+      "content_free_signature": "[class]android.widget.ImageView[resource_id]None",
+      "allowed_actions": [
+        "touch",
+        "long_touch"
+      ],
+      "special_attrs": [],
+      "local_id": "3",
+      "desc": "<button text='\u0627\u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a' bound_box=0,56,80,152></button>"
+    }
+  },
+  "start_state": "7fdc486aee141aff8bc191a969b982d7",
+  "stop_state": "b5a781ff7e7d86d8ce2e800bb3b88c89",
+  "event_str": "TouchEvent(state=7fdc486aee141aff8bc191a969b982d7, view=1ef7ae428a30deff6f8eb2d1a65dea1c(MainActivity/ImageView-))",
+  "is_ad_trigger": false
+}

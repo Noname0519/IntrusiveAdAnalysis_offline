@@ -1,0 +1,13 @@
+{
+  "tag": "2025-09-11_225834",
+  "event": {
+    "event_type": "key",
+    "log_lines": null,
+    "is_ad_trigger": null,
+    "name": "BACK"
+  },
+  "start_state": "1fc047dfac3b4fa2d7d033c05ee764c4",
+  "stop_state": "dd13fdc9897d72956d9d6f30ae3ac23f",
+  "event_str": "KeyEvent(state=1fc047dfac3b4fa2d7d033c05ee764c4, name=BACK)",
+  "is_ad_trigger": false
+}
