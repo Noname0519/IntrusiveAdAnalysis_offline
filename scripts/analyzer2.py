@@ -1099,6 +1099,12 @@ def analyze_worker(args):
 
 def analyze_single_apk(apk_dir, apk_name):
     all_results = []
+
+    if not os.path.exists(apk_dir):
+        print("No exist: " + apk_dir)
+        time.sleep(100)
+        return None
+
     # 收集该app的所有状态文件
     states_dir = os.path.join(apk_dir, "states")
     if not os.path.exists(states_dir):
@@ -1115,7 +1121,8 @@ def analyze_single_apk(apk_dir, apk_name):
     # 初始化结果字典
     result = {
         "app_name": apk_name,
-        "issue": "",
+        "app_dir_path": apk_dir.replace("/", "\\"),
+        "apk_path": "",  # 可根据需要填写
         "has_ad": False,
         "type2_detected": False, "type2_features": "",
         "type3_detected": False, "type3_features": "",
@@ -1123,21 +1130,23 @@ def analyze_single_apk(apk_dir, apk_name):
         "type5_detected": False, "type5_features": "",
         "type6_detected": False, "type6_features": "",
         "screenshots": [],  # 保存广告截图
-        "ui_files": [],     # 保存对应 UI 文件
+        "ui_files": [], 
+        "issue": "",    # 保存对应 UI 文件
+        "detection_results": "",
         "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
     utg_path = os.path.join(apk_dir, "utg.js")
-    print("utg_path: " + utg_path)
+    # print("utg_path: " + utg_path)
     if not os.path.exists(utg_path):
-        print(f"[!] utg.js 不存在: {utg_path}")
+        # print(f"[!] utg.js 不存在: {utg_path}")
         # utg_fail_count = utg_fail_count + 1
         result["issue"] = "utg.js not exists"
         return result
     
     utg_json_path = os.path.join(apk_dir, "utg.json")
     if not os.path.exists(utg_json_path):
-        print(f"[!] utg.json 不存在: {utg_json_path}")
+        # print(f"[!] utg.json 不存在: {utg_json_path}")
         result["issue"] = "utg.json not exists"
         return result
     
@@ -1259,12 +1268,12 @@ def write_csv_results(csv_path, fieldnames, results):
         writer.writeheader()
         writer.writerows(results)
 
-def analyze_dir(output_dir, output_csv, final_result_csv="apk_analysis_results.csv"):
-    
-    print(f"[+] Starting analysis of directory: {output_dir}")
+def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_input_csv="sensor_test_input.csv"):
+
+    print(f"[+] Starting analysis based on CSV: {csv_input}")
 
     fieldnames = [
-        "app_name", 
+        "app_name", "app_dir_path", "apk_path",
         "has_ad", 
         "type2_detected", "type2_features",
         "type3_detected", "type3_features", 
@@ -1275,35 +1284,13 @@ def analyze_dir(output_dir, output_csv, final_result_csv="apk_analysis_results.c
         'issue', 'detection_results', 'ui_files'
     ]
 
-    # 读取已有CSV（上次的测试记录）
-    existing_records = load_csv_records(output_csv)
-    existing_apks = set()
-
-    for r in existing_records:
-        apk_name = r.get("apk_name") or r.get("package_name") or ""
-        apk_name = os.path.splitext(apk_name)[0]  # 去除.apk后缀
-        if r.get("is_tested", "").lower() in ("true", "1", "yes"):
-            existing_apks.add(apk_name)
-
-
-    # 创建或清空CSV文件并写入表头
-    with open(final_result_csv, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-    
-    # 获取所有APK目录
-    folders = [f for f in os.listdir(output_dir) if os.path.isdir(os.path.join(output_dir, f))]
-    print(f"[+] Found {len(folders)} APK directories in {output_dir}")
-
-    # 找出未测试或新加入的APK
-    untested_folders = [f for f in folders if f not in existing_apks]
-    print(f"[+] {len(untested_folders)} new or untested APKs will be analyzed.")
+    records = load_csv_records(csv_input)
+    print(f"[+] Loaded {len(records)} entries from {csv_input}")
 
     results = []
-
-    # 初始化统计计数器
+    sensor_entries = []
     stats = {
-        "total_apks": len(folders),
+        "total_apks": len(records),
         "apks_with_ads": 0,
         "type2_count": 0,
         "type3_count": 0,
@@ -1313,134 +1300,77 @@ def analyze_dir(output_dir, output_csv, final_result_csv="apk_analysis_results.c
         "failed_analysis": 0
     }
 
-    # for app_dir in folders:
-    #     apk_path = os.path.join(output_dir, app_dir)
-    #     result = analyze_single_apk(apk_path, app_dir)
+    for row in tqdm(records, desc="Analyzing APKs"):
+        apk_path = row.get("apk_path")
+        app_output_dir = row.get("app_output_dir", "").replace("/", "\\") # for windows
+        # app_name = os.path.basename(apk_dir)
+        app_name = row.get("apk_name")
 
-    #     # 更新统计信息
-    #     if result:
-    #         if result["has_ad"]:
-    #             stats["apks_with_ads"] += 1
-            
-    #         if result["type2_detected"]:
-    #             stats["type2_count"] += 1
-                
-    #         if result["type3_detected"]:
-    #             stats["type3_count"] += 1
-                
-    #         if result["type4_detected"]:
-    #             stats["type4_count"] += 1
-                
-    #         if result["type5_detected"]:
-    #             stats["type5_count"] += 1
-                
-    #         if result["type6_detected"]:
-    #             stats["type6_count"] += 1
-            
-    #         # 将结果写入CSV
-    #         with open(final_result_csv, 'a', newline='', encoding='utf-8') as csvfile:
-    #             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    #             writer.writerow(result)
-            
-    #         print(f"[+] Results for {app_dir} saved to {final_result_csv}")
+        if not os.path.exists(app_output_dir):
+            print(f"[!] APK directory missing: {app_output_dir}")
+            stats["failed_analysis"] += 1
+            continue
 
-    #     else:
-    #         stats["failed_analysis"] += 1
-            
-    # 生成并输出总体统计报告
-    # generate_summary_report(stats, final_result_csv)
-
-    # 分析新APK
-    for app_dir in tqdm(untested_folders, desc="Analyzing APKs"):
-        apk_path = os.path.join(output_dir, app_dir)
         try:
-            result = analyze_single_apk(apk_path, app_dir)
+            result = analyze_single_apk(app_output_dir, app_name)
             if result:
                 results.append(result)
+
                 if result["has_ad"]:
                     stats["apks_with_ads"] += 1
-                for t in ["2", "3", "4", "5", "6"]:
+                    sensor_entries.append({
+                        "package_name": result["app_name"],
+                        "apk_name": result["app_name"],
+                        "apk_path": apk_path,
+                        "output_dir": app_output_dir,
+                        "has_ad": True,
+                        "analyzed_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    })
+
+                for t in ["2","3","4","5","6"]:
                     if result[f"type{t}_detected"]:
                         stats[f"type{t}_count"] += 1
             else:
                 stats["failed_analysis"] += 1
         except Exception as e:
-            print(f"[!] Failed to analyze {app_dir}: {e}")
+            print(f"[!] Failed to analyze {app_output_dir}: {e}")
             stats["failed_analysis"] += 1
 
-    # 写入结果CSV
+    # 写分析结果 CSV
     if results:
         write_csv_results(final_result_csv, fieldnames, results)
-        print(f"[✔] Results saved to {final_result_csv}")
+        print(f"[✔] Analysis results saved to {final_result_csv}")
     else:
-        print("[!] No new analysis results to save.")
+        print("[!] No analysis results to save.")
 
-    # return stats
+    # 写 sensor_test_input.csv
+    if sensor_entries:
+        sensor_fieldnames = ["package_name", "apk_name", "apk_path", "app_output_dir", "has_ad", "analyzed_at"]
+        write_csv_results(sensor_input_csv, sensor_fieldnames, sensor_entries)
+        print(f"[✔] Sensor test input saved to {sensor_input_csv} ({len(sensor_entries)} entries)")
 
     return stats
 
-def analyze_all(dirs_to_analyze, global_summary="global_summary.csv", sensor_input_csv="sensor_test_input_csv"):
 
+def analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv="sensor_test_input.csv"):
     global_stats = []
-    sensor_entries = []
 
-    for id, output_path, output_csv in dirs_to_analyze:
-        print(f"[+] Starting analysis of directory: {output_path}")
+    for csv_path in csv_paths:
+        final_result_csv = csv_path.replace(".csv", "_analysis.csv")
+        stats = analyze_dir(csv_path, final_result_csv, sensor_input_csv)
 
-        if not os.path.exists(output_path):
-            print(f"[!] Skipping missing directory: {output_path}")
-            time.sleep(100)
-            continue
-
-        final_result_csv = os.path.join(output_path, id+"_apk_analysis_results.csv")
-        result_stats = analyze_dir(output_path, output_csv, final_result_csv)
-
-        # ---- 生成 JSON 输出 ----
-        json_output = os.path.join(output_path, id+"_apk_analysis_results.json")
-        convert_csv_to_json(output_csv, json_output)
-        print(f"[✔] JSON结果写入: {json_output}")
-
-        # ---- 添加一条全局统计信息 ----
         global_stats.append({
-            "output_dir": output_path,
-            "csv_file": output_csv,
+            "csv_file": csv_path,
             "final_result_csv": final_result_csv,
-            "total_apks": result_stats.get("total_apks", 0),
-            "apks_with_ads": result_stats.get("apks_with_ads", 0),
-            "type2_count": result_stats.get("type2_count", 0),
-            "type3_count": result_stats.get("type3_count", 0),
-            "type4_count": result_stats.get("type4_count", 0),
-            "type5_count": result_stats.get("type5_count", 0),
-            "type6_count": result_stats.get("type6_count", 0),
-            "failed_analysis": result_stats.get("failed_analysis", 0),
+            **stats,
             "analyzed_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         })
 
-        # ---- 解析当前目录的 has_ad 应用 ----
-        with open(final_result_csv, "r", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                if row.get("has_ad", "").lower() in ("true", "1", "yes"):
-                    sensor_entries.append({
-                        "package_name": row.get("app_name", ""),
-                        "apk_name": row.get("app_name", ""),
-                        "output_dir": output_path,
-                        "has_ad": True,
-                        "analyzed_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    })
-    # ---- 汇总所有分析结果 ----
-    if global_stats:
-        write_global_summary(global_stats, global_summary)
-        print(f"[✔] 全部任务完成，汇总结果写入：{global_summary}")
-    else:
-        print("[!] 没有成功分析任何目录。")
-
-    # ---- 写出 sensor_test_input.csv ----
-    if sensor_entries:
-        write_sensor_input(sensor_entries, sensor_input_csv)
-        print(f"[✔] 已生成 sensor_test_input.csv，记录 {len(sensor_entries)} 个广告相关应用")
-    else:
-        print("[!] 没有检测到广告应用，未生成 sensor_test_input.csv")
+    # 写全局统计 CSV
+    fieldnames = ["csv_file", "final_result_csv", "total_apks", "apks_with_ads",
+                  "type2_count","type3_count","type4_count","type5_count","type6_count","failed_analysis","analyzed_at"]
+    write_csv_results(global_summary, fieldnames, global_stats)
+    print(f"[✔] Global summary saved to {global_summary}")
 
 def write_global_summary(records, output_csv):
     """写出汇总的全局统计结果"""
@@ -1591,29 +1521,9 @@ if __name__ == "__main__":
 
     parallel = True
     workers = 3
-    # results = analyze_all(dirs_to_analyze, parallel=parallel, n_workers=workers)
 
-    # analyze_all(args.path, args.output, parallel=args.parallel, n_workers=args.workers)
-    dirs_to_analyze = [
-        ("1", "F:\\test\\output", "F:\\test\\merge_output.csv"),
-        ("2", "F:\\test\\output", "F:\\test\\log2.csv"),
-        ("3", "E:\\test\\output", "E:\\test\\merge_output.csv"),
-        ("4", "E:\\test\\output", "E:\\test\\log.csv"),
-        ("5", "D:\\NKU\\Work\\Work2\\appchina_output", "D:\\NKU\\Work\\Work2\\appchina_output\\log.csv"),
-        ("6", "D:\\NKU\\Work\\Work2\\datasets\\androzoo\\androzoo_output", "D:\\NKU\\Work\\Work2\\datasets\\aligned_log.csv")
+    csv_paths = [
+        "merged_validity_results_final_checked.csv"
     ]
 
-    analyze_all(dirs_to_analyze, global_summary="global_offline_summary.csv", sensor_input_csv="sensor_test_input.csv")
-
-    # all_results = []
-    # for (path, csv_path) in dirs_to_analyze:
-    #     print(f"\n=== Analyzing {path} ===")
-    #     try:
-    #         stats = analyze_all(path, parallel=parallel, n_workers=workers)
-    #         all_results.append((path, stats))
-    #     except Exception as e:
-    #         print(f"[ERROR] Failed to analyze {path}: {e}")
-
-    # print("\n=== Summary of All Analyses ===")
-    # for path, stats in all_results:
-    #     print(f"{path}: {stats['total_apks']} apps, {stats['apks_with_ads']} with ads, {stats['failed_analysis']} failed")
+    analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv="sensor_test_input.csv")

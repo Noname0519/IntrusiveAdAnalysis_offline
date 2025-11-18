@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 import csv
+import pandas as pd
 from datetime import datetime
 import time
 
@@ -1004,7 +1005,17 @@ def analyze_single_apk(apk_path, app_dir):
         dict: 包含分析结果的字典
     """
     print(f"[+] Analyzing APK: {app_dir}")
-    
+    app_info = extract_app_info(apk_path, app_dir)
+    if not app_info:
+        app_info = {
+            'app_name': app_dir,
+            'app_path': apk_path,
+            'utg_exists': 'TRUE',
+            'test_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'is_tested': 'TRUE'
+        }
+
+
     # 初始化结果字典
     result = {
         "app_name": app_dir,
@@ -1021,6 +1032,9 @@ def analyze_single_apk(apk_path, app_dir):
     utg_path = os.path.join(apk_path, "utg.js")
     if not os.path.exists(utg_path):
         print(f"[!] utg.js does not exist: {utg_path}")
+        # 仍然更新全局文件，标记为已测试但无UTG
+        app_info['utg_exists'] = 'FALSE'
+        update_global_files(app_info, result)
         return result
     
     # 增强UTG
@@ -1031,6 +1045,8 @@ def analyze_single_apk(apk_path, app_dir):
         enhanced_utg = dynamic_graph(json_path=enhance_utg_path)
     except Exception as e:
         print(f"[!] Failed to enhance UTG for {app_dir}: {e}")
+        # 更新全局文件，标记分析失败
+        update_global_files(app_info, result)
         return result
     
     # 检查广告状态
@@ -1066,6 +1082,9 @@ def analyze_single_apk(apk_path, app_dir):
             result["type6_detected"] = True
             result["type6_features"] = json.dumps(type6_results, ensure_ascii=False)
     
+    # 更新全局文件
+    update_global_files(app_info, result)
+
     return result
 
 # single test
@@ -1207,6 +1226,296 @@ def getAdStatics(path, enhanced_utg_path, results):
             return None
 
     return unique_data
+
+# 全局变量定义
+GLOBAL_MASTER_CSV = "all_apps_master.csv"
+GLOBAL_CHECKED_TXT = "checked_apps.txt"
+
+def ensure_global_files():
+    """确保全局CSV和TXT文件存在"""
+    # 确保CSV文件存在且有正确的列
+    csv_columns = [
+        'app_name', 'app_path', 'package_name', 'apk_path', 'sha256', 
+        'is_tested', 'test_date', 'utg_exists', 'app_output_dir',
+        'year', 'size', 'contain_ad', 'sensor_test_done', 'timestamp',
+        'has_ad', 'type2_detected', 'type3_detected', 'type4_detected',
+        'type5_detected', 'type6_detected', 'analysis_date'
+    ]
+    
+    if not os.path.exists(GLOBAL_MASTER_CSV):
+        df = pd.DataFrame(columns=csv_columns)
+        df.to_csv(GLOBAL_MASTER_CSV, index=False)
+        print(f"[+] 创建全局主CSV文件: {GLOBAL_MASTER_CSV}")
+    
+    # 确保TXT文件存在
+    if not os.path.exists(GLOBAL_CHECKED_TXT):
+        with open(GLOBAL_CHECKED_TXT, 'w', encoding='utf-8') as f:
+            f.write("# 已检测应用列表\n")
+        print(f"[+] 创建全局TXT文件: {GLOBAL_CHECKED_TXT}")
+
+def load_checked_apps():
+    """加载已检查的应用列表"""
+    checked_apps = set()
+    
+    if os.path.exists(GLOBAL_CHECKED_TXT) and os.path.getsize(GLOBAL_CHECKED_TXT) > 0:
+        with open(GLOBAL_CHECKED_TXT, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    checked_apps.add(line)
+    
+    return checked_apps
+
+def update_global_files(app_info, analysis_result=None):
+    """
+    更新全局CSV和TXT文件
+    
+    Args:
+        app_info: 应用基本信息字典
+        analysis_result: 分析结果字典（可选）
+    """
+    try:
+        # 读取现有CSV
+        if os.path.exists(GLOBAL_MASTER_CSV) and os.path.getsize(GLOBAL_MASTER_CSV) > 0:
+            master_df = pd.read_csv(GLOBAL_MASTER_CSV, dtype=str).fillna("")
+        else:
+            master_df = pd.DataFrame(columns=[
+                'app_name', 'app_path', 'package_name', 'apk_path', 'sha256', 
+                'is_tested', 'test_date', 'utg_exists', 'app_output_dir',
+                'year', 'size', 'contain_ad', 'sensor_test_done', 'timestamp',
+                'has_ad', 'type2_detected', 'type3_detected', 'type4_detected',
+                'type5_detected', 'type6_detected', 'analysis_date'
+            ])
+        
+        # 读取现有TXT
+        checked_apps = load_checked_apps()
+        
+        app_name = app_info.get('app_name', '')
+        if not app_name:
+            return False
+        
+        # 合并应用信息和分析结果
+        merged_info = app_info.copy()
+        if analysis_result:
+            merged_info.update(analysis_result)
+        
+        # 设置默认值
+        merged_info.setdefault('is_tested', 'TRUE')
+        merged_info.setdefault('test_date', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        merged_info.setdefault('utg_exists', 'TRUE')
+        merged_info.setdefault('analysis_date', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        
+        # 检查是否已存在
+        existing_mask = master_df['app_name'] == app_name
+        
+        if existing_mask.any():
+            # 更新现有记录
+            for idx in master_df[existing_mask].index:
+                for col, value in merged_info.items():
+                    if col in master_df.columns and value:
+                        master_df.loc[idx, col] = value
+            print(f"[+] 更新全局记录: {app_name}")
+        else:
+            # 添加新记录
+            new_row = {col: '' for col in master_df.columns}
+            new_row.update(merged_info)
+            master_df = pd.concat([master_df, pd.DataFrame([new_row])], ignore_index=True)
+            checked_apps.add(app_name)
+            print(f"[+] 添加全局记录: {app_name}")
+        
+        # 保存文件
+        master_df.to_csv(GLOBAL_MASTER_CSV, index=False)
+        
+        with open(GLOBAL_CHECKED_TXT, 'w', encoding='utf-8') as f:
+            f.write("# 已检测应用列表\n")
+            for app_name in sorted(checked_apps):
+                f.write(f"{app_name}\n")
+        
+        return True
+        
+    except Exception as e:
+        print(f"[!] 更新全局文件失败: {e}")
+        return False
+
+def scan_and_update_multiple_folders(folder_paths, recursive=True):
+    """
+    扫描多个文件夹，将新的应用添加到全局文件
+    
+    Args:
+        folder_paths: 文件夹路径列表
+        recursive: 是否递归搜索子文件夹
+        
+    Returns:
+        tuple: (新发现的应用数量, 总应用数量)
+    """
+    try:
+        # 确保全局文件存在
+        ensure_global_files()
+        
+        # 读取已检查的应用列表
+        checked_apps = load_checked_apps()
+        
+        new_apps_count = 0
+        total_apps_count = 0
+        
+        for folder_path in folder_paths:
+            if not os.path.exists(folder_path):
+                print(f"[!] 文件夹不存在: {folder_path}")
+                continue
+            
+            print(f"[+] 扫描文件夹: {folder_path}")
+            
+            # 查找所有可能的应用结果文件夹
+            app_folders = find_app_folders(folder_path, recursive)
+            print(f"    找到 {len(app_folders)} 个可能的应用文件夹")
+            
+            for app_folder in app_folders:
+                total_apps_count += 1
+                app_name = os.path.basename(app_folder.rstrip(os.sep))
+                
+                # 检查是否已记录
+                if app_name in checked_apps:
+                    continue
+                
+                # 检查是否存在utg.js
+                utg_path = os.path.join(app_folder, "utg.js")
+                if not os.path.exists(utg_path):
+                    continue
+                
+                # 提取应用信息
+                app_info = extract_app_info(app_folder, app_name)
+                if app_info:
+                    # 更新全局文件
+                    if update_global_files(app_info):
+                        new_apps_count += 1
+                        print(f"[+] 发现并记录新应用: {app_name}")
+        
+        print(f"\n[+] 扫描完成:")
+        print(f"    - 总应用文件夹: {total_apps_count}")
+        print(f"    - 新发现应用: {new_apps_count}")
+        print(f"    - 全局CSV: {GLOBAL_MASTER_CSV}")
+        print(f"    - 全局TXT: {GLOBAL_CHECKED_TXT}")
+        
+        return new_apps_count, total_apps_count
+        
+    except Exception as e:
+        print(f"[!] 扫描文件夹失败: {e}")
+        return 0, 0
+
+def find_app_folders(root_path, recursive=True):
+    """查找所有可能的应用文件夹"""
+    app_folders = []
+    
+    if recursive:
+        # 递归搜索所有子文件夹
+        for root, dirs, files in os.walk(root_path):
+            # 检查当前目录是否包含utg.js
+            if "utg.js" in files:
+                app_folders.append(root)
+    else:
+        # 只搜索直接子文件夹
+        for item in os.listdir(root_path):
+            item_path = os.path.join(root_path, item)
+            if os.path.isdir(item_path):
+                utg_path = os.path.join(item_path, "utg.js")
+                if os.path.exists(utg_path):
+                    app_folders.append(item_path)
+    
+    return app_folders
+
+def extract_app_info(app_folder, app_name):
+    """从应用文件夹中提取信息"""
+    try:
+        app_info = {
+            'app_name': app_name,
+            'app_path': app_folder,
+            'utg_exists': 'TRUE',
+            'test_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'is_tested': 'TRUE'
+        }
+        
+        # 尝试从utg.js中提取更多信息
+        utg_path = os.path.join(app_folder, "utg.js")
+        if os.path.exists(utg_path):
+            try:
+                with open(utg_path, 'r', encoding='utf-8') as f:
+                    utg_content = f.read()
+                    # 尝试解析JSON（utg.js通常是JSON格式）
+                    if utg_content.strip().startswith('{'):
+                        utg_data = json.loads(utg_content)
+                        package_name = utg_data.get('packageName', '')
+                        if package_name:
+                            app_info['package_name'] = package_name
+            except:
+                # 如果解析失败，跳过
+                pass
+        
+        # 尝试查找APK文件
+        import glob
+        apk_files = glob.glob(os.path.join(app_folder, "*.apk"))
+        if apk_files:
+            app_info['apk_path'] = apk_files[0]
+        
+        # 尝试读取其他可能存在的元数据文件
+        meta_files = ['app_info.json', 'metadata.json', 'analysis_result.json']
+        for meta_file in meta_files:
+            meta_path = os.path.join(app_folder, meta_file)
+            if os.path.exists(meta_path):
+                try:
+                    with open(meta_path, 'r', encoding='utf-8') as f:
+                        meta_data = json.load(f)
+                        # 提取有用的字段
+                        for key in ['sha256', 'year', 'size', 'contain_ad', 'sensor_test_done', 'timestamp']:
+                            if key in meta_data:
+                                app_info[key] = str(meta_data[key])
+                except:
+                    pass
+        
+        return app_info
+        
+    except Exception as e:
+        print(f"[!] 提取应用信息失败 {app_folder}: {e}")
+        return None
+
+def get_global_stats():
+    """获取全局文件的统计信息"""
+    try:
+        if not os.path.exists(GLOBAL_MASTER_CSV) or os.path.getsize(GLOBAL_MASTER_CSV) == 0:
+            return {"total_apps": 0, "tested_apps": 0}
+        
+        df = pd.read_csv(GLOBAL_MASTER_CSV, dtype=str).fillna("")
+        
+        total_apps = len(df)
+        tested_apps = len(df[df['is_tested'].str.upper().isin(['TRUE', 'T', '1', 'YES', 'Y'])])
+        utg_exists = len(df[df['utg_exists'].str.upper().isin(['TRUE', 'T', '1', 'YES', 'Y'])])
+        has_ad = len(df[df['has_ad'].str.upper().isin(['TRUE', 'T', '1', 'YES', 'Y'])])
+        
+        stats = {
+            "total_apps": total_apps,
+            "tested_apps": tested_apps,
+            "utg_exists": utg_exists,
+            "has_ad": has_ad,
+            "tested_percentage": (tested_apps / total_apps * 100) if total_apps > 0 else 0
+        }
+        
+        return stats
+        
+    except Exception as e:
+        print(f"[!] 获取全局统计信息失败: {e}")
+        return {"total_apps": 0, "tested_apps": 0}
+
+def print_global_stats():
+    """打印全局统计信息"""
+    stats = get_global_stats()
+    
+    print(f"\n📊 全局文件统计信息:")
+    print(f"   总应用数: {stats['total_apps']}")
+    print(f"   已测试应用: {stats['tested_apps']}")
+    print(f"   有UTG文件: {stats['utg_exists']}")
+    print(f"   包含广告: {stats['has_ad']}")
+    print(f"   测试完成率: {stats['tested_percentage']:.1f}%")
+    print(f"   全局CSV: {GLOBAL_MASTER_CSV}")
+    print(f"   全局TXT: {GLOBAL_CHECKED_TXT}")
 
 # def get_unique_ad_states(path):
 #     print("[+] get unique ad status: " + path)
@@ -1770,6 +2079,9 @@ def batch_analyze(output_dirs_with_csv, global_summary="global_summary.csv", sen
         print(f"[✔] 全部任务完成，汇总结果写入：{global_summary}")
     else:
         print("[!] 没有成功分析任何目录。")
+    
+    # ---- 打印全局统计 ----
+    print_global_stats()
 
     # ---- 写出 sensor_test_input.csv ----
     if sensor_entries:
@@ -1814,7 +2126,7 @@ def write_global_summary(records, output_csv):
         writer.writeheader()
         writer.writerows(records)
 
-if __name__=='__main__':
+# if __name__=='__main__':
     #path = os.path.join('examples/C07B41EB38A4AA087A9B2883AA8F3679C035441AD4470F2A23')
     # root_directory = "D:\\NKU\\Work\\Work2\\appchina_output"
     
@@ -1833,6 +2145,7 @@ if __name__=='__main__':
 
     # read a list of root
 
+    '''
     dirs_to_analyze = [
         ("F:\\test\\output", "F:\\test\\merge_output.csv"),
         ("E:\\test\\output", "E:\\test\\untested_simulator1.csv"),
@@ -1841,4 +2154,253 @@ if __name__=='__main__':
     ]
 
     batch_analyze(dirs_to_analyze, global_summary="global_offline_summary.csv", sensor_input_csv="sensor_test_input.csv")
+    '''
 
+# 全局文件路径
+GLOBAL_CSV = "all_apps_master.csv"
+GLOBAL_TXT = "checked_apps.txt"
+
+def ensure_global_files():
+    """确保全局CSV和TXT文件存在"""
+    # CSV列定义 - 与原有分析结果保持一致
+    csv_columns = [
+        'app_name', 'has_ad', 'type2_detected', 'type2_features',
+        'type3_detected', 'type3_features', 'type4_detected', 'type4_features',
+        'type5_detected', 'type5_features', 'type6_detected', 'type6_features',
+        'analysis_date', 'app_path', 'is_tested', 'test_date', 'utg_exists'
+    ]
+    
+    if not os.path.exists(GLOBAL_CSV):
+        df = pd.DataFrame(columns=csv_columns)
+        df.to_csv(GLOBAL_CSV, index=False)
+        print(f"[+] 创建全局CSV: {GLOBAL_CSV}")
+    
+    if not os.path.exists(GLOBAL_TXT):
+        with open(GLOBAL_TXT, 'w', encoding='utf-8') as f:
+            f.write("# 已检测应用列表\n")
+        print(f"[+] 创建全局TXT: {GLOBAL_TXT}")
+
+def load_checked_apps():
+    """加载已检查的应用列表"""
+    checked_apps = set()
+    if os.path.exists(GLOBAL_TXT):
+        with open(GLOBAL_TXT, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    checked_apps.add(line)
+    return checked_apps
+
+def incremental_analysis_with_full_detection(folders_to_scan):
+    """
+    增量分析主函数 - 使用完整的广告检测流程
+    
+    Args:
+        folders_to_scan: 要扫描的文件夹路径列表
+    """
+    print("🚀 开始增量分析（完整检测流程）...")
+    
+    # 确保全局文件存在
+    ensure_global_files()
+    
+    # 加载已检查的应用
+    checked_apps = load_checked_apps()
+    print(f"[+] 已加载 {len(checked_apps)} 个已检查应用")
+    
+    # 统计
+    stats = {
+        'scanned_folders': 0,
+        'new_apps': 0,
+        'skipped_apps': 0,
+        'failed_apps': 0
+    }
+    
+    # 遍历每个大文件夹
+    for folder_path in folders_to_scan:
+        if not os.path.exists(folder_path):
+            print(f"[!] 文件夹不存在: {folder_path}")
+            continue
+            
+        print(f"\n[+] 扫描文件夹: {folder_path}")
+        stats['scanned_folders'] += 1
+        
+        # 获取所有子文件夹
+        try:
+            sub_folders = [f for f in os.listdir(folder_path) 
+                          if os.path.isdir(os.path.join(folder_path, f))]
+        except Exception as e:
+            print(f"[!] 读取文件夹失败: {e}")
+            continue
+            
+        print(f"    找到 {len(sub_folders)} 个子文件夹")
+        
+        # 处理每个子文件夹
+        for app_name in sub_folders:
+            app_folder = os.path.join(folder_path, app_name)
+            
+            # 检查是否已分析过
+            if app_name in checked_apps:
+                stats['skipped_apps'] += 1
+                continue
+                
+            # 检查是否存在utg.js
+            utg_path = os.path.join(app_folder, "utg.js")
+            if not os.path.exists(utg_path):
+                stats['skipped_apps'] += 1
+                continue
+                
+            print(f"\n[+] 分析新应用: {app_name}")
+            
+            # 使用完整的分析流程
+            try:
+                # 调用原有的完整分析函数
+                result = analyze_single_apk(app_folder, app_name)
+                
+                if result:
+                    # 添加额外信息
+                    result['app_path'] = app_folder
+                    result['is_tested'] = 'TRUE'
+                    result['test_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    result['utg_exists'] = 'TRUE'
+                    
+                    # 更新全局文件
+                    if update_global_files_with_full_result(result):
+                        stats['new_apps'] += 1
+                        print(f"[+] 成功分析并记录: {app_name}")
+                    else:
+                        stats['failed_apps'] += 1
+                        print(f"[!] 记录失败: {app_name}")
+                else:
+                    stats['failed_apps'] += 1
+                    print(f"[!] 分析失败: {app_name}")
+                    
+            except Exception as e:
+                stats['failed_apps'] += 1
+                print(f"[!] 分析异常 {app_name}: {e}")
+    
+    # 输出统计
+    print(f"\n📊 分析完成统计:")
+    print(f"   扫描文件夹: {stats['scanned_folders']}")
+    print(f"   新增应用: {stats['new_apps']}")
+    print(f"   跳过应用: {stats['skipped_apps']}")
+    print(f"   失败应用: {stats['failed_apps']}")
+    print(f"   全局CSV: {GLOBAL_CSV}")
+    print(f"   全局TXT: {GLOBAL_TXT}")
+    
+    return stats
+
+def update_global_files_with_full_result(result):
+    """使用完整分析结果更新全局文件"""
+    try:
+        # 读取现有CSV
+        if os.path.exists(GLOBAL_CSV) and os.path.getsize(GLOBAL_CSV) > 0:
+            df = pd.read_csv(GLOBAL_CSV, dtype=str).fillna("")
+        else:
+            df = pd.DataFrame(columns=[
+                'app_name', 'has_ad', 'type2_detected', 'type2_features',
+                'type3_detected', 'type3_features', 'type4_detected', 'type4_features',
+                'type5_detected', 'type5_features', 'type6_detected', 'type6_features',
+                'analysis_date', 'app_path', 'is_tested', 'test_date', 'utg_exists'
+            ])
+        
+        app_name = result['app_name']
+        
+        # 检查是否已存在
+        existing_mask = df['app_name'] == app_name
+        
+        if existing_mask.any():
+            # 更新现有记录
+            for idx in df[existing_mask].index:
+                for col, value in result.items():
+                    if col in df.columns and value:
+                        df.loc[idx, col] = value
+            print(f"   更新记录: {app_name}")
+        else:
+            # 添加新记录
+            new_row = {col: '' for col in df.columns}
+            new_row.update(result)
+            df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+            print(f"   新增记录: {app_name}")
+        
+        # 保存CSV
+        df.to_csv(GLOBAL_CSV, index=False)
+        
+        # 更新TXT文件
+        checked_apps = load_checked_apps()
+        checked_apps.add(app_name)
+        with open(GLOBAL_TXT, 'w', encoding='utf-8') as f:
+            f.write("# 已检测应用列表\n")
+            for app in sorted(checked_apps):
+                f.write(f"{app}\n")
+        
+        return True
+        
+    except Exception as e:
+        print(f"[!] 更新全局文件失败: {e}")
+        return False
+
+def get_analysis_stats():
+    """获取分析统计信息"""
+    try:
+        if not os.path.exists(GLOBAL_CSV):
+            return {"total_apps": 0, "tested_apps": 0}
+        
+        df = pd.read_csv(GLOBAL_CSV, dtype=str).fillna("")
+        
+        total_apps = len(df)
+        tested_apps = len(df[df['is_tested'] == 'TRUE'])
+        has_ad = len(df[df['has_ad'] == 'TRUE'])
+        
+        # 统计各种广告类型
+        type2_count = len(df[df['type2_detected'] == 'TRUE'])
+        type3_count = len(df[df['type3_detected'] == 'TRUE'])
+        type4_count = len(df[df['type4_detected'] == 'TRUE'])
+        type5_count = len(df[df['type5_detected'] == 'TRUE'])
+        type6_count = len(df[df['type6_detected'] == 'TRUE'])
+        
+        return {
+            "total_apps": total_apps,
+            "tested_apps": tested_apps,
+            "has_ad": has_ad,
+            "type2_count": type2_count,
+            "type3_count": type3_count,
+            "type4_count": type4_count,
+            "type5_count": type5_count,
+            "type6_count": type6_count,
+            "ad_percentage": (has_ad / total_apps * 100) if total_apps > 0 else 0
+        }
+    except Exception as e:
+        print(f"[!] 获取统计失败: {e}")
+        return {"total_apps": 0, "tested_apps": 0}
+
+def print_detailed_stats():
+    """打印详细统计信息"""
+    stats = get_analysis_stats()
+    
+    print(f"\n📈 详细统计信息:")
+    print(f"   总应用数: {stats['total_apps']}")
+    print(f"   已测试应用: {stats['tested_apps']}")
+    print(f"   包含广告: {stats['has_ad']} ({stats['ad_percentage']:.1f}%)")
+    print(f"   广告类型分布:")
+    print(f"     - Type2: {stats['type2_count']}")
+    print(f"     - Type3: {stats['type3_count']}")
+    print(f"     - Type4: {stats['type4_count']}")
+    print(f"     - Type5: {stats['type5_count']}")
+    print(f"     - Type6: {stats['type6_count']}")
+    print(f"   全局CSV: {GLOBAL_CSV}")
+    print(f"   全局TXT: {GLOBAL_TXT}")
+
+# 使用示例
+if __name__ == "__main__":
+    folders_to_scan = [
+        "D:\\NKU\\Work\\Work2\\fraudulent_output",
+        "D:\\NKU\\Work\\Work2\\datasets\\manual_analysis\\output", 
+        "D:\\NKU\\Work\\Work2\\datasets\\chin\\output",
+        "D:\\NKU\\Work\\Work2\\datasets\\manual_analysis\\test_adgpe_test"
+    ]
+    
+    # 执行增量分析（使用完整检测流程）
+    stats = incremental_analysis_with_full_detection(folders_to_scan)
+    
+    # 显示详细统计信息
+    print_detailed_stats()

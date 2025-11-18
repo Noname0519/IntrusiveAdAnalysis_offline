@@ -5,6 +5,12 @@ def deploy_frida_server(adb_path="adb", frida_server_bin="frida-server"):
     """
     将 frida-server 推送到 /data/local/tmp 并启动
     """
+    download_url = "https://github.com/frida/frida/releases/download/16.5.1/frida-server-16.5.1-android-x86_64.xz"
+    
+    device_serial = "http://13.209.173.201:44059/"
+
+    # download and push
+    
     if not os.path.exists(frida_server_bin):
         raise FileNotFoundError(f"未找到 frida-server 文件: {frida_server_bin}")
 
