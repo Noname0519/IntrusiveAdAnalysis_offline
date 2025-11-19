@@ -7,10 +7,13 @@ from datetime import datetime
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
 from functools import partial
+import shutil
 
 """
 Analyze different main text result
 """
+
+removed_count = 0
 
 class dynamic_graph():
     def __init__(self, js_path=None, json_path=None):
@@ -32,6 +35,7 @@ class dynamic_graph():
         self.false_positive_file = "D:\\NKU\\Work\\Work2\\datasets\\androzoo\\false_positive_keywords.txt"
         self.false_positive_keywords = self._load_false_positive_keywords(self.false_positive_file)
         self.keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title", "adView", "AD", "ad", "Ad", "interstitial"]
+        
         
 
         try:
@@ -1085,7 +1089,6 @@ def analyze_worker(args):
     return analyze_single_apk(os.path.join(path, folder), folder)
 
 def analyze_single_apk(apk_dir, apk_name):
-    all_results = []
 
     if not os.path.exists(apk_dir):
         print("No exist: " + apk_dir)
@@ -1095,10 +1098,10 @@ def analyze_single_apk(apk_dir, apk_name):
     utg_path = os.path.join(apk_dir, "utg.js")
     # print("utg_path: " + utg_path)
     if not os.path.exists(utg_path):
-        # print(f"[!] utg.js 不存在: {utg_path}")
-        # utg_fail_count = utg_fail_count + 1
-        result["issue"] = "utg.js not exists"
-        return result
+        # result["issue"] = "utg.js not exists; clean up"
+        shutil.rmtree(apk_dir, ignore_errors=True)
+        removed_count += 1
+        return {"app_name": apk_name, "issue": "utg.js not exists, clean up"}
 
     # 收集该app的所有状态文件
     states_dir = os.path.join(apk_dir, "states")
