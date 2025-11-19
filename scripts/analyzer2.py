@@ -29,6 +29,10 @@ class dynamic_graph():
         self.state_edge_json = []
         self.activity = {}
         self.edge = []
+        self.false_positive_file = "D:\\NKU\\Work\\Work2\\datasets\\androzoo\\false_positive_keywords.txt"
+        self.false_positive_keywords = self._load_false_positive_keywords(self.false_positive_file)
+        self.keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title", "adView", "AD", "ad", "Ad", "interstitial"]
+        
 
         try:
             with open(self.json_path, encoding='utf-8') as f:
@@ -93,7 +97,7 @@ class dynamic_graph():
                     self.activity[src_act]['src'][dst_act]['trigger'] += trigger
                     self.activity[dst_act]['dst'][src_act]['trigger'] += trigger
 
-        print(f"[debug！！] graph.state size: {len(self.state)}")
+        print(f"[Debug] graph.state size: {len(self.state)}")
 
     def change_js_to_json(self, js_path, json_path, encoding="utf-8"):
         
@@ -156,43 +160,31 @@ class dynamic_graph():
 
         log_file = os.path.join(apk_dir, "enhanced_log.txt")
         new_ad_node_count = 0
+        corrected_fp_count = 0
 
-        false_positive_file = "D:\\NKU\\Work\\Work2\\datasets\\androzoo\\false_positive_keywords.txt"
-        false_positive_keywords = self._load_false_positive_keywords(false_positive_file)
-        keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title", "adView", "AD", "ad"]
-        # print("11111")
         nodes = self.raw_utg.get("nodes", [])
-        # print("222222")
         log_entries = []
 
+        # Need to improve: 若包含false positive kws, 但同时严格存在ad，可以继续保留
         false_positive_nodes = []
         for node in nodes:
             if node.get("is_ad_related", False):
-                # print("33333")
                 ad_features = node.get("ad_feature", [])
-                # print("44444")
                 is_false_positive = False
                 
-                # 检查ad_feature中是否包含误识别关键词
                 for feature in ad_features:
                     feature_str = str(feature).lower()
-                    if any(fp_kw.lower() in feature_str for fp_kw in false_positive_keywords):
+                    matched_fp = [fp for fp in self.false_positive_keywords if fp.lower() in feature_str]
+                    if matched_fp:
                         is_false_positive = True
+                        log_entries.append(f"⚠️  Node {node['id']}: 发现误识别关键词 {matched_fp}")
                         break
-                    # if isinstance(feature, dict):
-                    #     for value in feature.values():
-                    #         if any(fp_kw in str(value).lower() for fp_kw in false_positive_keywords):
-                    #             is_false_positive = True
-                    #             break
-                    # elif any(fp_kw in str(feature).lower() for fp_kw in false_positive_keywords):
-                    #is_false_positive = True
                 
                 if is_false_positive:
                     node["is_ad_related"] = False
                     node["was_corrected_fp"] = True  # ✅ 新增标记
                     
                     # 修正误识别
-                    node["is_ad_related"] = False
                     if "ad_feature" in node:
                         del node["ad_feature"]
                     if "ad_format" in node:
@@ -203,15 +195,13 @@ class dynamic_graph():
                     print("[-] " + log_line)
                     log_entries.append(log_line)
 
+        # detect new ad nodes
         for node in nodes:
             # 跳过已经被修正的误识别节点
             if node["id"] in false_positive_nodes:
                 continue
             
-            # print("55555")
             image_path = node.get("image")
-            # print("66666")
-            
             if not image_path:
                 continue
 
@@ -226,7 +216,7 @@ class dynamic_graph():
                 with open(state_json_path, "r", encoding="utf-8") as sf:
                     state_data = json.load(sf)
             except Exception as e:
-                print(f"读取 {state_json_path} 失败: {e}")
+                print(f"[ERROR] 读取 {state_json_path} 失败: {e}")
                 continue
 
             ad_path_dict = {
@@ -239,13 +229,14 @@ class dynamic_graph():
             ad_features = []
             ad_formats = set()
 
+            # traverse all the view and find the ad features
             for view in views:
-                # 检查是否包含误识别关键词
+                # 检查view是否包含误识别关键词
                 has_false_positive = False
                 for field in ["resource_id", "text", "class", "content_description"]:
                     if field in view and view[field]:
                         field_value = str(view[field]).lower()
-                        if any(fp_kw in field_value for fp_kw in false_positive_keywords):
+                        if any(fp_kw in field_value for fp_kw in self.false_positive_keywords):
                             has_false_positive = True
                             break
                 
@@ -253,31 +244,26 @@ class dynamic_graph():
                 if has_false_positive:
                     continue
                     
-                # if view.get("ad_feature"):
-                #     ad_features.append(view["ad_feature"])
-
-                #     if view.get("ad_format") is not None:
-                #         ad_formats.add(view["ad_format"])
+                # check已有的广告特征
                 if view.get("ad_feature"):
                     # 再次检查广告特征本身是否包含误识别词
                     ad_feature_str = str(view["ad_feature"]).lower()
-                    if not any(fp_kw.lower() in ad_feature_str for fp_kw in false_positive_keywords):
+                    if not any(fp_kw.lower() in ad_feature_str for fp_kw in self.false_positive_keywords):
                         ad_features.append(view["ad_feature"])
 
                     if view.get("ad_format") is not None:
                         ad_formats.add(view["ad_format"])
 
                 # 关键词匹配（排除误识别后）
-                for field in ["resource_id", "text"]:
+                for field in ["resource_id", "text", "content_description"]:
                     if field in view and view[field]:
 
                         field_value = str(view[field]).lower()
-                        has_fp_in_field = any(fp_kw.lower() in field_value for fp_kw in false_positive_keywords)
+                        has_fp_in_field = any(fp_kw.lower() in field_value for fp_kw in self.false_positive_keywords)
                         if has_fp_in_field:
                             continue
 
-                        for kw in keywords:
-                            # field_value = str(view[field]).lower()
+                        for kw in self.keywords:
                             kw_lower = kw.lower()
                             if kw_lower in field_value:
                                 feature_entry = {
@@ -318,9 +304,12 @@ class dynamic_graph():
                 for i, feature in enumerate(ad_features, 1):
                     detail_log = f"   特征{i}: {feature}"
                     log_entries.append(detail_log)
+                # for i, feature in enumerate(ad_features[:3], 1):  # 只记录前3个特征
+                #     detail_log = f"   特征{i}: {feature}"
+                #     log_entries.append(detail_log)
             else:
                 # 如果没有广告特征但之前被标记为广告相关，进行清理
-                if node.get("is_ad_related", False):
+                if node.get("is_ad_related", False) and not node.get("was_corrected_fp", False):
                     node["is_ad_related"] = False
                     if "ad_feature" in node:
                         del node["ad_feature"]
@@ -337,8 +326,6 @@ class dynamic_graph():
 
         self._rebuild_edges()
         
-        
-
         # 导出增强后的UTG
         enhanced_utg_path = os.path.join(apk_dir, "enhanced_utg.json")
         # with open(enhanced_path, "w", encoding="utf-8") as f:
@@ -362,17 +349,17 @@ class dynamic_graph():
             
         # 输出统计信息
         ad_nodes_count = sum(1 for node in nodes if node.get("is_ad_related", False))
-        #corrected_count = len(false_positive_nodes)
-        corrected_count = sum(1 for n in nodes if n.get("was_corrected_fp", False)) + new_ad_node_count
-
-        # ad_edges_count = 0
-        # for edge in self.state_edge_json:
-        #     if edge.get("is_ad_related", False):
-        #         ad_edges_count += 1
         ad_edges_count = sum(1 for edge in self.state_edge_json if edge.get("is_ad_related", False))
-                
-        print(f"\n📊 统计信息: 总节点{len(nodes)}, 广告节点{ad_nodes_count}, 修正误识别{corrected_count}个")
-        print(f"📊 边信息: 总边{len(self.state_edge)}, 广告相关边{ad_edges_count}个")
+        
+        print(f"\n{'='*60}")
+        print(f"📊 UTG增强统计:")
+        print(f"  - 总节点数: {len(nodes)}")
+        print(f"  - 广告节点数: {ad_nodes_count}")
+        print(f"  - 新发现广告节点: {new_ad_node_count}")
+        print(f"  - 修正误识别: {corrected_fp_count}")
+        print(f"  - 总边数: {len(self.state_edge)}")
+        print(f"  - 广告相关边: {ad_edges_count}")
+        print(f"{'='*60}\n")
 
     def _rebuild_edges(self):
         """
@@ -1104,19 +1091,30 @@ def analyze_single_apk(apk_dir, apk_name):
         print("No exist: " + apk_dir)
         time.sleep(100)
         return None
+    
+    utg_path = os.path.join(apk_dir, "utg.js")
+    # print("utg_path: " + utg_path)
+    if not os.path.exists(utg_path):
+        # print(f"[!] utg.js 不存在: {utg_path}")
+        # utg_fail_count = utg_fail_count + 1
+        result["issue"] = "utg.js not exists"
+        return result
 
     # 收集该app的所有状态文件
     states_dir = os.path.join(apk_dir, "states")
     if not os.path.exists(states_dir):
         print(f"[WARN] No states directory found for {apk_name}")
         return None
-
+    
     state_files = [f for f in os.listdir(states_dir) if f.startswith("state_") and f.endswith(".json")]
     if not state_files:
         print(f"[WARN] No state JSONs found for {apk_name}")
         return None
 
+    print(f"\n{'='*60}")
     print(f"[+] Analyzing APK: {apk_name}")
+    print(f"[+] Directory: {apk_dir}")
+    print(f"{'='*60}")
     
     # 初始化结果字典
     result = {
@@ -1136,100 +1134,154 @@ def analyze_single_apk(apk_dir, apk_name):
         "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-    utg_path = os.path.join(apk_dir, "utg.js")
-    # print("utg_path: " + utg_path)
-    if not os.path.exists(utg_path):
-        # print(f"[!] utg.js 不存在: {utg_path}")
-        # utg_fail_count = utg_fail_count + 1
-        result["issue"] = "utg.js not exists"
-        return result
     
-    utg_json_path = os.path.join(apk_dir, "utg.json")
-    if not os.path.exists(utg_json_path):
-        # print(f"[!] utg.json 不存在: {utg_json_path}")
-        result["issue"] = "utg.json not exists"
-        return result
+    # utg_json_path = os.path.join(apk_dir, "utg.json")
+    # if not os.path.exists(utg_json_path):
+    #     # print(f"[!] utg.json 不存在: {utg_json_path}")
+    #     result["issue"] = "utg.json not exists"
+    #     return result
     
     try:
+        # get original utg
         utg = dynamic_graph(js_path=utg_path)
+        original_ad_nodes = sum(1 for n in utg.state.values() if n.get("is_ad_related", False))
+        print(f"[INFO] Original ad nodes: {original_ad_nodes}")
         utg.enhance_utg(apk_dir)
-        enhance_utg_path = os.path.join(apk_dir, "enhanced_utg.json")
-        print("enhanced_utg_path", enhance_utg_path) 
-        enhanced_utg = dynamic_graph(json_path=enhance_utg_path)
+        # enhance_utg_path = os.path.join(apk_dir, "enhanced_utg.json")
+        # get enhanced utg
+        # print("enhanced_utg_path", enhance_utg_path) 
+        # enhanced_utg = dynamic_graph(json_path=enhance_utg_path)
+        
+        enhanced_ad_nodes = sum(1 for n in utg.state.values() if n.get("is_ad_related", False))
+        print(f"[INFO] Enhanced ad nodes: {enhanced_ad_nodes}")
+        
+        result["debug_info"]["original_ad_nodes"] = original_ad_nodes
+        result["debug_info"]["enhanced_ad_nodes"] = enhanced_ad_nodes
+
+        enhanced_utg = utg
+
+
+        # has_ad_nodes = any(n.get("is_ad_related", False) for n in enhanced_utg.state.values())
+        # if not has_ad_nodes:
+        #     print(f"[+] No ad-related nodes detected for {apk_name}, skipping detailed checks.")
+        #     return result
+
+        # result["has_ad"] = True
+
+        unique_data = getAdStatus(apk_dir)
+        has_ad_from_states = bool(unique_data)
+
+        has_ad_from_utg = enhanced_ad_nodes > 0
+        has_ad_from_info = len(enhanced_utg.ad_nodes_info) > 0
+
+        result["debug_info"]["has_ad_from_states"] = has_ad_from_states
+        result["debug_info"]["has_ad_from_utg"] = has_ad_from_utg
+        result["debug_info"]["has_ad_from_info"] = has_ad_from_info
+
+        print(f"[INFO] Ad detection results:")
+        print(f"  - From ad_states.json: {has_ad_from_states}")
+        print(f"  - From UTG nodes: {has_ad_from_utg}")
+        print(f"  - From ad_nodes_info: {has_ad_from_info}")
+
+        has_ad = has_ad_from_states or has_ad_from_utg or has_ad_from_info
+        result["has_ad"] = has_ad
+
+        if not has_ad:
+            result["issue"] = "No ads detected by any method"
+            print(f"[WARN] No ads detected for {apk_name}")
+            return result
+        
+        try:
+            type2_results = check_type2(apk_dir, enhanced_utg)
+            if type2_results:
+                result["type2_detected"] = True
+                result["type2_features"] = json.dumps(type2_results, ensure_ascii=False)
+                print(f"[✓] Type2 detected: {len(type2_results)} instances")
+        except Exception as e:
+            print(f"[ERROR] Type2 detection failed: {e}")
+            result["debug_info"]["type2_error"] = str(e)
+            
+        try:
+            type3_results = check_type3(apk_dir, enhanced_utg)
+            if type3_results:
+                result["type3_detected"] = True
+                result["type3_features"] = json.dumps(type3_results, ensure_ascii=False)
+                print(f"[✓] Type3 detected: {len(type3_results)} instances")
+        except Exception as e:
+            print(f"[ERROR] Type3 detection failed: {e}")
+            result["debug_info"]["type3_error"] = str(e)
+        
+        try:
+            type4_results = check_type4(apk_dir, enhanced_utg)
+            if type4_results:
+                result["type4_detected"] = True
+                result["type4_features"] = json.dumps(type4_results, ensure_ascii=False)
+                print(f"[✓] Type4 detected: {len(type4_results)} instances")
+        except Exception as e:
+            print(f"[ERROR] Type4 detection failed: {e}")
+            result["debug_info"]["type4_error"] = str(e)
+        
+        try:
+            type5_results = check_type5(apk_dir, enhanced_utg)
+            if type5_results:
+                result["type5_detected"] = True
+                result["type5_features"] = json.dumps(type5_results, ensure_ascii=False)
+                print(f"[✓] Type5 detected: {len(type5_results)} instances")
+        except Exception as e:
+            print(f"[ERROR] Type5 detection failed: {e}")
+            result["debug_info"]["type5_error"] = str(e)
+        
+        try:
+            type6_results = check_type6(apk_dir, enhanced_utg)
+            if type6_results:
+                result["type6_detected"] = True
+                result["type6_features"] = json.dumps(type6_results, ensure_ascii=False)
+                print(f"[✓] Type6 detected: {len(type6_results)} instances")
+        except Exception as e:
+            print(f"[ERROR] Type6 detection failed: {e}")
+            result["debug_info"]["type6_error"] = str(e)
+        
+        # 汇总检测结果
+        detected_types = [t for t in ["type2","type3","type4","type5","type6"] 
+                            if result[f"{t}_detected"]]
+        print(f"\n[SUMMARY] Detected ad types: {', '.join(detected_types) if detected_types else 'None'}")
+        
     except Exception as e:
-        print(f"[!] Failed to enhance UTG for {apk_dir}: {e}")
-        return result
+        print(f"[ERROR] Failed to analyze {apk_dir}: {e}")
+        import traceback
+        traceback.print_exc()
+        result["issue"] = f"Analysis error: {str(e)}"
+        result["debug_info"]["error_traceback"] = traceback.format_exc()
 
-    # === 先判断是否有广告 ===
-    # has_ad_nodes = any(n.get("is_ad_related", False) for n in enhanced_utg.state.values())
-    # if not has_ad_nodes:
-    #     print(f"[+] No ad-related nodes detected for {apk_name}, skipping detailed checks.")
-    #     return result
 
-    # result["has_ad"] = True
+    # if has_ad:
+    #     result["has_ad"] = True
+    #     type2_results = check_type2(apk_dir, enhanced_utg)
+    #     type3_results = check_type3(apk_dir, enhanced_utg)
+    #     type4_results = check_type4(apk_dir, enhanced_utg)
+    #     type5_results = check_type5(apk_dir, enhanced_utg)
+    #     type6_results = check_type6(apk_dir, enhanced_utg)
 
-    # === 调用现有检测函数 ===
-    # type2_result = check_type2(ui_data, png_path)
-    unique_data = getAdStatus(apk_dir)
-    if unique_data:
-        result["has_ad"] = True
-        type2_results = check_type2(apk_dir, enhanced_utg)
-        type3_results = check_type3(apk_dir, enhanced_utg)
-        type4_results = check_type4(apk_dir, enhanced_utg)
-        type5_results = check_type5(apk_dir, enhanced_utg)
-        type6_results = check_type6(apk_dir, enhanced_utg)
-
-        # 汇总所有结果
-        # result.update({
-        #     "detection_results": {
-        #         "type2": {
-        #             "detected": bool(type2_result),
-        #             "features": safe_join_patterns(type2_result),
-        #             "details": type2_result
-        #         },
-        #         "type3": {
-        #             "detected": bool(type3_result),
-        #             "features": safe_join_patterns(type3_result),
-        #             "details": type3_result
-        #         },
-        #         "type4": {
-        #             "detected": bool(type4_result),
-        #             "features": safe_join_patterns(type4_result),
-        #             "details": type4_result
-        #         },
-        #         "type5": {
-        #             "detected": bool(type5_result),
-        #             "features": safe_join_patterns(type5_result),
-        #             "details": type5_result
-        #         },
-        #         "type6": {
-        #             "detected": bool(type6_result),
-        #             "features": safe_join_patterns(type6_result),
-        #             "details": type6_result
-        #         }
-        #     }
-        # }
-        # )
-        # 更新结果
-        if type2_results:
-            result["type2_detected"] = True
-            result["type2_features"] = json.dumps(type2_results, ensure_ascii=False)
+    #     # 更新结果
+    #     if type2_results:
+    #         result["type2_detected"] = True
+    #         result["type2_features"] = json.dumps(type2_results, ensure_ascii=False)
         
-        if type3_results:
-            result["type3_detected"] = True
-            result["type3_features"] = json.dumps(type3_results, ensure_ascii=False)
+    #     if type3_results:
+    #         result["type3_detected"] = True
+    #         result["type3_features"] = json.dumps(type3_results, ensure_ascii=False)
         
-        if type4_results:
-            result["type4_detected"] = True
-            result["type4_features"] = json.dumps(type4_results, ensure_ascii=False)
+    #     if type4_results:
+    #         result["type4_detected"] = True
+    #         result["type4_features"] = json.dumps(type4_results, ensure_ascii=False)
         
-        if type5_results:
-            result["type5_detected"] = True
-            result["type5_features"] = json.dumps(type5_results, ensure_ascii=False)
+    #     if type5_results:
+    #         result["type5_detected"] = True
+    #         result["type5_features"] = json.dumps(type5_results, ensure_ascii=False)
         
-        if type6_results:
-            result["type6_detected"] = True
-            result["type6_features"] = json.dumps(type6_results, ensure_ascii=False)
+    #     if type6_results:
+    #         result["type6_detected"] = True
+    #         result["type6_features"] = json.dumps(type6_results, ensure_ascii=False)
 
     # === 收集截图和 UI 文件 ===
     # for state_file in state_files:
@@ -1312,7 +1364,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
             continue
 
         try:
-            result = analyze_single_apk(app_output_dir, app_name)
+            result = analyze_single_apk(app_output_dir, app_name) 
             if result:
                 results.append(result)
 
@@ -1441,7 +1493,6 @@ def generate_summary_report(stats, output_csv):
     #generate_visualizations(stats, output_csv)
     
     return report_content
-
 
     # for output_path, output_csv in dirs_to_analyze:
     #     print(f"\n=== Analyzing {output_path} ===")
