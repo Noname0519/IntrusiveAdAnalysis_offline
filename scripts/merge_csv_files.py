@@ -170,11 +170,16 @@ def find_csv_files(directory, pattern=None):
 # 使用示例
 if __name__ == "__main__":
     # 方法1: 直接指定CSV文件列表
+    # csv_files = [
+    #     "F:\\test\\untested_simulator2.csv",
+    #     "F:\\test\\sensor_test_input_batch_1.csv" 
+    #     # "D:\\NKU\\Work\\Work2\\appchina_output\\log.csv",
+    #     # "D:\\NKU\\Work\\Work2\\datasets\\aligned_log.csv"
+    # ]
     csv_files = [
-        "F:\\test\\untested_simulator2.csv",
-        "F:\\test\\sensor_test_input_batch_1.csv" 
-        # "D:\\NKU\\Work\\Work2\\appchina_output\\log.csv",
-        # "D:\\NKU\\Work\\Work2\\datasets\\aligned_log.csv"
+        r"/Users/noname/noname/nku/intrusiveads/results/round2/root_log.csv",
+        r"/Users/noname/noname/nku/intrusiveads/results/round2/log_device.csv",
+        r"/Users/noname/noname/nku/intrusiveads/results/round2/log_remote.csv",
     ]
     
     merged_df, stats = merge_csv_files(

@@ -36,8 +36,6 @@ class dynamic_graph():
         self.false_positive_keywords = self._load_false_positive_keywords(self.false_positive_file)
         self.keywords = ["ad_contain", "ad_view", "advertisement", "广告", "ad_icon", "ad_title", "adView", "AD", "ad", "Ad", "interstitial"]
         
-        
-
         try:
             with open(self.json_path, encoding='utf-8') as f:
                 j = json.load(f)
@@ -1089,35 +1087,12 @@ def analyze_worker(args):
     return analyze_single_apk(os.path.join(path, folder), folder)
 
 def analyze_single_apk(apk_dir, apk_name):
+    global removed_count
 
     if not os.path.exists(apk_dir):
         print("No exist: " + apk_dir)
         time.sleep(100)
         return None
-    
-    utg_path = os.path.join(apk_dir, "utg.js")
-    # print("utg_path: " + utg_path)
-    if not os.path.exists(utg_path):
-        # result["issue"] = "utg.js not exists; clean up"
-        shutil.rmtree(apk_dir, ignore_errors=True)
-        removed_count += 1
-        return {"app_name": apk_name, "issue": "utg.js not exists, clean up"}
-
-    # 收集该app的所有状态文件
-    states_dir = os.path.join(apk_dir, "states")
-    if not os.path.exists(states_dir):
-        print(f"[WARN] No states directory found for {apk_name}")
-        return None
-    
-    state_files = [f for f in os.listdir(states_dir) if f.startswith("state_") and f.endswith(".json")]
-    if not state_files:
-        print(f"[WARN] No state JSONs found for {apk_name}")
-        return None
-
-    print(f"\n{'='*60}")
-    print(f"[+] Analyzing APK: {apk_name}")
-    print(f"[+] Directory: {apk_dir}")
-    print(f"{'='*60}")
     
     # 初始化结果字典
     result = {
@@ -1134,9 +1109,35 @@ def analyze_single_apk(apk_dir, apk_name):
         "ui_files": [], 
         "issue": "",    # 保存对应 UI 文件
         "detection_results": "",
-        "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "debug_info": {}
     }
+    
+    utg_path = os.path.join(apk_dir, "utg.js")
+    # print("utg_path: " + utg_path)
+    if not os.path.exists(utg_path):
+        # result["issue"] = "utg.js not exists; clean up"
+        # shutil.rmtree(apk_dir, ignore_errors=True)
+        removed_count += 1
+        return {"app_name": apk_name, "issue": "utg.js not exists, clean up"}
 
+    # 收集该app的所有状态文件
+    states_dir = os.path.join(apk_dir, "states")
+    if not os.path.exists(states_dir):
+        result["issue"] = "states directory not found"
+        print(f"[WARN] No states directory found for {apk_name}")
+        return None
+    
+    state_files = [f for f in os.listdir(states_dir) if f.startswith("state_") and f.endswith(".json")]
+    result["debug_info"]["state_files_count"] = len(state_files)
+    if not state_files:
+        print(f"[WARN] No state JSONs found for {apk_name}")
+        return None
+
+    print(f"\n{'='*60}")
+    print(f"[+] Analyzing APK: {apk_name}")
+    print(f"[+] Directory: {apk_dir}")
+    print(f"{'='*60}")
     
     # utg_json_path = os.path.join(apk_dir, "utg.json")
     # if not os.path.exists(utg_json_path):
@@ -1312,6 +1313,7 @@ def analyze_single_apk_in_dir(output_path, folder_name):
 def load_csv_records(csv_path):
     """加载已有CSV记录"""
     if not os.path.exists(csv_path):
+        print("No such file")
         return []
     with open(csv_path, "r", encoding="utf-8") as f:
         return list(csv.DictReader(f))
@@ -1358,6 +1360,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
     for row in tqdm(records, desc="Analyzing APKs"):
         apk_path = row.get("apk_path")
         app_output_dir = row.get("app_output_dir", "").replace("/", "\\") # for windows
+        app_output_dir = os.path.join("E:\\test\\output", app_output_dir)
         # app_name = os.path.basename(apk_dir)
         app_name = row.get("apk_name")
 
@@ -1423,7 +1426,7 @@ def analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv
 
     # 写全局统计 CSV
     fieldnames = ["csv_file", "final_result_csv", "total_apks", "apks_with_ads",
-                  "type2_count","type3_count","type4_count","type5_count","type6_count","failed_analysis","analyzed_at"]
+                  "type2_count","type3_count","type4_count","type5_count","type6_count","failed_analysis","analyzed_at", "debug_info"]
     write_csv_results(global_summary, fieldnames, global_stats)
     print(f"[✔] Global summary saved to {global_summary}")
 
@@ -1577,7 +1580,8 @@ if __name__ == "__main__":
     workers = 3
 
     csv_paths = [
-        "merged_validity_results_final_checked.csv"
+        # "merged_validity_results_final_checked.csv"
+        "E:\\test\\merged_output.csv"
     ]
 
     analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv="sensor_test_input.csv")
