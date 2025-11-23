@@ -7,7 +7,6 @@ from datetime import datetime
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
 from functools import partial
-import shutil
 
 """
 Analyze different main text result
@@ -261,6 +260,7 @@ class dynamic_graph():
                     if field in view and view[field]:
 
                         field_value = str(view[field]).lower()
+
                         has_fp_in_field = any(fp_kw.lower() in field_value for fp_kw in self.false_positive_keywords)
                         if has_fp_in_field:
                             continue
@@ -271,11 +271,27 @@ class dynamic_graph():
                                 feature_entry = {
                                     field: view[field],
                                     "matched_keyword": kw,
-                                    "view_class": view.get("class", "Unknown")
+                                    "view_class": view.get("class", "Unknown"),
+                                    "bounds": view.get("bounds", "")
                                 }
                             
-                                if not any(fe.get(field) == view[field] and fe.get("matched_keyword") == kw 
-                                        for fe in ad_features):
+                                # if not any(fe.get(field) == view[field] and fe.get("matched_keyword") == kw 
+                                #         for fe in ad_features):
+                                #     ad_features.append(feature_entry)
+                                 # ✅ 修复去重逻辑：安全检查字典类型
+                                is_duplicate = False
+                                for existing_feature in ad_features:
+                                    # 确保 existing_feature 是字典
+                                    if not isinstance(existing_feature, dict):
+                                        continue
+                                    
+                                    # 检查是否重复
+                                    if (existing_feature.get(field) == view[field] and 
+                                        existing_feature.get("matched_keyword") == kw):
+                                        is_duplicate = True
+                                        break
+                                
+                                if not is_duplicate:
                                     ad_features.append(feature_entry)
 
             # 处理广告格式
@@ -1107,10 +1123,9 @@ def analyze_single_apk(apk_dir, apk_name):
         "type6_detected": False, "type6_features": "",
         "screenshots": [],  # 保存广告截图
         "ui_files": [], 
-        "issue": "",    # 保存对应 UI 文件
+        "issues": "{}",   
         "detection_results": "",
-        "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "debug_info": {}
+        "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     
     utg_path = os.path.join(apk_dir, "utg.js")
@@ -1119,17 +1134,20 @@ def analyze_single_apk(apk_dir, apk_name):
         # result["issue"] = "utg.js not exists; clean up"
         # shutil.rmtree(apk_dir, ignore_errors=True)
         removed_count += 1
-        return {"app_name": apk_name, "issue": "utg.js not exists, clean up"}
+        # return {"app_name": apk_name, "issues": "utg.js not exists, clean up"}
+        return None
+
+    debug_info = {}
 
     # 收集该app的所有状态文件
     states_dir = os.path.join(apk_dir, "states")
     if not os.path.exists(states_dir):
-        result["issue"] = "states directory not found"
+        result["issues"] = "states directory not found"
         print(f"[WARN] No states directory found for {apk_name}")
         return None
     
     state_files = [f for f in os.listdir(states_dir) if f.startswith("state_") and f.endswith(".json")]
-    result["debug_info"]["state_files_count"] = len(state_files)
+    debug_info["state_files_count"] = len(state_files)
     if not state_files:
         print(f"[WARN] No state JSONs found for {apk_name}")
         return None
@@ -1159,8 +1177,8 @@ def analyze_single_apk(apk_dir, apk_name):
         enhanced_ad_nodes = sum(1 for n in utg.state.values() if n.get("is_ad_related", False))
         print(f"[INFO] Enhanced ad nodes: {enhanced_ad_nodes}")
         
-        result["debug_info"]["original_ad_nodes"] = original_ad_nodes
-        result["debug_info"]["enhanced_ad_nodes"] = enhanced_ad_nodes
+        debug_info["original_ad_nodes"] = original_ad_nodes
+        debug_info["enhanced_ad_nodes"] = enhanced_ad_nodes
 
         enhanced_utg = utg
 
@@ -1178,9 +1196,9 @@ def analyze_single_apk(apk_dir, apk_name):
         has_ad_from_utg = enhanced_ad_nodes > 0
         has_ad_from_info = len(enhanced_utg.ad_nodes_info) > 0
 
-        result["debug_info"]["has_ad_from_states"] = has_ad_from_states
-        result["debug_info"]["has_ad_from_utg"] = has_ad_from_utg
-        result["debug_info"]["has_ad_from_info"] = has_ad_from_info
+        debug_info["has_ad_from_states"] = has_ad_from_states
+        debug_info["has_ad_from_utg"] = has_ad_from_utg
+        debug_info["has_ad_from_info"] = has_ad_from_info
 
         print(f"[INFO] Ad detection results:")
         print(f"  - From ad_states.json: {has_ad_from_states}")
@@ -1191,7 +1209,7 @@ def analyze_single_apk(apk_dir, apk_name):
         result["has_ad"] = has_ad
 
         if not has_ad:
-            result["issue"] = "No ads detected by any method"
+            result["issues"] = "No ads detected by any method"
             print(f"[WARN] No ads detected for {apk_name}")
             return result
         
@@ -1203,7 +1221,7 @@ def analyze_single_apk(apk_dir, apk_name):
                 print(f"[✓] Type2 detected: {len(type2_results)} instances")
         except Exception as e:
             print(f"[ERROR] Type2 detection failed: {e}")
-            result["debug_info"]["type2_error"] = str(e)
+            debug_info["type2_error"] = str(e)
             
         try:
             type3_results = check_type3(apk_dir, enhanced_utg)
@@ -1213,7 +1231,7 @@ def analyze_single_apk(apk_dir, apk_name):
                 print(f"[✓] Type3 detected: {len(type3_results)} instances")
         except Exception as e:
             print(f"[ERROR] Type3 detection failed: {e}")
-            result["debug_info"]["type3_error"] = str(e)
+            debug_info["type3_error"] = str(e)
         
         try:
             type4_results = check_type4(apk_dir, enhanced_utg)
@@ -1223,7 +1241,7 @@ def analyze_single_apk(apk_dir, apk_name):
                 print(f"[✓] Type4 detected: {len(type4_results)} instances")
         except Exception as e:
             print(f"[ERROR] Type4 detection failed: {e}")
-            result["debug_info"]["type4_error"] = str(e)
+            debug_info["type4_error"] = str(e)
         
         try:
             type5_results = check_type5(apk_dir, enhanced_utg)
@@ -1233,7 +1251,7 @@ def analyze_single_apk(apk_dir, apk_name):
                 print(f"[✓] Type5 detected: {len(type5_results)} instances")
         except Exception as e:
             print(f"[ERROR] Type5 detection failed: {e}")
-            result["debug_info"]["type5_error"] = str(e)
+            debug_info["type5_error"] = str(e)
         
         try:
             type6_results = check_type6(apk_dir, enhanced_utg)
@@ -1243,7 +1261,7 @@ def analyze_single_apk(apk_dir, apk_name):
                 print(f"[✓] Type6 detected: {len(type6_results)} instances")
         except Exception as e:
             print(f"[ERROR] Type6 detection failed: {e}")
-            result["debug_info"]["type6_error"] = str(e)
+            debug_info["type6_error"] = str(e)
         
         # 汇总检测结果
         detected_types = [t for t in ["type2","type3","type4","type5","type6"] 
@@ -1254,8 +1272,8 @@ def analyze_single_apk(apk_dir, apk_name):
         print(f"[ERROR] Failed to analyze {apk_dir}: {e}")
         import traceback
         traceback.print_exc()
-        result["issue"] = f"Analysis error: {str(e)}"
-        result["debug_info"]["error_traceback"] = traceback.format_exc()
+        result["issues"] = f"Analysis error: {str(e)}"
+        debug_info["error_traceback"] = traceback.format_exc()
 
 
     # if has_ad:
@@ -1296,7 +1314,7 @@ def analyze_single_apk(apk_dir, apk_name):
     #         result["screenshots"].append(screen_file)
     #     if os.path.exists(ui_file):
     #         result["ui_files"].append(ui_file)
-
+    result["issues"] = json.dumps(debug_info, ensure_ascii=False)
     return result
 
 def analyze_single_apk_in_dir(output_path, folder_name):
@@ -1338,7 +1356,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
         "type5_detected", "type5_features", 
         "type6_detected", "type6_features",
         "analysis_date",'screenshots', 
-        'issue', 'detection_results', 'ui_files'
+        'issues', 'detection_results', 'ui_files'
     ]
 
     records = load_csv_records(csv_input)
@@ -1360,7 +1378,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
     for row in tqdm(records, desc="Analyzing APKs"):
         apk_path = row.get("apk_path")
         app_output_dir = row.get("app_output_dir", "").replace("/", "\\") # for windows
-        app_output_dir = os.path.join("E:\\test\\output", app_output_dir)
+        # app_output_dir = os.path.join("E:\\test\\output", app_output_dir)
         # app_name = os.path.basename(apk_dir)
         app_name = row.get("apk_name")
 
@@ -1380,7 +1398,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
                         "package_name": result["app_name"],
                         "apk_name": result["app_name"],
                         "apk_path": apk_path,
-                        "output_dir": app_output_dir,
+                        "app_output_dir": app_output_dir,
                         "has_ad": True,
                         "analyzed_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     })
@@ -1391,7 +1409,7 @@ def analyze_dir(csv_input, final_result_csv="apk_analysis_results.csv", sensor_i
             else:
                 stats["failed_analysis"] += 1
         except Exception as e:
-            print(f"[!] Failed to analyze {app_output_dir}: {e}")
+            print(f"[!] [Analyze dir] Failed to analyze {app_output_dir}: {e}")
             stats["failed_analysis"] += 1
 
     # 写分析结果 CSV
@@ -1426,7 +1444,7 @@ def analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv
 
     # 写全局统计 CSV
     fieldnames = ["csv_file", "final_result_csv", "total_apks", "apks_with_ads",
-                  "type2_count","type3_count","type4_count","type5_count","type6_count","failed_analysis","analyzed_at", "debug_info"]
+                  "type2_count","type3_count","type4_count","type5_count","type6_count","failed_analysis","analyzed_at"]
     write_csv_results(global_summary, fieldnames, global_stats)
     print(f"[✔] Global summary saved to {global_summary}")
 
@@ -1581,7 +1599,7 @@ if __name__ == "__main__":
 
     csv_paths = [
         # "merged_validity_results_final_checked.csv"
-        "E:\\test\\merged_output.csv"
+        "F:\\test\\new\\testlog.csv"
     ]
 
     analyze_all(csv_paths, global_summary="global_summary.csv", sensor_input_csv="sensor_test_input.csv")
